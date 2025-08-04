@@ -1,15 +1,14 @@
 'use strict';
 
-const modal = document.querySelector('[data-modal]');
-const modalCloseBtn = document.querySelector('[data-modal-close]');
-const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
+const modal = document.querySelector('[data-modal');
+const modalCloseBtn = document.querySelector('[data-modal-close');
+const modalCloseOverlay = document.querySelector('[data-modal-overlay');
 
-function modalCloseFunc() {
-  modal.classList.add('closed');
-}
+const modalCloseFunc = function () { modal.classList.add('closed') }
 
 modalCloseOverlay.addEventListener('click', modalCloseFunc);
 modalCloseBtn.addEventListener('click', modalCloseFunc);
+
 //Close Notification 
 
 const notificationToast = document.querySelector('[data-toast]');
