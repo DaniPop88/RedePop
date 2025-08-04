@@ -59,3 +59,29 @@ setInterval(() => {
     currentSlide = (currentSlide + 1) % sliderItems.length;
     showSlide(currentSlide);
 }, slideInterval);
+
+function startMonthlyCountdownAll() {
+    const endDate = new Date('2025-08-31T23:59:59');
+    function updateCountdownAll() {
+        const now = new Date();
+        const diff = endDate - now;
+        let days = 0, hours = 0, minutes = 0, seconds = 0;
+        if (diff > 0) {
+            days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            minutes = Math.floor((diff / (1000 * 60)) % 60);
+            seconds = Math.floor((diff / 1000) % 60);
+        }
+        document.querySelectorAll('.countdown').forEach(function(box) {
+            box.querySelector('.days').textContent = String(days).padStart(2, '0');
+            box.querySelector('.hours').textContent = String(hours).padStart(2, '0');
+            box.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
+            box.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
+        });
+    }
+    updateCountdownAll();
+    setInterval(updateCountdownAll, 1000);
+}
+document.addEventListener('DOMContentLoaded', function() {
+    startMonthlyCountdownAll();
+});
