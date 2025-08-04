@@ -173,7 +173,12 @@ body {
         }
     }
 
-    .modal.closed { display: none; }
+    .modal.closed {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      display: none !important;
+    }
 
     .modal-close-overlay {
         position: absolute;
