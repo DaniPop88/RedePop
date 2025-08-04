@@ -1,8 +1,9 @@
 'use strict';
 
-const modal = document.querySelector('[data-modal');
-const modalCloseBtn = document.querySelector('[data-modal-close');
-const modalCloseOverlay = document.querySelector('[data-modal-overlay');
+// FIXED SELECTORS (add closing bracket ])
+const modal = document.querySelector('[data-modal]');
+const modalCloseBtn = document.querySelector('[data-modal-close]');
+const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
 
 const modalCloseFunc = function () { modal.classList.add('closed') }
 
