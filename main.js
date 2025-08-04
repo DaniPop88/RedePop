@@ -40,23 +40,22 @@ for (let i = 0; i < mobileMenuOpenBtn.length; i++) {
     overlay.addEventListener('click', mobileMenuCloseFunc);
 }
 
-//Accordion Options
-const accordionBtn = document.querySelectorAll('[data-accordion-btn]');
-const accordion = document.querySelectorAll('[data-accordion]');
+// --- Banner Auto Sliding dengan Efek Zoom ---
+const sliderItems = document.querySelectorAll('.slider-item');
+let currentSlide = 0;
+const slideInterval = 4000;
 
-for (let i = 0; i < accordion.length; i++) {
-    accordionBtn[i].addEventListener('click', function () {
-        const clickedBtn = this.nextElementSibling.classList.contains('active');
-
-        for (let i = 0; i < accordion.length; i++) {
-            if (clickedBtn) break;
-            if (accordion[i].classList.contains('active')) {
-                accordion[i].classList.remove('active');
-                accordionBtn[i].classList.remove('active');
-            }
-        }
-
-        this.nextElementSibling.classList.toggle('active');
-        this.classList.toggle('active');
-    })
+function showSlide(index) {
+    sliderItems.forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+    });
 }
+
+// Inisialisasi
+showSlide(currentSlide);
+
+// Auto-slide tiap 4 detik
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % sliderItems.length;
+    showSlide(currentSlide);
+}, slideInterval);
