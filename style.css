@@ -144,8 +144,7 @@ body {
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100vw;
   height: 100vh;
   background: hsla(0, 0%, 0%, .5);
@@ -158,27 +157,14 @@ body {
   z-index: 10;
   transition: opacity 0.2s, visibility 0.2s;
 }
+/* Hapus animasi popup! */
 
-    @keyframes popup{
-        0% {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        100% {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: all;
-        }
-    }
-
-    .modal.closed {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
-      display: none !important;
-    }
+.modal.closed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
 
     .modal-close-overlay {
         position: absolute;
