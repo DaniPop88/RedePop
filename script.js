@@ -1,21 +1,15 @@
 'use strict';
 
-// FIXED SELECTORS (add closing bracket ])
 const modal = document.querySelector('[data-modal]');
 const modalCloseBtn = document.querySelector('[data-modal-close]');
 const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
 
-const modalCloseFunc = function () {
+function modalCloseFunc() {
   modal.classList.add('closed');
-  modal.style.opacity = '0';
-  modal.style.visibility = 'hidden';
-  modal.style.pointerEvents = 'none';
-  modal.style.display = 'none';
 }
 
 modalCloseOverlay.addEventListener('click', modalCloseFunc);
 modalCloseBtn.addEventListener('click', modalCloseFunc);
-
 //Close Notification 
 
 const notificationToast = document.querySelector('[data-toast]');
