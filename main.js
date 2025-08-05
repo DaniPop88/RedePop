@@ -73,10 +73,14 @@ function startMonthlyCountdownAll() {
             seconds = Math.floor((diff / 1000) % 60);
         }
         document.querySelectorAll('.countdown').forEach(function(box) {
-            box.querySelector('.days').textContent = String(days).padStart(2, '0');
-            box.querySelector('.hours').textContent = String(hours).padStart(2, '0');
-            box.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
-            box.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
+            // Get all .display-number children
+            const numbers = box.querySelectorAll('.display-number');
+            if (numbers.length >= 4) {
+                numbers[0].textContent = String(days).padStart(2, '0');
+                numbers[1].textContent = String(hours).padStart(2, '0');
+                numbers[2].textContent = String(minutes).padStart(2, '0');
+                numbers[3].textContent = String(seconds).padStart(2, '0');
+            }
         });
     }
     updateCountdownAll();
