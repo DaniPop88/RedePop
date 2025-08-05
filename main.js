@@ -89,3 +89,126 @@ function startMonthlyCountdownAll() {
 document.addEventListener('DOMContentLoaded', function() {
     startMonthlyCountdownAll();
 });
+
+// Helper: CPF validation (Brazilian format)
+function validateCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g,'');
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+  var sum = 0, rest;
+  for (var i=1; i<=9; i++) sum += parseInt(cpf.substring(i-1,i)) * (11-i);
+  rest = (sum * 10) % 11;
+  if ((rest === 10) || (rest === 11)) rest = 0;
+  if (rest !== parseInt(cpf.substring(9,10))) return false;
+  sum = 0;
+  for (i=1; i<=10; i++) sum += parseInt(cpf.substring(i-1,i)) * (12-i);
+  rest = (sum * 10) % 11;
+  if ((rest === 10) || (rest === 11)) rest = 0;
+  if (rest !== parseInt(cpf.substring(10,11))) return false;
+  return true;
+}
+
+// Modal logic
+const orderModal = document.getElementById('orderModal');
+const orderModalCloseBtn = document.getElementById('orderModalCloseBtn');
+const orderForm = document.getElementById('orderForm');
+const orderSubmitBtn = document.getElementById('orderSubmitBtn');
+const orderFormMessage = document.getElementById('orderFormMessage');
+
+// Open modal when claim button clicked
+document.querySelectorAll('.claim-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    orderModal.classList.add('active');
+    document.getElementById('orderProductId').value = btn.getAttribute('data-product-id');
+    orderSubmitBtn.disabled = true;
+    orderFormMessage.textContent = '';
+    orderForm.reset();
+  });
+});
+orderModalCloseBtn.addEventListener('click', () => orderModal.classList.remove('active'));
+
+// Secret code validation on input
+document.getElementById('secretCode').addEventListener('input', async function() {
+  const secretCode = this.value.trim();
+  const productId = document.getElementById('orderProductId').value;
+  if (secretCode.length > 4 && productId) {
+    // Validate via Google Apps Script
+    try {
+      const res = await fetch(
+        'https://script.google.com/macros/s/AKfycbxt177cEOKIfKlMHdXTQ7KgSMIG5dboL55wz1crjPJWst8c281pikc0Ef5nWTPV9nUKiQ/exec' +
+        `?action=validateCode&productId=${encodeURIComponent(productId)}&secretCode=${encodeURIComponent(secretCode)}`
+      );
+      const result = await res.json();
+      if (result.valid) {
+        orderSubmitBtn.disabled = false;
+        orderFormMessage.textContent = 'Code valid! You can submit.';
+        orderFormMessage.style.color = 'green';
+      } else {
+        orderSubmitBtn.disabled = true;
+        orderFormMessage.textContent = 'Invalid or used code!';
+        orderFormMessage.style.color = 'red';
+      }
+    } catch (err) {
+      orderFormMessage.textContent = 'Could not validate code!';
+      orderFormMessage.style.color = 'red';
+      orderSubmitBtn.disabled = true;
+    }
+  } else {
+    orderSubmitBtn.disabled = true;
+    orderFormMessage.textContent = '';
+  }
+});
+
+// CPF validation on blur
+document.getElementById('cpf').addEventListener('blur', function() {
+  if (!validateCPF(this.value)) {
+    orderFormMessage.textContent = 'CPF inválido!';
+    orderFormMessage.style.color = 'red';
+    orderSubmitBtn.disabled = true;
+  }
+});
+
+// Submit order
+orderForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  orderSubmitBtn.disabled = true;
+  orderFormMessage.textContent = 'Sending...';
+
+  // Gather form data
+  const data = {
+    productId: document.getElementById('orderProductId').value,
+    fullName: document.getElementById('fullName').value,
+    cpf: document.getElementById('cpf').value,
+    phone: document.getElementById('phone').value,
+    address: document.getElementById('address').value,
+    city: document.getElementById('city').value,
+    state: document.getElementById('state').value,
+    zip: document.getElementById('zip').value,
+    secretCode: document.getElementById('secretCode').value,
+    action: 'submitOrder'
+  };
+
+  // Send to Google Apps Script
+  try {
+    const res = await fetch(
+      'https://script.google.com/macros/s/AKfycbxt177cEOKIfKlMHdXTQ7KgSMIG5dboL55wz1crjPJWst8c281pikc0Ef5nWTPV9nUKiQ/exec',
+      {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }
+    );
+    const result = await res.json();
+    if (result.success) {
+      orderFormMessage.textContent = 'Order submitted successfully!';
+      orderFormMessage.style.color = 'green';
+      setTimeout(() => orderModal.classList.remove('active'), 2000);
+    } else {
+      orderFormMessage.textContent = result.message || 'Submission failed!';
+      orderFormMessage.style.color = 'red';
+    }
+  } catch (err) {
+    orderFormMessage.textContent = 'Could not submit order!';
+    orderFormMessage.style.color = 'red';
+  }
+});
