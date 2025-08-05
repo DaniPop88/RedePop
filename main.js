@@ -136,7 +136,7 @@ document.getElementById('secretCode').addEventListener('input', async function()
     try {
       const res = await fetch(
         'https://script.google.com/macros/s/AKfycbxt177cEOKIfKlMHdXTQ7KgSMIG5dboL55wz1crjPJWst8c281pikc0Ef5nWTPV9nUKiQ/exec' +
-        `?action=validateCode&productId=${encodeURIComponent(productId)}&secretCode=${encodeURIComponent(secretCode)}`
+        `?action=validateCode&product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`
       );
       const result = await res.json();
       if (result.valid) {
