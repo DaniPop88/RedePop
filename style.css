@@ -988,7 +988,7 @@ body {
         font-weight: var(--weight-300);
     }
 
-    .product-featured .add-cart-btn {
+    .product-featured .claim-btn {
         background: var(--bright-red);
         padding: 8px 15px;
         color: var(--white);
@@ -1000,7 +1000,7 @@ body {
         transition: var(--transition-timing);
     }
 
-        .product-featured .add-cart-btn:hover { 
+        .product-featured .claim-btn:hover { 
             background: var(--eerie-black);
             color: var(--white);
         }
@@ -2072,6 +2072,35 @@ footer {
     .footer-bottom { margin-bottom: 0; }
 }
 
+/* style.css: Updated .claim-btn styling */
+.claim-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;                  /* jarak icon & teks */
+  padding: 0.4rem 0.6rem;       /* lebih kecil */
+  font-size: var(--fs-9);       /* ~0.75rem */
+  background: var(--bright-red);
+  color: var(--white);
+  border-radius: var(--border-radius-small);
+  font-weight: var(--weight-600);
+  text-transform: uppercase;
+  transition: var(--transition-timing);
+  animation: btn-pulse 4s ease-in-out infinite;
+}
+
+.claim-btn ion-icon {
+  font-size: 1rem;              /* kecilkan icon */
+}
+
+.claim-btn:hover {
+  background: var(--eerie-black);
+}
+
+@keyframes btn-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+
 @media (min-width: 1200px){
     .container {max-width: 1200px; }
 
@@ -2131,4 +2160,27 @@ footer {
         left: 110px;
         max-width: 460px;
     }
+}
+
+/* 1. Pastikan card bisa jadi posisi relatif */
+.showcase {
+  position: relative;
+}
+
+/* 2. Sembunyikan tombol por padrão */
+.showcase .claim-btn {
+  position: center;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+/* 3. Tampilkan tombol quando hover no card */
+.showcase:hover .claim-btn {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
