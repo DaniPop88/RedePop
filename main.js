@@ -139,7 +139,8 @@ document.getElementById('secretCode').addEventListener('input', async function()
         `?action=validateCode&product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`
       );
       const result = await res.json();
-      if (result.valid) {
+      // Perbaiki di sini: cek .status === "valid"
+      if (result.status === "valid") {
         orderSubmitBtn.disabled = false;
         orderFormMessage.textContent = 'Code valid! You can submit.';
         orderFormMessage.style.color = 'green';
