@@ -1274,14 +1274,10 @@
                 <ion-icon name="close-outline"></ion-icon>
             </button>
             <h3 class="modal-title">Claim Your Prize</h3>
-            
-            <!-- Tambahkan di sini sebelum <form id="orderForm"> -->
-            <div id="orderProductInfo" style="text-align:center; margin-bottom: 16px;">
-                <img id="orderProductImg" src="" alt="" style="max-width:100px;max-height:100px;margin-bottom:8px;">
-                <div id="orderProductName" style="font-weight:bold;"></div>
+            <div class="order-product-info-centered">
+                <img id="orderProductImg" src="..." alt="" class="modal-product-img" />
+                <div id="orderProductName" class="modal-product-title"></div>
             </div>
-            <!-- Akhir penambahan -->
-            
             <form id="orderForm">
                 <input type="hidden" name="productId" id="orderProductId">
 
@@ -1335,7 +1331,7 @@
                 <label for="zip">ZIP Code</label>
                 <input type="text" name="zip" id="zip" required placeholder="00000-000">
 
-                <label for="secretCode">Secret Code</label>
+                <label for="secretCode">Secret Code - Find Mentor</label>
                 <input type="text" name="secretCode" id="secretCode" required maxlength="10">
 
                 <button type="submit" id="orderSubmitBtn" disabled>Submit Order</button>
