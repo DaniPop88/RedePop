@@ -255,7 +255,7 @@ orderForm.addEventListener('submit', async function (e) {
   };
 
   try {
-    const res = await fetch(`${BACKEND_URL}/submit`, {
+    const res = await fetch(`${BACKEND_URL}/order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
