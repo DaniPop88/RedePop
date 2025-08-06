@@ -1,5 +1,7 @@
 'use strict';
 
+const BACKEND_URL = "https://redepop-backend.onrender.com";
+
 const modal = document.querySelector('[data-modal');
 const modalCloseBtn = document.querySelector('[data-modal-close');
 const modalCloseOverlay = document.querySelector('[data-modal-overlay');
@@ -114,7 +116,7 @@ const orderForm = document.getElementById('orderForm');
 const orderSubmitBtn = document.getElementById('orderSubmitBtn');
 const orderFormMessage = document.getElementById('orderFormMessage');
 
-// Open modal when claim button clicked
+// Buka Modal Saat Klik Claim
 document.querySelectorAll('.claim-btn').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -127,19 +129,14 @@ document.querySelectorAll('.claim-btn').forEach(btn => {
 });
 orderModalCloseBtn.addEventListener('click', () => orderModal.classList.remove('active'));
 
-// Secret code validation on input
-document.getElementById('secretCode').addEventListener('input', async function() {
+// Validasi Secret Code
+document.getElementById('secretCode').addEventListener('input', async function () {
   const secretCode = this.value.trim();
   const productId = document.getElementById('orderProductId').value;
   if (secretCode.length > 4 && productId) {
-    // Validate via Google Apps Script
     try {
-      const res = await fetch(
-        'https://script.google.com/macros/s/AKfycbxt177cEOKIfKlMHdXTQ7KgSMIG5dboL55wz1crjPJWst8c281pikc0Ef5nWTPV9nUKiQ/exec' +
-        `?action=validateCode&product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`
-      );
+      const res = await fetch(`${BACKEND_URL}/validate?product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`);
       const result = await res.json();
-      // Perbaiki di sini: cek .status === "valid"
       if (result.status === "valid") {
         orderSubmitBtn.disabled = false;
         orderFormMessage.textContent = 'Code valid! You can submit.';
@@ -169,13 +166,12 @@ document.getElementById('cpf').addEventListener('blur', function() {
   }
 });
 
-// Submit order
-orderForm.addEventListener('submit', async function(e) {
+// Submit Form
+orderForm.addEventListener('submit', async function (e) {
   e.preventDefault();
   orderSubmitBtn.disabled = true;
   orderFormMessage.textContent = 'Sending...';
 
-  // Gather form data
   const data = {
     productId: document.getElementById('orderProductId').value,
     fullName: document.getElementById('fullName').value,
@@ -185,19 +181,15 @@ orderForm.addEventListener('submit', async function(e) {
     city: document.getElementById('city').value,
     state: document.getElementById('state').value,
     zip: document.getElementById('zip').value,
-    secretCode: document.getElementById('secretCode').value,
-    action: 'submitOrder'
+    secretCode: document.getElementById('secretCode').value
   };
 
-  // Send to Google Apps Script
   try {
-    const res = await fetch(
-      'https://script.google.com/macros/s/AKfycbxt177cEOKIfKlMHdXTQ7KgSMIG5dboL55wz1crjPJWst8c281pikc0Ef5nWTPV9nUKiQ/exec',
-      {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-        });
+    const res = await fetch(`${BACKEND_URL}/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
     const result = await res.json();
     if (result.success) {
       orderFormMessage.textContent = 'Order submitted successfully!';
