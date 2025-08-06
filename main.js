@@ -5,8 +5,6 @@ const BACKEND_URL = "https://redepop-backend.onrender.com";
 // ======================================== Helper State ========================================
 let isCPFValid = false;
 let isSecretCodeValid = false;
-let currentProductName = "";
-let currentProductImg = "";
 
 // ======================================== Modal & Mobile Menu ========================================
 const modal = document.querySelector('[data-modal]');
@@ -167,9 +165,6 @@ document.querySelectorAll('.claim-btn').forEach(btn => {
 
     // Isi info ke modal (fungsi updateOrderProductInfo harus ada)
     updateOrderProductInfo(productName, productImg);
-    // JANGAN LUPA set juga ke variabel state jika kamu butuh kirim ke backend
-    window.currentProductName = productName;
-    window.currentProductImg = productImg;
 
     orderSubmitBtn.disabled = true;
     orderFormMessage.textContent = '';
@@ -240,10 +235,22 @@ orderForm.addEventListener('submit', async function (e) {
   orderSubmitBtn.disabled = true;
   orderFormMessage.textContent = 'Sending...';
 
+  // Ambil productName & productImg langsung dari DOM modal (bukan dari variabel JS)
+  const productName = document.getElementById('orderProductName').textContent.trim();
+  const productImg = document.getElementById('orderProductImg').src;
+
+  // Validasi minimal productName tidak boleh kosong
+  if (!productName) {
+    orderFormMessage.textContent = "Gagal: Produk tidak terdeteksi. Silakan tutup dan buka ulang form!";
+    orderFormMessage.style.color = "red";
+    orderSubmitBtn.disabled = false;
+    return;
+  }
+
   const data = {
     productId: document.getElementById('orderProductId').value,
-    productName: currentProductName,
-    productImg: currentProductImg,
+    productName: productName,
+    productImg: productImg,
     fullName: document.getElementById('fullName').value,
     cpf: document.getElementById('cpf').value,
     phone: document.getElementById('phone').value,
@@ -254,6 +261,9 @@ orderForm.addEventListener('submit', async function (e) {
     secretCode: document.getElementById('secretCode').value
   };
 
+  // Debug: cek di console
+  console.log("ORDER DATA:", data);
+
   try {
     const res = await fetch(`${BACKEND_URL}/order`, {
       method: 'POST',
@@ -261,7 +271,7 @@ orderForm.addEventListener('submit', async function (e) {
       body: JSON.stringify(data)
     });
     const result = await res.json();
-    if (result.success) {
+    if (result.status === "success" || result.success) {
       orderFormMessage.textContent = 'Order submitted successfully!';
       orderFormMessage.style.color = 'green';
       setTimeout(() => orderModal.classList.remove('active'), 2000);
