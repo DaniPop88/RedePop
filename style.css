@@ -2313,3 +2313,15 @@ footer {
   background: #fff;
   border-color: #fff;
 }
+/* Force slider banner to always be rectangle, disable responsive aspect ratio */
+.slider-item {
+  aspect-ratio: 16 / 7 !important; /* or 16 / 9 or your preferred rectangle ratio */
+  height: auto !important;
+  max-height: none !important;
+  min-width: 100% !important;
+}
+
+.slider-container {
+  min-height: unset !important;
+  height: auto !important;
+}
