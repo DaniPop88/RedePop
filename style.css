@@ -2299,3 +2299,9 @@ footer {
   animation: popin 0.35s cubic-bezier(.26,.54,.58,1.6);
   z-index: 2;
 }
+.category-item.active-category {
+  box-shadow: 0 0 0 3px #e74c3c, 0 0 18px 3px #e74c3c88;
+  border-color: #e74c3c;
+  /* Optionally: */
+  transition: box-shadow 0.18s, border-color 0.18s;
+}
