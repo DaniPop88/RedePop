@@ -315,6 +315,7 @@ document.querySelectorAll('.category-item').forEach(function(item) {
   item.addEventListener('click', function() {
     const selectedCategory = item.getAttribute('data-category');
     if (!selectedCategory) return;
+
     // Filter semua produk
     document.querySelectorAll('.showcase').forEach(function(showcase) {
       const catEl = showcase.querySelector('.showcase-category');
@@ -324,5 +325,11 @@ document.querySelectorAll('.category-item').forEach(function(item) {
         showcase.style.display = 'none'; // Sembunyikan
       }
     });
+
+    // Trigger animasi popin
+    item.classList.add('popin-animate');
+    setTimeout(function() {
+      item.classList.remove('popin-animate');
+    }, 350); // durasi animasi sesuai CSS
   });
 });
