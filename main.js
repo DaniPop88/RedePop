@@ -313,23 +313,40 @@ document.getElementById('showAllProducts')?.addEventListener('click', function()
 
 document.querySelectorAll('.category-item').forEach(function(item) {
   item.addEventListener('click', function() {
-    const selectedCategory = item.getAttribute('data-category');
-    if (!selectedCategory) return;
-
-    // Filter semua produk
-    document.querySelectorAll('.showcase').forEach(function(showcase) {
-      const catEl = showcase.querySelector('.showcase-category');
-      if (catEl && catEl.textContent.trim() === selectedCategory) {
-        showcase.style.display = ''; // Tampilkan
-      } else {
-        showcase.style.display = 'none'; // Sembunyikan
-      }
+    // 1. Remove highlight from all category
+    document.querySelectorAll('.category-item').forEach(function(cat) {
+      cat.classList.remove('active-category');
     });
 
-    // Trigger animasi popin
+    // 2. Toggle filter logic
+    const selectedCategory = item.getAttribute('data-category');
+    const isActive = item.classList.contains('active-category');
+
+    // Jika belum aktif, filter & highlight
+    if (!isActive && selectedCategory) {
+      item.classList.add('active-category');
+
+      // Filter produk sesuai kategori
+      document.querySelectorAll('.showcase').forEach(function(showcase) {
+        const catEl = showcase.querySelector('.showcase-category');
+        if (catEl && catEl.textContent.trim() === selectedCategory) {
+          showcase.style.display = '';
+        } else {
+          showcase.style.display = 'none';
+        }
+      });
+    } else {
+      // Jika sudah aktif (klik kedua), reset
+      item.classList.remove('active-category');
+      document.querySelectorAll('.showcase').forEach(function(showcase) {
+        showcase.style.display = '';
+      });
+    }
+
+    // Popin animasi
     item.classList.add('popin-animate');
     setTimeout(function() {
       item.classList.remove('popin-animate');
-    }, 350); // durasi animasi sesuai CSS
+    }, 350);
   });
 });
