@@ -2302,6 +2302,12 @@ footer {
 .category-item.active-category {
   box-shadow: 0 0 0 3px #e74c3c, 0 0 18px 3px #e74c3c88;
   border-color: #e74c3c;
-  /* Optionally: */
+  background: #fff6f6;
+  transition: box-shadow 0.18s, border-color 0.18s;
+}
+.category-item:hover {
+  box-shadow: 0 0 0 2px #e74c3c55, 0 0 12px 2px #e74c3c22;
+  border-color: #e74c3c;
+  cursor: pointer;
   transition: box-shadow 0.18s, border-color 0.18s;
 }
