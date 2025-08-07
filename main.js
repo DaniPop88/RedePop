@@ -313,20 +313,16 @@ document.getElementById('showAllProducts')?.addEventListener('click', function()
 
 document.querySelectorAll('.category-item').forEach(function(item) {
   item.addEventListener('click', function() {
-    // 1. Remove highlight from all category
-    document.querySelectorAll('.category-item').forEach(function(cat) {
-      cat.classList.remove('active-category');
-    });
-
-    // 2. Toggle filter logic
     const selectedCategory = item.getAttribute('data-category');
     const isActive = item.classList.contains('active-category');
 
-    // Jika belum aktif, filter & highlight
     if (!isActive && selectedCategory) {
+      // Aktifkan highlight hanya pada yang diklik
+      document.querySelectorAll('.category-item').forEach(function(cat) {
+        cat.classList.remove('active-category');
+      });
       item.classList.add('active-category');
-
-      // Filter produk sesuai kategori
+      // Filter produk
       document.querySelectorAll('.showcase').forEach(function(showcase) {
         const catEl = showcase.querySelector('.showcase-category');
         if (catEl && catEl.textContent.trim() === selectedCategory) {
@@ -336,7 +332,7 @@ document.querySelectorAll('.category-item').forEach(function(item) {
         }
       });
     } else {
-      // Jika sudah aktif (klik kedua), reset
+      // Reset highlight & tampilkan semua produk
       item.classList.remove('active-category');
       document.querySelectorAll('.showcase').forEach(function(showcase) {
         showcase.style.display = '';
