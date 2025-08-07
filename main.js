@@ -284,3 +284,29 @@ orderForm.addEventListener('submit', async function (e) {
     orderFormMessage.style.color = 'red';
   }
 });
+
+// Tambahkan di bagian bawah main.js
+document.querySelectorAll('.showcase-category').forEach(function(categoryLink) {
+  categoryLink.addEventListener('click', function(e) {
+    e.preventDefault(); // Supaya tidak naik ke atas halaman
+    const selectedCategory = categoryLink.textContent.trim();
+
+    // Sembunyikan semua produk
+    document.querySelectorAll('.showcase').forEach(function(showcase) {
+      const category = showcase.querySelector('.showcase-category');
+      if (category && category.textContent.trim() === selectedCategory) {
+        showcase.style.display = ''; // Tampilkan
+      } else {
+        showcase.style.display = 'none'; // Sembunyikan
+      }
+    });
+  });
+});
+
+// OPTIONAL: Tombol untuk reset filter, tampilkan semua produk lagi
+// Bisa tambahkan di atas grid: <button id="showAllProducts">Tampilkan Semua</button>
+document.getElementById('showAllProducts')?.addEventListener('click', function() {
+  document.querySelectorAll('.showcase').forEach(function(showcase) {
+    showcase.style.display = '';
+  });
+});
