@@ -310,3 +310,19 @@ document.getElementById('showAllProducts')?.addEventListener('click', function()
     showcase.style.display = '';
   });
 });
+
+document.querySelectorAll('.category-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    const selectedCategory = item.getAttribute('data-category');
+    if (!selectedCategory) return;
+    // Filter semua produk
+    document.querySelectorAll('.showcase').forEach(function(showcase) {
+      const catEl = showcase.querySelector('.showcase-category');
+      if (catEl && catEl.textContent.trim() === selectedCategory) {
+        showcase.style.display = ''; // Tampilkan
+      } else {
+        showcase.style.display = 'none'; // Sembunyikan
+      }
+    });
+  });
+});
