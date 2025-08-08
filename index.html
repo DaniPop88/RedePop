@@ -1,1331 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern ECommerce Webpage</title>
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="shortcut icon" href="https://i.postimg.cc/R07Wy2gJ/favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>REDE POP - Catálogo de Prêmios</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="https://i.postimg.cc/R07Wy2gJ/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <div class="overlay " data-overlay></div>
-
-    <div class="modal" data-modal>
-        <div class="modal-close-overlay" data-modal-overlay></div>
-
-        <div class="modal-content">
-            <button class="modal-close-btn" data-modal-close>
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="newsletter-img">
-                <img src="https://i.ibb.co/8DsCNKFM/Untitled-design-11-1.png" alt="image" width="400" height="400">
-            </div>
-
-            <div class="newsletter">
-                <form action="#">
-                    <div class="newsletter-header">
-                        <h3 class="newsletter-title">PRÊMIO EXCLUSIVO PRONTO</h3>
-
-                        <p class="newsletter-desc">Cadastre-se na <b>POP REDE</b>, convide um amigo para jogar, ganhem juntos e ganhem um prêmio EXTRA especialmente para vocês!</p>
-                    </div>
-
-                    <a href="https://popdez.com" class="btn-newsletter" target="_blank" rel="noopener noreferrer">
-                    REGISTRAR
-                    </a>
-                </form>
-            </div>
-        </div>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-content">
+      <img class="logo-img" src="https://i.ibb.co/tpLXCxqB/logo.gif" alt="REDE POP Logo" />
     </div>
-
-    <div class="notification-toast " data-toast>
-        <button class="toast-close-btn" data-toast-close>
-            <ion-icon name="close-outline"></ion-icon>
+  </header>
+  
+  <main>
+    <div class="container">
+      <!-- TIER: CONVIDAR 1 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-1">
+        <div class="tier-header">CONVIDAR 1 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-1">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-1">
+            <img src="https://i.ibb.co/JRYfzZvM/i12TWS.png" alt="i12 TWS Wireless Earbuds" class="product-img" />
+            <div class="product-name">i12 TWS Wireless Earbuds</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-1">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-1" hidden>
+            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="Jaqueta Masculina" class="product-img" />
+            <div class="product-name">Jaqueta Masculina</div>
+          </div>
+        </div>
+        <button class="veja-mais-btn" data-tier="INVITE-1">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
         </button>
+      </section>
 
-        <div class="toast-banner">
-            <img src="https://i.postimg.cc/6qd3mpCv/jewellery-1.jpg" alt="Ocean Golden Tear Earrings" width="80" height="70">
+      <!-- TIER: CONVIDAR 2 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-2">
+        <div class="tier-header">CONVIDAR 2 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-2">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-2">
+            <img src="https://i.ibb.co/JRYfzZvM/i12TWS.png" alt="i12 TWS Wireless Earbuds" class="product-img" />
+            <div class="product-name">i12 TWS Wireless Earbuds</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-2">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-2" hidden>
+            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="Jaqueta Masculina" class="product-img" />
+            <div class="product-name">Jaqueta Masculina</div>
+          </div>
         </div>
+        <button class="veja-mais-btn" data-tier="INVITE-2">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
+        </button>
+      </section>
 
-        <div class="toast-detail">
-            <p class="toast-message">Someone just bought this item</p>
-            <p class="toast-title">Ocean Golden Drop Earrings</p>
-            <p class="toast-meta">
-                <time datetime="PT2M">2 Minutes</time> ago
-            </p>
+      <!-- TIER: CONVIDAR 3 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-3">
+        <div class="tier-header">CONVIDAR 3 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-3">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-3">
+            <img src="https://i.ibb.co/JRYfzZvM/i12TWS.png" alt="i12 TWS Wireless Earbuds" class="product-img" />
+            <div class="product-name">i12 TWS Wireless Earbuds</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-3">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-3" hidden>
+            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="Jaqueta Masculina" class="product-img" />
+            <div class="product-name">Jaqueta Masculina</div>
+          </div>
         </div>
+        <button class="veja-mais-btn" data-tier="INVITE-3">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
+        </button>
+      </section>
+      
+      <!-- TIER: CONVIDAR 5 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-5">
+        <div class="tier-header">CONVIDAR 5 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-5">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-5">
+            <img src="https://i.ibb.co/Z69HGT87/Sacola-em-Non-Woven-laminado-Personalizada.png" alt="Banco de Energia" class="product-img" />
+            <div class="product-name">Banco de Energia</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-5">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-5" hidden>
+            <img src="https://i.postimg.cc/jdybNKWJ/jacket-3.jpg" alt="Jaqueta de Couro" class="product-img" />
+            <div class="product-name">Jaqueta de Couro</div>
+          </div>
+        </div>
+        <button class="veja-mais-btn" data-tier="INVITE-5">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
+        </button>
+      </section>
+      
+      <!-- TIER: CONVIDAR 10 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-10">
+        <div class="tier-header">CONVIDAR 10 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-5">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-10">
+            <img src="https://i.ibb.co/Z69HGT87/Sacola-em-Non-Woven-laminado-Personalizada.png" alt="Banco de Energia" class="product-img" />
+            <div class="product-name">Banco de Energia</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-10">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-10" hidden>
+            <img src="https://i.postimg.cc/jdybNKWJ/jacket-3.jpg" alt="Jaqueta de Couro" class="product-img" />
+            <div class="product-name">Jaqueta de Couro</div>
+          </div>
+        </div>
+        <button class="veja-mais-btn" data-tier="INVITE-10">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
+        </button>
+      </section>
+      
+      <!-- TIER: CONVIDAR 20 MEMBRO -->
+      <section class="reward-tier" data-tier="INVITE-20">
+        <div class="tier-header">CONVIDAR 20 MEMBRO</div>
+        <div class="product-grid">
+          <div class="product-card" data-secret="INVITE-20">
+            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="product-img" />
+            <div class="product-name">Adaptador Universal</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-20">
+            <img src="https://i.ibb.co/Z69HGT87/Sacola-em-Non-Woven-laminado-Personalizada.png" alt="Banco de Energia" class="product-img" />
+            <div class="product-name">Banco de Energia</div>
+          </div>
+          <div class="product-card" data-secret="INVITE-20">
+            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo Personalizado" class="product-img" />
+            <div class="product-name">Chinelo Personalizado</div>
+          </div>
+          <!-- Extra hidden products -->
+          <div class="product-card extra-product" data-secret="INVITE-20" hidden>
+            <img src="https://i.postimg.cc/7Lmt7tMz/shorts-1.jpg" alt="Shorts Basico" class="product-img" />
+            <div class="product-name">Shorts Basico</div>
+          </div>
+        </div>
+        <button class="veja-mais-btn" data-tier="INVITE-20">
+          VEJA MAIS <span class="arrow-icon">&#9660;</span>
+        </button>
+      </section>
     </div>
-
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <ul class="header-social-container">
-                    <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                    <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
-                    <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                </ul>
-
-                <div class="header-alert-news">
-                    <p>Porque há <b>GRATIDÃO</b>, há <b>GENEROSIDADE</b>!</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="header-main">
-            <div class="container">
-                <a href="#" class="header-logo"><img src="https://i.ibb.co/tpLXCxqB/logo.gif" alt="logo" width="120" height="36"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mobile-bottom-navigation">
-            <button class="action-btn" data-mobile-menu-open-btn>
-                <ion-icon name="menu-outline"></ion-icon>
-            </button>
-
-            <button class="action-btn">
-                <ion-icon name="home-outline"></ion-icon>
-            </button>
-
-            <button class="action-btn" data-mobile-menu-open-btn>
-                <ion-icon name="grid-outline"></ion-icon>
-            </button>
-        </div>
-
-        <nav class="mobile-navigation-menu has-scrollbar " data-mobile-menu>
-            <div class="menu-top">
-                <h2 class="menu-title">Menu</h2>
-
-                <button class="menu-close-btn" data-mobile-menu-close-btn>
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
-            </div>
-
-            <ul class="mobile-menu-category-list">
-                <li class="menu-category"><a href="#" class="menu-title">Home</a></li>
-
-                <li class="menu-category">
-                    <button class="accordion-menu" data-accordion-btn>
-                        <p class="menu-title">Men's</p>
-
-                        <div>
-                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                        </div>
-                    </button>
-
-                    <ul class="submenu-category-list " data-accordion>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Shirt</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Short & Jeans</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Safety Shoes</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Wallet</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <button class="accordion-menu" data-accordion-btn>
-                        <p class="menu-title">Women's</p>
-
-                        <div>
-                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                        </div>
-                    </button>
-
-                    <ul class="submenu-category-list" data-accordion>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Dress & Frock</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Earrings</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Necklace</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Makeup Kit</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <button class="accordion-menu" data-accordion-btn>
-                        <p class="menu-title">Jewelyr</p>
-
-                        <div>
-                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                        </div>
-                    </button>
-
-                    <ul class="submenu-category-list" data-accordion>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Earrings</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Couple Rings</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Necklace</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Bracelets</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <button class="accordion-menu" data-accordion-btn>
-                        <p class="menu-title">Perfume</p>
-
-                        <div>
-                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                        </div>
-                    </button>
-
-                    <ul class="submenu-category-list" data-accordion>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Clothes Perfume</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Deodorant</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Flower Fragrance</a></li>
-                        <li class="submenu-category"><a href="#" class="submenu-title">Air Freshener</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-category"><a href="#" class="menu-title">Blog</a></li>
-
-                <li class="menu-category"><a href="#" class="menu-title">Hot Offers</a></li>
-            </ul>
-
-            <div class="menu-bottom">
-                <ul class="menu-social-container">
-                    <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-                    <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
-                    <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <div class="banner">
-            <div class="container">
-                <div class="slider-container">
-                    <div class="slider-item">
-                        <img src="https://i.ibb.co/KxrySPch/1.png" alt="PRÊMIOS INFINITOS PARA VOCÊ" class="banner-img">
-
-                        <div class="banner-content">
-                            <p class="banner-subtitle">ESTÁ PRONTO?</p>
-                            <h2 class="banner-title">PRÊMIOS INFINITOS PARA VOCÊ</h2>
-                            <p class="banner-text">Convide mín <b>1 pessoa</b>!</p>
-                            <a href="https://popdez.com" class="banner-btn" target="_blank">REGISTRAR NA POPDEZ</a>
-                        </div>
-                    </div>
-
-                    <div class="slider-item">
-                        <img src="https://i.ibb.co/JWFK9pRC/2.png" alt="GANHE BÔNUS, GANHE PRÊMIOS" class="banner-img">
-
-                        <div class="banner-content">
-                            <p class="banner-subtitle">Você sabe?</p>
-                            <h2 class="banner-title">GANHE BÔNUS, GANHE PRÊMIOS</h2>
-                            <p class="banner-text">Convide mín <b>1 pessoa</b>!</p>
-                            <a href="https://popdez.com" class="banner-btn" target="_blank">REGISTRAR NA POPDEZ</a>
-                        </div>
-                    </div>
-
-                    <div class="slider-item">
-                        <img src="https://i.ibb.co/YFWTgnpn/3.png" alt="CONVIDE MAIS, RECEBA MAIS" class="banner-img">
-
-                        <div class="banner-content">
-                            <p class="banner-subtitle">ILIMITADA!!</p>
-                            <h2 class="banner-title">CONVIDE MAIS, RECEBA MAIS</h2>
-                            <p class="banner-text">Convide mín <b>1 pessoa</b>!</p>
-                            <a href="https://popdez.com" class="banner-btn" target="_blank">REGISTRAR NA POPDEZ</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </main>
+  
+  <!-- Claim Modal -->
+  <div class="modal" id="orderModal">
+    <div class="modal-content order-modal-content">
+      <button class="modal-close-btn" id="orderModalCloseBtn">&times;</button>
+      <h3 class="modal-title">Resgatar Prêmio</h3>
+      <div class="order-product-info-centered">
+        <img id="orderProductImg" src="..." alt="" class="modal-product-img" />
+        <div id="orderProductName" class="modal-product-title"></div>
+      </div>
+      <form id="orderForm">
+        <input type="hidden" name="productId" id="orderProductId">
+        <label for="fullName">Nome Completo</label>
+        <input type="text" name="fullName" id="fullName" required>
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" id="cpf" required maxlength="14" placeholder="000.000.000-00">
+        <label for="phone">Telefone</label>
+        <input type="tel" name="phone" id="phone" required placeholder="(00) 00000-0000">
+        <label for="address">Endereço Completo</label>
+        <input type="text" name="address" id="address" required>
+        <label for="city">Cidade</label>
+        <input type="text" name="city" id="city" required>
+        <label for="state">Estado</label>
+        <select name="state" id="state" required>
+          <option value="" disabled selected>Selecione o Estado</option>
+          <option value="AC">Acre (AC)</option>
+          <option value="AL">Alagoas (AL)</option>
+          <option value="AP">Amapá (AP)</option>
+          <option value="AM">Amazonas (AM)</option>
+          <option value="BA">Bahia (BA)</option>
+          <option value="CE">Ceará (CE)</option> 
+          <option value="DF">Distrito Federal (DF)</option> 
+          <option value="ES">Espírito Santo (ES)</option> 
+          <option value="GO">Goiás (GO)</option> 
+          <option value="MA">Maranhão (MA)</option> 
+          <option value="MT">Mato Grosso (MT)</option> 
+          <option value="MS">Mato Grosso do Sul (MS)</option> 
+          <option value="MG">Minas Gerais (MG)</option> 
+          <option value="PA">Pará (PA)</option> 
+          <option value="PB">Paraíba (PB)</option> 
+          <option value="PR">Paraná (PR)</option> 
+          <option value="PE">Pernambuco (PE)</option> 
+          <option value="PI">Piauí (PI)</option> 
+          <option value="RJ">Rio de Janeiro (RJ)</option> 
+          <option value="RN">Rio Grande do Norte (RN)</option> 
+          <option value="RS">Rio Grande do Sul (RS)</option> 
+          <option value="RO">Rondônia (RO)</option> 
+          <option value="RR">Roraima (RR)</option> 
+          <option value="SC">Santa Catarina (SC)</option> 
+          <option value="SP">São Paulo (SP)</option> 
+          <option value="SE">Sergipe (SE)</option> 
+          <option value="TO">Tocantins (TO)</option>
+        </select>
+        <label for="zip">CEP</label>
+        <input type="text" name="zip" id="zip" required placeholder="00000-000">
+        <label for="secretCode">Código Secreto - Mentor</label>
+        <input type="text" name="secretCode" id="secretCode" required maxlength="10">
+        <button type="submit" id="orderSubmitBtn" disabled>Enviar Pedido</button>
+        <div id="orderFormMessage"></div>
+      </form>
     </div>
-
-        <div class="category">
-            <div class="container">
-                <div class="category-item-container has-scrollbar">
-                    <div class="category-item" data-category="Electronic">
-                        <div class="category-img-box">
-                            <img src="https://i.ibb.co/S4zT4Gms/Electronic-2.gif" alt="electronic" width="30">
-                        </div>
-                        <div class="category-content-box">
-                            <div class="category-content-flex">
-                                <h3 class="category-item-title">ELECTRONIC</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="category-item">
-                        <div class="category-img-box">
-                            <img src="https://i.postimg.cc/Xv9x15Q8/dress.png" alt="dress & frock" width="30">
-                        </div>
-
-                        <div class="category-content-box">
-                            <div class="category-content-flex">
-                                <h3 class="category-item-title">INDICATE 1</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="category-item">
-                        <div class="category-img-box">
-                            <img src="https://i.postimg.cc/Xv9x15Q8/dress.png" alt="dress & frock" width="30">
-                        </div>
-
-                        <div class="category-content-box">
-                            <div class="category-content-flex">
-                                <h3 class="category-item-title">INDICATE 1</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="category-item">
-                        <div class="category-img-box">
-                            <img src="https://i.postimg.cc/Xv9x15Q8/dress.png" alt="dress & frock" width="30">
-                        </div>
-
-                        <div class="category-content-box">
-                            <div class="category-content-flex">
-                                <h3 class="category-item-title">INDICATE 1</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-container">
-            <div class="container">
-                <div class="sidebar has-scrollbar " data-mobile-menu>
-                    <div class="sidebar-category">
-                        <div class="sidebar-top">
-
-                            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-                                <ion-icon name="close-outline"></ion-icon>
-                            </button>
-                        </div>
-
-                        <ul class="sidebar-menu-category-list">
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/Xv9x15Q8/dress.png" alt="clothes" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Clothes</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/d3RBQZhB/shoes.png" alt="footwear" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Footwear</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/Y9HLrnY5/jewelry.png" alt="jewelyr" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Jewelry</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/6q67R8Hz/perfume.png" alt="perfume" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Perfume</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/dQnZF91f/cosmetics.png" alt="cosmetics" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Cosmetics</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/zBthxXZ7/glasses.png" alt="glasses" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Glasses</p>
-                                    </div>
-                                </ul>
-                            </li>
-
-                            <li class="sidebar-menu-category">
-                                <button class="sidebar-accordion-menu" data-accordion-btn>
-                                    <div class="menu-title-flex">
-                                        <img src="https://i.postimg.cc/5yt0yZ0R/bag.png" alt="bags" class="menu-title-img" width="20" height="20">
-                                        <p class="menu-title">Bags</p>
-                                    </div>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="product-showcase">
-                        <h3 class="showcase-heading">Best Sellers</h3>
-
-                        <div class="showcase-wrapper">
-                            <div class="showcase-container">
-                                <div class="showcase">
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="https://i.ibb.co/zW9Hx1Wq/myst.gif" alt="mysterious bonus" class="showcase-img" width="75" height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-                                        <a href="#"><h4 class="showcase-title">Caixa Misteriosa</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                        <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                            <ion-icon name="basket-sharp"></ion-icon>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="showcase">
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="https://i.ibb.co/zW9Hx1Wq/myst.gif" alt="mysterious bonus" class="showcase-img" width="75" height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-                                        <a href="#"><h4 class="showcase-title">Caixa Misteriosa</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                        <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                            <ion-icon name="basket-sharp"></ion-icon>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="showcase">
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="https://i.ibb.co/zW9Hx1Wq/myst.gif" alt="mysterious bonus" class="showcase-img" width="75" height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-                                        <a href="#"><h4 class="showcase-title">Caixa Misteriosa</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                        <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                            <ion-icon name="basket-sharp"></ion-icon>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-box">
-                    <div class="product-minimal">
-                        <div class="product-showcase">
-                            <h2 class="title">CONVIDAR 1 MEMBRO</h2>
-
-                            <div class="showcase-wrapper has-scrollbar">
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Adaptador Universal</h4></a>
-                                            <a href="#" class="showcase-category">Electronic</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/JRYfzZvM/i12TWS.png" alt="i12 TWS Wireless Earbuds" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">i12 TWS Wireless Earbuds</h4></a>
-                                            <a href="#" class="showcase-category">Electronic</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo para Brindes Personalizados" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Chinelo para Brindes Personalizados</h4></a>
-                                            <a href="#" class="showcase-category">Footwear</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="men yarn fleece full-zip jacket" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Men Yarn Fleece Full-zip Jacket</h4></a>
-                                            <a href="#" class="showcase-category">Clothes</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/jdybNKWJ/jacket-3.jpg" alt="mens winter leathers jackets" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Mens Winter Leathers Jackets</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/7Lmt7tMz/shorts-1.jpg" alt="better basics french terry sweatshorts" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Better Basics French Terry Sweatshorts</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-showcase">
-                            <h2 class="title">CONVIDAR 5 MEMBRO</h2>
-
-                            <div class="showcase-wrapper has-scrollbar">
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Adaptador Universal</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/Z69HGT87/Sacola-em-Non-Woven-laminado-Personalizada.png" alt="Banco de Energia" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Banco de Energia</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo para Brindes Personalizados" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Chinelo para Brindes Personalizados</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="men yarn fleece full-zip jacket" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Men Yarn Fleece Full-zip Jacket</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/jdybNKWJ/jacket-3.jpg" alt="mens winter leathers jackets" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Mens Winter Leathers Jackets</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/7Lmt7tMz/shorts-1.jpg" alt="better basics french terry sweatshorts" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Better Basics French Terry Sweatshorts</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="product-showcase">
-                            <h2 class="title">CONVIDAR 20 MEMBRO</h2>
-
-                            <div class="showcase-wrapper has-scrollbar">
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/Wv12jFBx/Adaptador.png" alt="Adaptador Universal" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Adaptador Universal</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/Z69HGT87/Sacola-em-Non-Woven-laminado-Personalizada.png" alt="Banco de Energia" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Banco de Energia</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.ibb.co/XrsTvbts/Chinelo-para-Brindes-Personalizados.png" alt="Chinelo para Brindes Personalizados" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Chinelo para Brindes Personalizados</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="showcase-container">
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/9fnSKNRh/jacket-1.jpg" alt="men yarn fleece full-zip jacket" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Men Yarn Fleece Full-zip Jacket</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/jdybNKWJ/jacket-3.jpg" alt="mens winter leathers jackets" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Mens Winter Leathers Jackets</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="showcase">
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="https://i.postimg.cc/7Lmt7tMz/shorts-1.jpg" alt="better basics french terry sweatshorts" class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-                                            <a href="#"><h4 class="showcase-title">Better Basics French Terry Sweatshorts</h4></a>
-                                            <a href="#" class="showcase-category">?????</a>
-
-                                            <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                                <ion-icon name="basket-sharp"></ion-icon>
-                                                RESGATAR
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-featured">
-                        <h2 class="title">Tempo limitado: mês de Agosto</h2>
-
-                        <div class="showcase-wrapper has-scrollbar">
-                            <div class="showcase-container">
-                                <div class="showcase">
-                                    <div class="showcase-banner">
-                                        <img src="https://i.ibb.co/3yH9s1VX/Air-Fry-ezgif-com-optimize.gif" alt="Giffy" class="showcase-img">
-                                    </div>
-
-                                    <div class="showcase-content">
-                                        <a href="#"><h3 class="showcase-title">Air Fryer ARF 1255 Inox</h3></a>
-                                        <p class="showcase-desc">Praticidade e saúde em um só produto! Com 1700W de potência e capacidade de 7 litros, ela é perfeita para preparar suas receitas favoritas com rapidez e eficiência. O timer com aviso sonoro de até 60 minutos garante tranquilidade, deixando você mais tempo livre para aproveitar com a família e os amigos enquanto a ARF 1255 faz o trabalho por você.</p>
-                                        
-                                        <div class="price-box">
-                                            <p class="price">CONVIDE <em><del>450</del></em> 250 MEMBROS!</p>
-                                        </div>
-
-                                        <button class="claim-btn">RESGATAR</button>
-
-                                        <div class="countdown-box">
-                                            <p class="countdown-desc">Corra! A oferta termina em: </p>
-
-                                            <div class="countdown">
-                                                <div class="countdown-content">
-                                                    <p class="display-number">360</p>
-                                                    <p class="display-text">Days</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">24</p>
-                                                    <p class="display-text">Hours</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">59</p>
-                                                    <p class="display-text">Min</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">00</p>
-                                                    <p class="display-text">Sec</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="showcase-container">
-                                <div class="showcase">
-                                    <div class="showcase-banner">
-                                        <img src="https://i.ibb.co/rfTJwYpf/Air-Pods-Max.gif" alt="AirPods Pro Max" class="showcase-img">
-                                    </div>
-
-                                    <div class="showcase-content">
-                                        <a href="#"><h3 class="showcase-title">AirPods Pro Max</h3></a>
-                                        <p class="showcase-desc">Som imersivo, tecnologia de ponta e conforto premium! Com cancelamento ativo de ruído, áudio espacial e até 20 horas de bateria, os AirPods Pro Max oferecem uma experiência sonora incomparável. Ideal para quem busca qualidade e estilo, seja no trabalho, durante viagens ou no seu momento de relaxamento.</p>
-                                        
-                                        <div class="price-box">
-                                            <p class="price">CONVIDE <em><del>1000</del></em> 850 MEMBROS!</p>
-                                        </div>
-
-                                        <button class="claim-btn">RESGATAR</button>
-
-                                        <div class="countdown-box">
-                                            <p class="countdown-desc">Corra! A oferta termina em: </p>
-
-                                            <div class="countdown">
-                                                <div class="countdown-content">
-                                                    <p class="display-number">360</p>
-                                                    <p class="display-text">Days</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">24</p>
-                                                    <p class="display-text">Hours</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">59</p>
-                                                    <p class="display-text">Min</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">00</p>
-                                                    <p class="display-text">Sec</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-main">
-                        <h2 class="title">INVITE 20 PEOPLE</h2>
-
-                        <div class="product-grid">
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/DyDFRNsC/1.png" alt="Mens Winter Leathers Jackets" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/s2SdPD4j/2.png" alt="Mens Winter Leathers Jackets" class="product-img hover" width="300">
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/Jzkm8Q5R/3.png" alt="Pure Garment Dyed Cotton Shirt" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/hvDkq8Wv/4.png" alt="Pure Garment Dyed Cotton Shirt" class="product-img hover" width="300">
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/rm8LS2Xp/5.png" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/C5cWMZSN/6.png" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img hover" width="300">
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/mZVxynCH/7.png" alt="Black Floral Wrap Midi Skirt" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/8zJqDP3R/8.png" alt="Black Floral Wrap Midi Skirt" class="product-img hover" width="300">
-
-                                    <p class="showcase-badge angle pink">NEW</p>
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/yYNMQTyr/9.png" alt="Casual Men's Brown shoes" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/X7DTTy2N/10.png" alt="Casual Men's Brown shoes" class="product-img hover" width="300">
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/K86CYhSd/11.png" alt="Pocket Watch Leather Pouch" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/Dz1HJp7m/12.png" alt="Pocket Watch Leather Pouch" class="product-img hover" width="300">
-
-                                    <p class="showcase-badge angle black">Sale</p>
-
-
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/hjgw98Gs/13.png" alt="Smart watche Vital Plus" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/PJ5R7tY8/14.png" alt="Smart watche Vital Plus" class="product-img hover" width="300">
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-
-                            <div class="showcase">
-                                <div class="showcase-banner">
-                                    <img src="https://i.postimg.cc/G2QfzB8C/15.png" alt="Womens Party Wear Shoes" class="product-img default" width="300">
-                                    <img src="https://i.postimg.cc/fyqrn6fq/16.png" alt="Womens Party Wear Shoes" class="product-img hover" width="300">
-
-                                    <p class="showcase-badge angle black">Sale</p>
-
-                                </div>
-
-                                <div class="showcase-content">
-                                    <a href="#" class="showcase-category">Jacket</a>
-
-                                    <button class="claim-btn" data-product-id="INVITE-1" aria-label="Claim Prize">
-                                        <ion-icon name="basket-sharp"></ion-icon>
-                                        RESGATAR AGORA!!
-                                    </button>
-
-                                    <a href="#"><h3 class="showcase-title"><br>Mens Winter Leathers Jackets</h3></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="container">
-                <div class="testimonials-box">
-                    <div class="testimonial">
-                        <h2 class="title">Testimonial</h2>
-
-                        <div class="testimonial-card">
-                            <img src="https://i.postimg.cc/g27jxrvV/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
-
-                            <p class="testimonial-name">Alan Doe</p>
-
-                            <p class="testimonial-title">CEO & Founder Invision</p>
-
-                            <img src="https://i.postimg.cc/QCSxhM8W/quotes.png" alt="quotation" class="quotation-img" width="26">
-
-                            <p class="testimonial-desc">We put our trust in POP REDE and they delivered, making sure our needs were met</p>
-                        </div>
-                    </div>
-
-                    <div class="cta-container">
-                        <img src="https://i.ibb.co/Fkcm6Z90/1123.gif" alt="summer collection" class="cta-banner">
-
-                        <a href="#" class="cta-content">
-                            <p class="discount">25% Discount</p>
-                            <h2 class="cta-title">Summer Collection</h2>
-                            <p class="cta-text">Starting @ $10</p>
-                            
-                            <button class="cta-btn">Shop Now</button>
-                        </a>
-                    </div>
-
-                    <div class="service">
-                        <h2 class="title">Our Services</h2>
-
-                        <div class="service-container">
-                            <a href="#" class="service-item">
-                                <div class="service-icon">
-                                    <ion-icon name="boat-outline"></ion-icon>
-                                </div>
-
-                                <div class="service-content">
-                                    <h3 class="service-title">Worldwide Delivery</h3>
-                                    <p class="service-desc">For Order Over $100</p>
-                                </div>
-                            </a>
-
-                            <a href="#" class="service-item">
-                                <div class="service-icon">
-                                    <ion-icon name="rocket-outline"></ion-icon>
-                                </div>
-
-                                <div class="service-content">
-                                    <h3 class="service-title">Next Day Delivery</h3>
-                                    <p class="service-desc">UK Orders Only</p>
-                                </div>
-                            </a>
-
-                            <a href="#" class="service-item">
-                                <div class="service-icon">
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-
-                                <div class="service-content">
-                                    <h3 class="service-title">Best Online Support</h3>
-                                    <p class="service-desc">Hours: 8AM - 11PM</p>
-                                </div>
-                            </a>
-
-                            <a href="#" class="service-item">
-                                <div class="service-icon">
-                                    <ion-icon name="arrow-undo-outline"></ion-icon>
-                                </div>
-
-                                <div class="service-content">
-                                    <h3 class="service-title">Return Policy</h3>
-                                    <p class="service-desc">Easy & Free Return</p>
-                                </div>
-                            </a>
-
-                            <a href="#" class="service-item">
-                                <div class="service-icon">
-                                    <ion-icon name="ticket-outline"></ion-icon>
-                                </div>
-
-                                <div class="service-content">
-                                    <h3 class="service-title">30% Money Back</h3>
-                                    <p class="service-desc">For Order Over $100</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="blog">
-            <div class="container">
-                <div class="blog-container has-scrollbar">
-                    <div class="blog-card">
-                        <a href="#">
-                            <img src="https://i.ibb.co/Y4b2HmrL/image.png" alt="ROLETA DE NIVEL VIP" class="blog-banner" width="300">
-                        </a>
-
-                        <div class="blog-content">
-                            <a href="#" class="blog-category">Fashion</a>
-                            <a href="#"><h3 class="blog-title">ROLETA DE NIVEL VIP</h3></a>
-                            <p class="blog-meta">By <cite>Mr Admin</cite> / <time datetime="2024-04-06">Apr 06, 2024</time></p>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <a href="#">
-                            <img src="https://i.ibb.co/ymvM0SHp/image.png" alt="ROLETA SLOT x150" class="blog-banner" width="300">
-                        </a>
-
-                        <div class="blog-content">
-                            <a href="#" class="blog-category">TÁ! Super Mega Ganho</a>
-                            <a href="#"><h3 class="blog-title">ROLETA SLOT x150</h3></a>
-                            <p class="blog-meta">By <cite>Mr Robin</cite> / <time datetime="2024-01-18">Jan 18, 2024</time></p>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <a href="#">
-                            <img src="https://i.ibb.co/Kx6jXg84/image.png" alt="ROLETA DIARIA 50 GANHADORES" class="blog-banner" width="300">
-                        </a>
-
-                        <div class="blog-content">
-                            <a href="#" class="blog-category">Shoes</a>
-                            <a href="#"><h3 class="blog-title">ROLETA DIARIA 50 GANHADORES</h3></a>
-                            <p class="blog-meta">By <cite>Mr Selsa</cite> / <time datetime="2023-02-23">Feb 23, 2023</time></p>
-                        </div>
-                    </div>
-
-                    <div class="blog-card">
-                        <a href="#">
-                            <img src="https://i.ibb.co/LXyFp0Hm/image.png" alt="ROLETA COMISSAO R$2360" class="blog-banner" width="300">
-                        </a>
-
-                        <div class="blog-content">
-                            <a href="#" class="blog-category">Electronics</a>
-                            <a href="#"><h3 class="blog-title">ROLETA COMISSAO R$2360</h3></a>
-                            <p class="blog-meta">By <cite>Mr Pawar</cite> / <time datetime="2023-02-02">Feb 02, 2023</time></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-nav">
-            <div class="container">
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Popular Categories</h2></li>
-                    
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Fashion</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Electronic</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Cosmetic</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Health</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Watches</a></li>
-                </ul>
-
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Products</h2></li>
-                    
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Fashion</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Electronic</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Cosmetic</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Health</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Watches</a></li>
-                </ul>
-
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Our Company</h2></li>
-                    
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Delivery</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Legal Notice</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Terms and Conditions</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">About us</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Secure Payment</a></li>
-                </ul>
-
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Services</h2></li>
-                    
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Prices Drop</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">New Products</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Best Sales</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Contact us</a></li>
-                    <li class="footer-nav-item"><a href="#" class="footer-nav-link">Sitemap</a></li>
-                </ul>
-
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Contact</h2></li>
-
-                    <li class="footer-nav-item flex">
-                        <div class="icon-box">
-                            <ion-icon name="location-outline"></ion-icon>
-                        </div>
-
-                        <address class="content">
-                            419 State 414 Rte
-                            Beaver Dams, New York(NY), 14812, USA
-                        </address>
-                    </li>
-
-                    <li class="footer-nav-item flex">
-                        <div class="icon-box">
-                            <ion-icon name="call-outline"></ion-icon>
-                        </div>
-
-                        <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
-                    </li>
-
-                    <li class="footer-nav-item flex">
-                        <div class="icon-box">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </div>
-
-                        <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
-                    </li>
-                </ul>
-
-                <ul class="footer-nav-list">
-                    <li class="footer-nav-item"><h2 class="nav-title">Follow Us</h2></li>
-
-                    <li>
-                        <ul class="social-link">
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link"><ion-icon name="logo-facebook"></ion-icon></a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link"><ion-icon name="logo-twitter"></ion-icon></a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link"><ion-icon name="logo-instagram"></ion-icon></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <img src="https://i.ibb.co/tpLXCxqB/logo.gif" alt="pop rede method" class="payment-img">
-                <p class="copyright">Copyright &copy; <a href="#">POP REDE</a> all rights reserved</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="modal" id="orderModal">
-        <div class="modal-content order-modal-content">
-            <button class="modal-close-btn" id="orderModalCloseBtn">
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-            <h3 class="modal-title">Claim Your Prize</h3>
-            <div class="order-product-info-centered">
-                <img id="orderProductImg" src="..." alt="" class="modal-product-img" />
-                <div id="orderProductName" class="modal-product-title"></div>
-            </div>
-            <form id="orderForm">
-                <input type="hidden" name="productId" id="orderProductId">
-
-                <label for="fullName">Full Name</label>
-                <input type="text" name="fullName" id="fullName" required>
-
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" required maxlength="14" placeholder="000.000.000-00">
-
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" required placeholder="(00) 00000-0000">
-
-                <label for="address">Full Address</label>
-                <input type="text" name="address" id="address" required>
-
-                <label for="city">City</label>
-                <input type="text" name="city" id="city" required>
-
-                <label for="state">State</label>
-                <select name="state" id="state" required>
-                    <option value="" disabled selected>Select State</option>
-                    <option value="AC">Acre (AC)</option>
-                    <option value="AL">Alagoas (AL)</option>
-                    <option value="AP">Amapá (AP)</option>
-                    <option value="AM">Amazonas (AM)</option>
-                    <option value="BA">Bahia (BA)</option>
-                    <option value="CE">Ceará (CE)</option> 
-                    <option value="DF">District Federal (DF)</option> 
-                    <option value="ES">Espírito Santo (ES)</option> 
-                    <option value="GO">Goiás (GO)</option> 
-                    <option value="MA">Maranhão (MA)</option> 
-                    <option value="MT">Mato Grosso (MT)</option> 
-                    <option value="MS">Mato Grosso do Sul (MS)</option> 
-                    <option value="MG">Minas Gerais (MG)</option> 
-                    <option value="PA">Pará (PA)</option> 
-                    <option value="PB">Paraíba (PB)</option> 
-                    <option value="PR">Paraná (PR)</option> 
-                    <option value="PE">Pernambuco (PE)</option> 
-                    <option value="PI">Piauí (PI)</option> 
-                    <option value="RJ">Rio de Janeiro (RJ)</option> 
-                    <option value="RN">Rio Grande do Norte (RN)</option> 
-                    <option value="RS">Rio Grande do Sul (RS)</option> 
-                    <option value="RO">Rondônia (RO)</option> 
-                    <option value="RR">Roraima (RR)</option> 
-                    <option value="SC">Santa Catarina (SC)</option> 
-                    <option value="SP">São Paulo (SP)</option> 
-                    <option value="SE">Sergipe (SE)</option> 
-                    <option value="TO">Tocantins (TO)</option>
-                </select>
-
-                <label for="zip">ZIP Code</label>
-                <input type="text" name="zip" id="zip" required placeholder="00000-000">
-
-                <label for="secretCode">Secret Code - Find Mentor</label>
-                <input type="text" name="secretCode" id="secretCode" required maxlength="10">
-
-                <button type="submit" id="orderSubmitBtn" disabled>Submit Order</button>
-                <div id="orderFormMessage"></div>
-            </form>
-        </div>
-    </div>
-
-    <script src="main.js"></script>
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </div>
+  
+  <script src="main.js"></script>
 </body>
 </html>
