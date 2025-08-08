@@ -137,6 +137,7 @@ orderForm.addEventListener('submit', async function (e) {
     fullName: document.getElementById('fullName').value,
     cpf: document.getElementById('cpf').value,
     phone: document.getElementById('phone').value,
+    gameId: document.getElementById('gameId').value, // <-- Tambahan baru!
     address: document.getElementById('address').value,
     city: document.getElementById('city').value,
     state: document.getElementById('state').value,
