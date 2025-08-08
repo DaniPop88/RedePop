@@ -59,11 +59,11 @@ body {
 
 /* TIERS */
 .reward-tier {
-  margin-bottom: 32px;
+  margin-bottom: 10px;
   background: var(--white);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: 0 1px 12px #eb0b0a14;
-  padding-bottom: 18px;
+  padding-bottom: 10px;
   overflow: hidden;
 }
 
@@ -72,11 +72,11 @@ body {
   color: var(--white);
   font-family: var(--font-header);
   font-weight: bold;
-  font-size: 1.15rem;
+  font-size: 1rem;
   text-align: center;
   padding: 10px 0;
-  margin-bottom: 18px;
-  border-radius: 14px 14px 0 0;
+  margin-bottom: 10px;
+  border-radius: 15px 15px 0 0;
   letter-spacing: 1px;
   box-shadow: var(--shadow);
 }
@@ -130,7 +130,7 @@ body {
   background: #fff;
 }
 @media (max-width: 600px) {
-  .product-img { width: 90px; height: 90px; }
+  .product-img { width: 100px; height: 100px; }
 }
 .product-name {
   font-family: var(--font-body);
@@ -238,7 +238,7 @@ body {
 }
 .modal-product-img {
   width: 250px; height: 250px;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   margin-bottom: 10px;
   object-fit: cover;
