@@ -1,3 +1,4 @@
+/* ================== VARS ================== */
 :root {
   --red-top: #eb0b0a;
   --red-bottom: #310404;
@@ -11,59 +12,46 @@
   --shadow: 0 2px 12px rgba(235, 11, 10, 0.08);
 }
 
+/* ================== BASE ================== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
   background: var(--white);
   font-family: var(--font-body);
   margin: 0;
   color: #222;
 }
+img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: none; }
 
-.logo-img {
-  height: 50px;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-}
+/* ================== HEADER ================== */
 .main-header {
   background: var(--white);
   height: var(--header-height-desktop);
   box-shadow: 0 5px 20px #24040433;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
+.logo-img { height: 50px; width: auto; margin: 0 auto; display: block; }
+.header-content { width: 100%; text-align: center; }
+
 @media (max-width: 600px) {
   .logo-img { height: 35px; }
   .main-header { height: var(--header-height-mobile); }
 }
-.header-content {
-  width: 100%;
-  text-align: center;
-}
-.logo-text {
-  font-family: var(--font-header);
-  font-weight: bold;
-  font-size: 2rem;
-  color: var(--white);
-  letter-spacing: 2px;
-  display: block;
-  margin-bottom: 2px;
-}
 
-/* CONTAINER */
+/* ================== CONTAINER ================== */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 16px 12px;
 }
 
-/* TIERS */
+/* ================== TIERS ================== */
 .reward-tier {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   background: var(--white);
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 1px 12px #eb0b0a14;
-  padding-bottom: 10px;
+  padding: 0 10px 12px 10px;
   overflow: hidden;
 }
 
@@ -71,120 +59,112 @@ body {
   background: var(--red-gradient);
   color: var(--white);
   font-family: var(--font-header);
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
   text-align: center;
   padding: 10px 0;
-  margin-bottom: 10px;
-  border-radius: 15px 15px 0 0;
+  margin: 0 -10px 12px -10px; /* full bleed */
+  border-radius: 12px 12px 0 0;
   letter-spacing: 1px;
   box-shadow: var(--shadow);
 }
 
-/* PRODUCT GRID */
+/* ================== GRID ================== */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-bottom: 10px;
 }
-/* Jangan turunin grid di hape, tetap 3 produk */
+
 @media (max-width: 600px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 }
 @media (max-width: 400px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
 }
 
-/* PRODUCT CARD */
+/* ================== CARD ================== */
 .product-card {
   background: var(--white);
   border-radius: 10px;
-  box-shadow: none;
-  padding: 5px;
+  padding: 6px;
   text-align: center;
   cursor: pointer;
-  transition: border-color .18s, transform .18s;
+  transition: border-color .18s, transform .18s, box-shadow .18s;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1.5px solid transparent;       /* <-- supaya hover border kelihatan */
+  min-height: 190px;                      /* jaga layout rapi */
 }
-.product-card:hover {
+.product-card:hover,
+.product-card:focus-visible {
   border-color: #b50909;
-  transform: scale(1.03);
-}
-.product-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  box-shadow: 0 5px 6px #eb0b0a18;
-  background: #fff;
-}
-@media (max-width: 600px) {
-  .product-img { width: 100px; height: 100px; }
-}
-.product-name {
-  font-family: var(--font-body);
-  font-size: 0.99rem;
-  color: #222;
-  font-weight: 500;
-  margin: 0 auto;
-  max-width: 90%;
-  line-height: 1.2;
-  word-break: break-word;
-  white-space: normal;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px #eb0b0a1e;
+  outline: none;
 }
 
-/* VEJA MAIS BUTTON OUTLINE */
-.veja-mais-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Gambar selalu kotak, tidak kepotong */
+.product-img {
+  width: 100%;
+  max-width: 150px;               /* desktop */
+  aspect-ratio: 1 / 1;            /* selalu 1:1 */
+  object-fit: contain;            /* tampil penuh, tidak crop */
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 5px 6px #eb0b0a18;
+  background: #fff;
+  border: 1px solid #eee;
+}
+@media (max-width: 600px) {
+  .product-img { max-width: 100px; }
+}
+
+.product-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #222;
+  font-weight: 600;
   margin: 0 auto;
-  margin-top: 3px;
-  padding: 5px 50px;
+  max-width: 95%;
+  line-height: 1.2;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;          /* maksimal 2 baris */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.4em;              /* tinggi minimum supaya sejajar */
+}
+
+/* ================== VEJA MAIS BUTTON ================== */
+.veja-mais-btn {
+  display: flex; align-items: center; justify-content: center;
+  margin: 2px auto 0;
+  padding: 6px 50px;
   background: transparent;
   color: var(--red-top);
   font-family: var(--font-header);
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-weight: 700;
+  font-size: 0.85rem;
   border: 2.5px solid var(--red-top);
   border-radius: 10px;
   box-shadow: 0 5px 10px #eb0b0a11;
   cursor: pointer;
-  transition:
-    background .18s,
-    color .18s,
-    box-shadow .18s,
-    border-color .18s,
-    transform .12s;
+  transition: background .18s, color .18s, box-shadow .18s, border-color .18s, transform .12s;
   outline: none;
   position: relative;
   overflow: hidden;
 }
-
+.veja-mais-btn .btn-text { pointer-events: none; }
 .veja-mais-btn .arrow-icon {
-  margin-left: 8px;
-  font-size: 1.2em;
+  margin-left: 8px; font-size: 1.2em;
   filter: drop-shadow(0 1px 1px #fff2);
   transition: transform .18s;
 }
-
-/* Hover & Focus: animasi warna dan sedikit scale */
 .veja-mais-btn:hover,
-.veja-mais-btn:focus {
+.veja-mais-btn:focus-visible {
   background: var(--red-gradient);
   color: #fff;
   border-color: #b50909;
@@ -192,11 +172,7 @@ body {
   transform: scale(1.03);
 }
 .veja-mais-btn:hover .arrow-icon,
-.veja-mais-btn:focus .arrow-icon {
-  transform: translateY(2px) scale(1.15);
-}
-
-/* Animasi klik: efek ripple sederhana */
+.veja-mais-btn:focus-visible .arrow-icon { transform: translateY(2px) scale(1.15); }
 .veja-mais-btn:active {
   background: var(--red-gradient);
   color: #fff;
@@ -204,118 +180,85 @@ body {
   transform: scale(0.98);
 }
 
-/* MODAL */
+/* ================== MODAL ================== */
 #orderModal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,0.5);
   display: none;
-  align-items: center;
-  justify-content: center;
+  align-items: center; justify-content: center;
   z-index: 999;
 }
 #orderModal.active { display: flex; }
+
 .order-modal-content {
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: 90vh; overflow-y: auto;
   padding: 32px 22px 24px 22px;
   border-radius: 16px;
   background: #fff;
   box-shadow: 0 4px 32px rgba(0,0,0,0.12);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
+  width: min(560px, 92vw);
 }
+
 .order-product-info-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 18px;
-  margin-top: 4px;
+  display: flex; flex-direction: column; align-items: center;
+  margin: 4px 0 18px 0;
 }
 .modal-product-img {
-  width: 250px; height: 250px;
+  width: 250px; aspect-ratio: 1/1;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   margin-bottom: 10px;
-  object-fit: cover;
+  object-fit: contain;
   border: 2.5px solid #e4e4e4;
   background: #fff;
 }
 .modal-product-title {
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: #222;
-  text-align: center;
-  margin-bottom: 8px;
+  font-size: 1.12rem; font-weight: 700; color: #222; text-align: center; margin-bottom: 8px;
 }
-#orderForm label {
-  margin-top: 10px;
-  margin-bottom: 3px;
-  font-size: 0.98rem;
-  color: #393939;
-  font-weight: 500;
-}
-#orderForm input,
-#orderForm select {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  border-radius: 7px;
-  border: 1.2px solid #eee;
-  font-size: 1rem;
-  background: #f8f8fa;
-  outline: none;
-  transition: border .2s;
-}
-#orderForm input:focus, #orderForm select:focus {
-  border: 1.2px solid var(--red-top);
-  background: #fff;
-}
-#orderFormMessage {
-  margin-top: 10px;
-  font-weight: bold;
-  min-height: 1.2em;
-}
-#orderSubmitBtn {
-  margin-top: 18px;
-  padding: 10px 0;
-  width: 100%;
-  border-radius: 8px;
-  background: var(--red-gradient);
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: bold;
-  border: none;
-  transition: background .18s;
-}
-#orderSubmitBtn:disabled {
-  background: #ccc !important;
-  color: #888 !important;
-  cursor: not-allowed;
-}
+
 .modal-close-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  position: absolute; top: 12px; right: 12px;
   background: var(--red-gradient);
-  color: #fff;
-  font-size: 1.6rem;
-  border-radius: 8px;
-  border: none;
+  color: #fff; font-size: 1.6rem;
+  border-radius: 8px; border: none;
   width: 40px; height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   cursor: pointer;
 }
 .modal-close-btn:hover { background: linear-gradient(180deg, #f92c2b, #4a0508); }
 
-/* Hide scrollbars for modal background (optional) */
+/* ================== FORM ================== */
+#orderForm label {
+  margin-top: 10px; margin-bottom: 3px;
+  font-size: 0.98rem; color: #393939; font-weight: 500;
+}
+#orderForm input, #orderForm select {
+  width: 100%;
+  padding: 10px 14px; margin-bottom: 8px;
+  border-radius: 7px; border: 1.2px solid #eee;
+  font-size: 1rem; background: #f8f8fa;
+  outline: none; transition: border .2s, background .2s, box-shadow .2s;
+}
+#orderForm input:focus, #orderForm select:focus {
+  border: 1.2px solid var(--red-top);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(235, 11, 10, 0.12);
+}
+#orderFormMessage { margin-top: 10px; font-weight: 700; min-height: 1.2em; }
+#orderSubmitBtn {
+  margin-top: 18px; padding: 10px 0; width: 100%;
+  border-radius: 8px; background: var(--red-gradient);
+  color: #fff; font-size: 1.05rem; font-weight: 700; border: none;
+  transition: background .18s, filter .18s;
+}
+#orderSubmitBtn:hover { filter: brightness(1.08); }
+#orderSubmitBtn:disabled { background: #ccc !important; color: #888 !important; cursor: not-allowed; }
+
+/* ================== SCROLLBAR (opsional) ================== */
 body::-webkit-scrollbar { width: 10px; background: #fff; }
 body::-webkit-scrollbar-thumb { background: #eb0b0a22; border-radius: 6px; }
 
-/* Utility: Hide extra products by default */
+/* ================== UTIL ================== */
 .extra-product[hidden] { display: none !important; }
