@@ -3,67 +3,19 @@
   "baseUrl": "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop/images/",
   "tiers": [
     {
-      "id": "INVITE-1",
-      "label": "CONVIDAR 1 MEMBRO",
+      "id": "INVITE-20",
+      "label": "CONVIDAR 20 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv1p1.png", "name": "Name?" },
-        { "file": "inv1p2.png", "name": "Name?" },
-        { "file": "inv1p3.png", "name": "Name?" },
-        { "file": "inv1p4.png", "name": "Name?" },
-        { "file": "inv1p5.png", "name": "Name?" },
-        { "file": "inv1p6.png", "name": "Name?" },
-        { "file": "inv1p7.png", "name": "Name?" },
-        { "file": "inv1p8.png", "name": "Name?" },
-        { "file": "inv1p9.png", "name": "Name?" }
-      ]
-    },
-    {
-      "id": "INVITE-2",
-      "label": "CONVIDAR 2 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv2p1.png", "name": "Mouse Gamer com Led RGB Dpi Ajustável 4 Botões até 2400 DPI Novo Barato" },
-        { "file": "inv2p2.png", "name": "Fone de ouvido RO colorido P2 3.5mm" },
-        { "file": "inv2p3.png", "name": "Softshell de Silicone Líquido Premium para iPhone 15" },
-        { "file": "inv2p4.png", "name": "Elástico de Tensão Fitness Multifuncional Treino Braço Ombro Glúteos Resistência Força Saúde" },
-        { "file": "inv2p5.png", "name": "Receptor Adaptador Bluetooth USB P2 Audio" },
-        { "file": "inv2p6.png", "name": "4 Estilos Suporte Base Para Notebook De Mesa Universal E Tablet Dobrável Materiais de Alumínio Portatil Preto Regulável Plástico Materiais" },
-        { "file": "inv2p7.png", "name": "Fita Led Rgb 3528 ULTRA Colorida 5m 12V Bivolt 5M a 15M Com e Sem Fonte Decoração Casa Teto Vitrine" },
-        { "file": "inv2p8.png", "name": "4GB Pen Drive Armazenamento de Dados > Pen Drives" },
-        { "file": "inv2p9.png", "name": "Suporte Veicular 360 Universal e Sofisticado Barato Promoção Oferta Desconto" }
-      ]
-    },
-    {
-      "id": "INVITE-3",
-      "label": "CONVIDAR 3 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv3p1.png", "name": "Name?" },
-        { "file": "inv3p2.png", "name": "Name?" },
-        { "file": "inv3p3.png", "name": "Name?" },
-        { "file": "inv3p4.png", "name": "Name?" },
-        { "file": "inv3p5.png", "name": "Name?" },
-        { "file": "inv3p6.png", "name": "Name?" },
-        { "file": "inv3p7.png", "name": "Name?" },
-        { "file": "inv3p8.png", "name": "Name?" },
-        { "file": "inv3p9.png", "name": "Name?" }
-      ]
-    },
-    {
-      "id": "INVITE-5",
-      "label": "CONVIDAR 5 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv5p1.png", "name": "Name?" },
-        { "file": "inv5p2.png", "name": "Name?" },
-        { "file": "inv5p3.png", "name": "Name?" },
-        { "file": "inv5p4.png", "name": "Name?" },
-        { "file": "inv5p5.png", "name": "Name?" },
-        { "file": "inv5p6.png", "name": "Name?" },
-        { "file": "inv5p7.png", "name": "Name?" },
-        { "file": "inv5p8.png", "name": "Name?" },
-        { "file": "inv5p9.png", "name": "Name?" }
+        { "file": "inv20p1.png", "name": "Name?" },
+        { "file": "inv20p2.png", "name": "Name?" },
+        { "file": "inv20p3.png", "name": "Name?" },
+        { "file": "inv20p4.png", "name": "Name?" },
+        { "file": "inv20p5.png", "name": "Name?" },
+        { "file": "inv20p6.png", "name": "Name?" },
+        { "file": "inv20p7.png", "name": "Name?" },
+        { "file": "inv20p8.png", "name": "Name?" },
+        { "file": "inv20p9.png", "name": "Name?" }
       ]
     },
     {
@@ -83,19 +35,67 @@
       ]
     },
     {
-      "id": "INVITE-20",
-      "label": "CONVIDAR 20 MEMBRO",
+      "id": "INVITE-5",
+      "label": "CONVIDAR 5 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv20p1.png", "name": "Name?" },
-        { "file": "inv20p2.png", "name": "Name?" },
-        { "file": "inv20p3.png", "name": "Name?" },
-        { "file": "inv20p4.png", "name": "Name?" },
-        { "file": "inv20p5.png", "name": "Name?" },
-        { "file": "inv20p6.png", "name": "Name?" },
-        { "file": "inv20p7.png", "name": "Name?" },
-        { "file": "inv20p8.png", "name": "Name?" },
-        { "file": "inv20p9.png", "name": "Name?" }
+        { "file": "inv5p1.png", "name": "Name?" },
+        { "file": "inv5p2.png", "name": "Name?" },
+        { "file": "inv5p3.png", "name": "Name?" },
+        { "file": "inv5p4.png", "name": "Name?" },
+        { "file": "inv5p5.png", "name": "Name?" },
+        { "file": "inv5p6.png", "name": "Name?" },
+        { "file": "inv5p7.png", "name": "Name?" },
+        { "file": "inv5p8.png", "name": "Name?" },
+        { "file": "inv5p9.png", "name": "Name?" }
+      ]
+    },
+    {
+      "id": "INVITE-3",
+      "label": "CONVIDAR 3 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv3p1.png", "name": "Name?" },
+        { "file": "inv3p2.png", "name": "Name?" },
+        { "file": "inv3p3.png", "name": "Name?" },
+        { "file": "inv3p4.png", "name": "Name?" },
+        { "file": "inv3p5.png", "name": "Name?" },
+        { "file": "inv3p6.png", "name": "Name?" },
+        { "file": "inv3p7.png", "name": "Name?" },
+        { "file": "inv3p8.png", "name": "Name?" },
+        { "file": "inv3p9.png", "name": "Name?" }
+      ]
+    },
+    {
+      "id": "INVITE-2",
+      "label": "CONVIDAR 2 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv2p1.png", "name": "Mouse Gamer com Led RGB Dpi Ajustável 4 Botões até 2400 DPI Novo Barato" },
+        { "file": "inv2p2.png", "name": "Fone de ouvido RO colorido P2 3.5mm" },
+        { "file": "inv2p3.png", "name": "Softshell de Silicone Líquido Premium para iPhone 15" },
+        { "file": "inv2p4.png", "name": "Elástico de Tensão Fitness Multifuncional Treino Braço Ombro Glúteos Resistência Força Saúde" },
+        { "file": "inv2p5.png", "name": "Receptor Adaptador Bluetooth USB P2 Audio" },
+        { "file": "inv2p6.png", "name": "4 Estilos Suporte Base Para Notebook De Mesa Universal E Tablet Dobrável Materiais de Alumínio Portatil Preto Regulável Plástico Materiais" },
+        { "file": "inv2p7.png", "name": "Fita Led Rgb 3528 ULTRA Colorida 5m 12V Bivolt 5M a 15M Com e Sem Fonte Decoração Casa Teto Vitrine" },
+        { "file": "inv2p8.png", "name": "4GB Pen Drive Armazenamento de Dados > Pen Drives" },
+        { "file": "inv2p9.png", "name": "Suporte Veicular 360 Universal e Sofisticado Barato Promoção Oferta Desconto" }
+      ]
+    },
+    {
+      "id": "INVITE-1",
+      "label": "CONVIDAR 1 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv1p1.png", "name": "Cabo Usb Tipo C Turbo Power Original Xiaomi Mi Note 10 A3 9T 9 8 Lite 8a pro 7a 7 Type C V8" },
+        { "file": "inv1p2.png", "name": "Bluetooth Usb 2.0 Adaptador Para Notebook Pc Impressora" },
+        { "file": "inv1p3.png", "name": "V8 Cabo Carrega Macaron Usb Dados Turbo Celular V8 1 2m com Design Moderno" },
+        { "file": "inv1p4.png", "name": "MASSAGEADOR - Kit Mini portátil elétrico recarregável massagem aliviar dor muscular adesivo massagem corporal ombro e pé massagem" },
+        { "file": "inv1p5.png", "name": "Lápis Duo Para Contorno Labial - Jasmyne" },
+        { "file": "inv1p6.png", "name": "Adaptador Tomada Universal Padrão Europeu" },
+        { "file": "inv1p7.png", "name": "Caneta laser vermelho Alta qualidade 3 em 1 1mv 49 pés laser mini lanterna led feixe de luz ponteiro" },
+        { "file": "inv1p8.png", "name": "Laço duplo com pérola no bico de pato ou meia de seda para bebê modelo infanti" },
+        { "file": "inv1p9.png", "name": "Cortador De Unha Grande Com Lixa Aço inox Manicure Pedicure" }
       ]
     }
   ]
