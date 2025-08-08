@@ -40,10 +40,16 @@ document.querySelectorAll('.veja-mais-btn').forEach(btn => {
     const section = document.querySelector(`section[data-tier="${tier}"]`);
     const extraProducts = section.querySelectorAll('.extra-product');
     const expanded = btn.classList.toggle('expanded');
+    
+    // Ganti text dan icon dengan cara yang benar
+    const textSpan = btn.querySelector('.btn-text');
+    const arrowSpan = btn.querySelector('.arrow-icon');
+    if (textSpan && arrowSpan) {
+      textSpan.textContent = expanded ? "VER MENOS" : "VEJA MAIS";
+      arrowSpan.innerHTML = expanded ? '&#9650;' : '&#9660;';
+    }
+    
     extraProducts.forEach(p => p.hidden = !expanded);
-    btn.querySelector('.arrow-icon').innerHTML = expanded ? '&#9650;' : '&#9660;';
-    btn.textContent = expanded ? "VER MENOS " : "VEJA MAIS ";
-    btn.appendChild(btn.querySelector('.arrow-icon'));
   });
 });
 
