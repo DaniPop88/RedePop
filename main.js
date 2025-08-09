@@ -53,23 +53,18 @@ function buildProductCard({ src, name, secret, isExtra }) {
 }
 
 function buildTierSection(tier, baseUrl) {
-  // <section class="reward-tier" data-tier="INVITE-1">
   const section = el('section', 'reward-tier', { 'data-tier': tier.id });
 
-  // Header
   const header = el('div', 'tier-header', { text: tier.label || tier.id });
   section.appendChild(header);
 
-  // Grid
   const grid = el('div', 'product-grid');
   section.appendChild(grid);
 
-  // Items
   const showFirst = Number.isInteger(tier.showFirst) ? tier.showFirst : 3;
   const items = Array.isArray(tier.items) ? tier.items : [];
 
   items.forEach((item, idx) => {
-    // item bisa {file, name} atau {url, name}
     const src = item.url ? item.url : (baseUrl + item.file);
     const name = item.name || (item.file || item.url || 'Produto');
     const isExtra = idx >= showFirst;
@@ -77,7 +72,6 @@ function buildTierSection(tier, baseUrl) {
     grid.appendChild(card);
   });
 
-  // Button Veja Mais (hanya kalau ada extra)
   if (items.length > showFirst) {
     const btn = el('button', 'veja-mais-btn', { 'data-tier': tier.id });
     btn.appendChild(el('span', 'btn-text', { text: 'VEJA MAIS' }));
@@ -94,14 +88,11 @@ async function loadCatalog() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const manifest = await res.json();
 
-    // baseUrl opsional (fallback ke string kosong)
     const baseUrl = (manifest.baseUrl || '').trim();
     const tiers = Array.isArray(manifest.tiers) ? manifest.tiers : [];
 
-    // bersihkan container
     catalog.innerHTML = '';
 
-    // render tiap tier
     tiers.forEach(tier => {
       const section = buildTierSection(tier, baseUrl);
       catalog.appendChild(section);
@@ -115,7 +106,6 @@ async function loadCatalog() {
 /* ========================================
    INTERAKSI: DELEGATION (CARD & VEJA MAIS)
 ======================================== */
-// Klik product-card -> buka modal
 document.addEventListener('click', (e) => {
   const card = e.target.closest('.product-card');
   if (!card) return;
@@ -131,11 +121,10 @@ document.addEventListener('click', (e) => {
   orderSubmitBtn.disabled = true;
   orderFormMessage.textContent = '';
   orderForm.reset();
-  isCPFValid = false; 
+  isCPFValid = false;
   isSecretCodeValid = false;
 });
 
-// Klik tombol VEJA MAIS -> toggle produk extra
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('.veja-mais-btn');
   if (!btn) return;
@@ -156,142 +145,66 @@ document.addEventListener('click', (e) => {
   extraProducts.forEach(p => p.hidden = !expanded);
 });
 
-// Tutup modal
 orderModalCloseBtn.addEventListener('click', () => orderModal.classList.remove('active'));
 
 /* ========================================
-   CPF Validation
+   VALIDATION SECTION
 ======================================== */
-function validateCPF(cpf) {
-  cpf = cpf.replace(/[^\d]+/g,'');
-  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
-  
-  let sum = 0, rest;
-  
-  // Validasi digit pertama (posisi 10)
-  for (let i=1; i<=9; i++) sum += parseInt(cpf.substring(i-1,i)) * (11-i);
-  rest = sum % 11;
-  rest = (rest < 2) ? 0 : 11 - rest;
-  if (rest !== parseInt(cpf.substring(9,10))) return false;
-  
-  // Validasi digit kedua (posisi 11)
-  sum = 0;
-  for (let i=1; i<=10; i++) sum += parseInt(cpf.substring(i-1,i)) * (12-i);
-  rest = sum % 11;
-  rest = (rest < 2) ? 0 : 11 - rest;
-  if (rest !== parseInt(cpf.substring(10,11))) return false;
-  
-  return true;
-}
+function setupValidationFields() {
+  const formDivider = document.querySelector('.form-divider');
+  if (formDivider) {
+    let validationSection = document.createElement('div');
+    validationSection.className = 'validation-section';
 
-let isCPFValid = false, isSecretCodeValid = false;
-const cpfInput = document.getElementById('cpf');
-cpfInput.addEventListener('blur', validateAndUpdateCPF);
-cpfInput.addEventListener('input', validateAndUpdateCPF);
-function validateAndUpdateCPF() {
-  if (!validateCPF(this.value)) {
-    isCPFValid = false;
-    orderFormMessage.textContent = 'CPF inválido!';
-    orderFormMessage.style.color = 'red';
-  } else {
-    isCPFValid = true;
-    if (orderFormMessage.textContent === 'CPF inválido!') {
-      orderFormMessage.textContent = '';
-      orderFormMessage.style.color = '';
-    }
-  }
-  updateOrderSubmitBtn();
-}
+    ['gameId', 'cpf', 'secretCode'].forEach(fieldId => {
+      const label = document.querySelector(`label[for="${fieldId}"]`);
+      const input = document.getElementById(fieldId);
+      if (label && input) {
+        let wrapper = document.createElement('div');
+        wrapper.className = 'validation-field';
+        label.parentNode.insertBefore(wrapper, label);
+        wrapper.appendChild(label);
+        wrapper.appendChild(input);
+        validationSection.appendChild(wrapper);
 
-/* ========================================
-   Secret Code Validation
-======================================== */
-document.getElementById('secretCode').addEventListener('input', async function () {
-  const secretCode = this.value.trim();
-  const productId = document.getElementById('orderProductId').value;
-  if (secretCode.length > 4 && productId) {
-    try {
-      const res = await fetch(`${BACKEND_URL}/validate?product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`);
-      const result = await res.json();
-      if (result.status === "valid") {
-        isSecretCodeValid = true;
-        orderFormMessage.textContent = 'Código válido! Você pode enviar.';
-        orderFormMessage.style.color = 'green';
-      } else {
-        isSecretCodeValid = false;
-        orderFormMessage.textContent = 'Código inválido ou já utilizado!';
-        orderFormMessage.style.color = 'red';
+        input.addEventListener('input', function () {
+          wrapper.classList.add('validating');
+          wrapper.classList.remove('valid', 'invalid');
+          setTimeout(() => {
+            const isValid = fieldId === 'cpf' ? validateCPF(this.value) : this.value.length >= 3;
+            wrapper.classList.remove('validating');
+            wrapper.classList.add(isValid ? 'valid' : 'invalid');
+          }, 800);
+        });
       }
-    } catch (err) {
-      isSecretCodeValid = false;
-      orderFormMessage.textContent = 'Erro ao validar código!';
-      orderFormMessage.style.color = 'red';
-    }
-  } else {
-    isSecretCodeValid = false;
-    orderFormMessage.textContent = '';
-  }
-  updateOrderSubmitBtn();
-});
+    });
 
-function updateOrderSubmitBtn() {
-  orderSubmitBtn.disabled = !(isCPFValid && isSecretCodeValid);
+    formDivider.parentNode.insertBefore(validationSection, formDivider.nextSibling);
+  }
 }
 
-/* ========================================
-   Submit Order
-======================================== */
-orderForm.addEventListener('submit', async function (e) {
-  e.preventDefault();
-  orderSubmitBtn.disabled = true;
-  orderFormMessage.textContent = 'Enviando...';
+function validateCPF(cpf) {
+  cpf = cpf.replace(/[^\d]+/g, '');
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
 
-  const productName = document.getElementById('orderProductName').textContent.trim();
-  const productImg = document.getElementById('orderProductImg').src;
-  if (!productName) {
-    orderFormMessage.textContent = "Erro: Produto não detectado.";
-    orderFormMessage.style.color = "red";
-    orderSubmitBtn.disabled = false;
-    return;
-  }
+  let sum = 0, rest;
 
-  const data = {
-    productId: document.getElementById('orderProductId').value,
-    productName,
-    productImg,
-    fullName: document.getElementById('fullName').value,
-    cpf: document.getElementById('cpf').value,
-    phone: document.getElementById('phone').value,
-    gameId: document.getElementById('gameId').value,
-    address: document.getElementById('address').value,
-    city: document.getElementById('city').value,
-    state: document.getElementById('state').value,
-    zip: document.getElementById('zip').value,
-    secretCode: document.getElementById('secretCode').value
-  };
+  for (let i = 1; i <= 9; i++) sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+  rest = sum % 11;
+  rest = rest < 2 ? 0 : 11 - rest;
+  if (rest !== parseInt(cpf.substring(9, 10))) return false;
 
-  try {
-    const res = await fetch(`${BACKEND_URL}/order`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    const result = await res.json();
-    if (result.status === "success" || result.success) {
-      orderFormMessage.textContent = 'Pedido enviado com sucesso!';
-      orderFormMessage.style.color = 'green';
-      setTimeout(() => orderModal.classList.remove('active'), 2000);
-    } else {
-      orderFormMessage.textContent = result.message || 'Falha ao enviar!';
-      orderFormMessage.style.color = 'red';
-    }
-  } catch (err) {
-    orderFormMessage.textContent = 'Erro ao enviar pedido!';
-    orderFormMessage.style.color = 'red';
-  }
-});
+  sum = 0;
+  for (let i = 1; i <= 10; i++) sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+  rest = sum % 11;
+  rest = rest < 2 ? 0 : 11 - rest;
+  return rest === parseInt(cpf.substring(10, 11));
+}
 
 /* ========================================
    BOOTSTRAP: MULAIKAN
 ======================================== */
-document.addEventListener('DOMContentLoaded', loadCatalog);
+document.addEventListener('DOMContentLoaded', function () {
+  loadCatalog();
+  setupValidationFields();
+});
