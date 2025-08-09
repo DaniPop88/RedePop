@@ -260,3 +260,6 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 }
 #orderSubmitBtn:hover { filter: brightness(1.08); }
 #orderSubmitBtn:disabled { background: #ccc !important; color: #888 !important; cursor: not-allowed; }
+
+/* ================== UTIL ================== */
+.extra-product[hidden] { display: none !important; }
