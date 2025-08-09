@@ -261,3 +261,40 @@ orderForm.addEventListener('submit', async function (e) {
     productImg,
     fullName: document.getElementById('fullName').value,
     cpf: document.getElementById('cpf').value,
+    phone: document.getElementById('phone').value,
+    address: document.getElementById('address').value,
+    city: document.getElementById('city').value,
+    state: document.getElementById('state').value,
+    zip: document.getElementById('zip').value,
+    gameId: document.getElementById('gameId').value,
+    secretCode: document.getElementById('secretCode').value
+  };
+
+  try {
+    const response = await fetch(`${BACKEND_URL}/order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    
+    const result = await response.json();
+    
+    if (result.status === 'success') {
+      orderFormMessage.textContent = 'Pedido enviado com sucesso! Entraremos em contato em breve.';
+      orderFormMessage.style.color = 'green';
+      setTimeout(() => orderModal.classList.remove('active'), 3000);
+    } else {
+      orderFormMessage.textContent = result.message || 'Erro ao enviar pedido. Tente novamente.';
+      orderFormMessage.style.color = 'red';
+      orderSubmitBtn.disabled = false;
+    }
+  } catch (err) {
+    console.error('Erro ao enviar pedido:', err);
+    orderFormMessage.textContent = 'Erro ao enviar. Verifique sua conexão.';
+    orderFormMessage.style.color = 'red';
+    orderSubmitBtn.disabled = false;
+  }
+});
+
+// Inicializar catalog
+document.addEventListener('DOMContentLoaded', loadCatalog);
