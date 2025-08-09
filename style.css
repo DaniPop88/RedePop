@@ -201,6 +201,11 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
   width: min(560px, 92vw);
 }
 
+.form-divider {
+    margin: 20px 0;
+    border-top: 2px solid #eb0b0a;
+}
+
 .order-product-info-centered {
   display: flex; flex-direction: column; align-items: center;
   margin: 4px 0 18px 0;
