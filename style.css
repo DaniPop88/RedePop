@@ -88,15 +88,15 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 .product-card {
   background: var(--white);
   border-radius: 10px;
-  padding: 6px;
+  padding: 2px;
   text-align: center;
   cursor: pointer;
   transition: border-color .18s, transform .18s, box-shadow .18s;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1.5px solid transparent;       /* <-- supaya hover border kelihatan */
-  min-height: 190px;                      /* jaga layout rapi */
+  border: 2px solid transparent;       /* <-- supaya hover border kelihatan */
+  min-height: 100px;                      /* jaga layout rapi */
 }
 .product-card:hover,
 .product-card:focus-visible {
@@ -109,7 +109,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 /* Gambar selalu kotak, tidak kepotong */
 .product-img {
   width: 100%;
-  max-width: 150px;               /* desktop */
+  max-width: 250px;               /* desktop */
   aspect-ratio: 1 / 1;            /* selalu 1:1 */
   object-fit: contain;            /* tampil penuh, tidak crop */
   border-radius: 10px;
@@ -124,32 +124,32 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 
 .product-name {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.80rem;
   color: #222;
-  font-weight: 600;
+  font-weight: 300;
   margin: 0 auto;
-  max-width: 95%;
-  line-height: 1.2;
+  max-width: 100%;
+  line-height: 1;
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;          /* maksimal 2 baris */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 2.4em;              /* tinggi minimum supaya sejajar */
+  min-height: 1em;              /* tinggi minimum supaya sejajar */
 }
 
 /* ================== VEJA MAIS BUTTON ================== */
 .veja-mais-btn {
   display: flex; align-items: center; justify-content: center;
   margin: 2px auto 0;
-  padding: 6px 50px;
+  padding: 5px 50px;
   background: transparent;
   color: var(--red-top);
   font-family: var(--font-header);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 0.85rem;
-  border: 2.5px solid var(--red-top);
-  border-radius: 10px;
+  border: 1.5px solid var(--red-top);
+  border-radius: 100px;
   box-shadow: 0 5px 10px #eb0b0a11;
   cursor: pointer;
   transition: background .18s, color .18s, box-shadow .18s, border-color .18s, transform .12s;
@@ -159,7 +159,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 }
 .veja-mais-btn .btn-text { pointer-events: none; }
 .veja-mais-btn .arrow-icon {
-  margin-left: 8px; font-size: 1.2em;
+  margin-left: 5px; font-size: 1.2em;
   filter: drop-shadow(0 1px 1px #fff2);
   transition: transform .18s;
 }
