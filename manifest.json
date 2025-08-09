@@ -3,78 +3,22 @@
   "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@79e5dda4fe1120e20c887ecff91d50ef9f621b63/images/",
   "tiers": [
     {
-      "id": "INVITE-20",
-      "label": "CONVIDAR 20 MEMBRO",
+      "id": "INVITE-1",
+      "label": "CONVIDAR 1 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv20h1.png", "name": "Caixa de Som Portátil Bluetooth, LED RGB" },
-        { "file": "inv20h2.png", "name": "COIBEU Câmera de Segurança A28B WiFi Dual 1080P 3MP Dupla WiFi para Alarme De Detecção De Segurança" },
-        { "file": "inv20h3.png", "name": "Inova Fone de Ouvido Sem Fio Bluetooth Alto Falante Headphone Viva Voz Potente Grave 100% original Cartão de memória" },
-        { "file": "inv20p1.png", "name": "Sanduicheira Elétrica, Chapa e Grill, Antiaderente, Red Ceramic, Mondial, PG-01-RC, 127V - VERMELHO" },
-        { "file": "inv20p2.png", "name": "Sofá Inflável Portátil 3 em 1 com Bomba de Ar Poltrona Cama Dobrável Para Camping Praia e Casa" },
-        { "file": "inv20p3.png", "name": "Câmera De Segurança Wi-fi Externa À Prova D'água Full HD Monitoramento APP DAFU Speed Idali Life" },
-        { "file": "inv20p4.png", "name": "Headset Gamer Fone de ouvido Gamer iluminação LED RGB Branco Para PC Notebook Computador PS4 X-ONE" },
-        { "file": "inv20p5.png", "name": "Parafusadeira_Furadeira 21V C_ Kit Maleta COM DUAS BATERIAS Kit de 28pcs" },
-        { "file": "inv20p6.png", "name": "Mouse Gamer Cyrex 20000DPI Profissional Led RGB com Software Programável Sensor Gamer 1000Hz Ozzix" },
-        { "file": "inv20p7.png", "name": "Tripé Suporte Pedestal Caixa Som Acústica Audio Profissional" },
-        { "file": "inv20p8.png", "name": "Passadeira 2 em 1 - 110V ou 220V Ferro A Vapor De Roupas Tira Amasso Steamer Portátil 800w" },
-        { "file": "inv20p9.png", "name": "Videogame Stick 10mil 2 Controles Sem Fio Console Portatil Jogos Retro Antigo JORGE" }
-      ]
-    },
-    {
-      "id": "INVITE-10",
-      "label": "CONVIDAR 10 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv10h1.png", "name": "Mouse Gamer 6 Botões 12.800 Dpi Sensor Instantâneo" },
-        { "file": "inv10h2.png", "name": "Teclado de Jogo Com Fio, 87 Teclas Rgb Backlit" },
-        { "file": "inv10h3.png", "name": "Mesa Compacta Para Notebook" },
-        { "file": "inv10p1.png", "name": "Vr Box 2.0 Realidade Virtual + Controle Cardboard 3D Bluetooth" },
-        { "file": "inv10p2.png", "name": "Robô Varredora Aspirador De Pó Automática 3 Em 1 Limpeza Doméstica Robótico Inteligente E Silencioso" },
-        { "file": "inv10p3.png", "name": "H'maston RS-29 Fone De Ouvido Bluetooth Gamer Sem Fio Com Led Original jogo e música" },
-        { "file": "inv10p4.png", "name": "Kit Gamer Teclado Semi Mecânico RGB + Mouse Profissional Led Iluminado Jogos PC" },
-        { "file": "inv10p5.png", "name": "Máquina de cortar cabelo com 4 pentes e acessórios Hair Stylo - CR-02 Mondia" },
-        { "file": "inv10p6.png", "name": "Ring Light Iluminador 10 Polegadas Com Tripé De 2.10 Metro SU" },
-        { "file": "inv10p7.png", "name": "Mini Compressor de Ar Portatil Bomba De Encher Pneu Compressor Pneu Carro Recarregavél Digital" },
-        { "file": "inv10p8.png", "name": "Mop FIT Giratorio, balde com 8 litros, MOP5010 , Flash Limp" },
-        { "file": "inv10p9.png", "name": "Teclado com fio USB Black Elegante KA-651" }
-      ]
-    },
-    {
-      "id": "INVITE-5",
-      "label": "CONVIDAR 5 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv5h1.png", "name": "Calager Wireless Earbud Fingerprint Touch Music Player" },
-        { "file": "inv5h2.png", "name": "EW21 Bluetooth Smart Light Sunrise Despertador" },
-        { "file": "inv5h3.png", "name": "Mini Banco De Energía Portátil De Gran Capacidad De 10000mah" },
-        { "file": "inv5p1.png", "name": "Fone Bluetooth Sem Fio De Ouvido P9 TWS Macaron Headphone Fone de Ouvido Envio Imediato" },
-        { "file": "inv5p2.png", "name": "Microfone de Lapela K9 Vlog Sem Fio Alta Definição Compatível IPhone e TIPO C" },
-        { "file": "inv5p3.png", "name": "ROMANTIC CROWN Copo Térmico Inox 600ml com Tampa Hermética e Canudo Anti Vazamento de Aço Inoxidável" },
-        { "file": "inv5p4.png", "name": "Apoio para Notebook PS4 Xbox com Cooler Refrigerador Suporte USB - Ozzix" },
-        { "file": "inv5p5.png", "name": "Mini Aspirador de Pó Portátil Automotivo Casa Sem Fio 3 em 1 Recarregável Potente 6000Pa" },
-        { "file": "inv5p6.png", "name": "Lanterna SWAT Profissional com duas pilhas" },
-        { "file": "inv5p7.png", "name": "Esfregão Triangulo Mop De Limpeza Ajustável Giratória 360°" },
-        { "file": "inv5p8.png", "name": "Suporte Fone De Ouvido Headset E 1 Controle Gamer em Aço Preto" },
-        { "file": "inv5p9.png", "name": "Name?" }
-      ]
-    },
-    {
-      "id": "INVITE-3",
-      "label": "CONVIDAR 3 MEMBRO",
-      "showFirst": 3,
-      "items": [
-        { "file": "inv3h1.png", "name": "Mini Triturador Picador Processador De Salada" },
-        { "file": "inv3h2.png", "name": "Silicone Colher Kit para Cozinha, BPA Antiferrugem, Madeira Conjunto de Utensílios De Cozinha, Jogo, 12 Peças (preto)" },
-        { "file": "inv3h3.png", "name": "Copo Termico 473 Ml Aço Inox Com Tampa" },
-        { "file": "inv3p1.png", "name": "i13_12 TWS Fone De Ouvido Sem Fio Bluetooth 5.0 Air Pro 3 Esportivo Com Microfone" },
-        { "file": "inv3p2.png", "name": "ADAPTADOR KIT Carregador de carro carregador rápido de porta dupla 240 W com cabo de dados 3 em 1" },
-        { "file": "inv3p3.png", "name": "Suporte Pra Celular Automotivo Carro Gira 360° MEX-MENOR" },
-        { "file": "inv3p4.png", "name": "Luminária Decorativa Globo LED Com Interruptor On e Off Lua Via Láctea Sistema Solar Bola De Cristal" },
-        { "file": "inv3p5.png", "name": "Mini Lanterna Tática com Led e Zoom Recarregável USB" },
-        { "file": "inv3p6.png", "name": "Mini Processador Elétrico de Alimentos Portátil com 3 lâminas de aço inox USB 250ml" },
-        { "file": "inv3p7.png", "name": "Mouse M20 Mouse Gamer Laser X7 3200dpi Led Rgb Usb 7 Botões Profissional Original" },
-        { "file": "inv3p8.png", "name": "Tripé Universal Com Nível Câmeras Celulares 1,02m Pronto Entrega YIHAN" }
+        { "file": "inv1h1.png", "name": "C.M.X IMPORTAÇÃO EXPORTAÇÃO, Loja Online" },
+        { "file": "inv1h2.png", "name": "Kit C/ 3 Adaptador Micro Usb V8 Fêmea X Usb Tipo C Macho" },
+        { "file": "inv1h3.png", "name": "Cabo Carregador Turbo Ultra Rápido Usb Tipo C" },
+        { "file": "inv1p1.png", "name": "Cabo Usb Tipo C Turbo Power Original Xiaomi Mi Note 10 A3 9T 9 8 Lite 8a pro 7a 7 Type C V8" },
+        { "file": "inv1p2.png", "name": "Bluetooth Usb 2.0 Adaptador Para Notebook Pc Impressora" },
+        { "file": "inv1p3.png", "name": "V8 Cabo Carrega Macaron Usb Dados Turbo Celular V8 1 2m com Design Moderno" },
+        { "file": "inv1p4.png", "name": "MASSAGEADOR - Kit Mini portátil elétrico recarregável massagem aliviar dor muscular adesivo massagem corporal ombro e pé massagem" },
+        { "file": "inv1p5.png", "name": "Lápis Duo Para Contorno Labial - Jasmyne" },
+        { "file": "inv1p6.png", "name": "Adaptador Tomada Universal Padrão Europeu" },
+        { "file": "inv1p7.png", "name": "Caneta laser vermelho Alta qualidade 3 em 1 1mv 49 pés laser mini lanterna led feixe de luz ponteiro" },
+        { "file": "inv1p8.png", "name": "Laço duplo com pérola no bico de pato ou meia de seda para bebê modelo infanti" },
+        { "file": "inv1p9.png", "name": "Cortador De Unha Grande Com Lixa Aço inox Manicure Pedicure" }
       ]
     },
     {
@@ -97,22 +41,77 @@
       ]
     },
     {
-      "id": "INVITE-1",
-      "label": "CONVIDAR 1 MEMBRO",
+      "id": "INVITE-3",
+      "label": "CONVIDAR 3 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv1h1.png", "name": "C.M.X IMPORTAÇÃO EXPORTAÇÃO, Loja Online" },
-        { "file": "inv1h2.png", "name": "Kit C/ 3 Adaptador Micro Usb V8 Fêmea X Usb Tipo C Macho" },
-        { "file": "inv1h3.png", "name": "Cabo Carregador Turbo Ultra Rápido Usb Tipo C" },
-        { "file": "inv1p1.png", "name": "Cabo Usb Tipo C Turbo Power Original Xiaomi Mi Note 10 A3 9T 9 8 Lite 8a pro 7a 7 Type C V8" },
-        { "file": "inv1p2.png", "name": "Bluetooth Usb 2.0 Adaptador Para Notebook Pc Impressora" },
-        { "file": "inv1p3.png", "name": "V8 Cabo Carrega Macaron Usb Dados Turbo Celular V8 1 2m com Design Moderno" },
-        { "file": "inv1p4.png", "name": "MASSAGEADOR - Kit Mini portátil elétrico recarregável massagem aliviar dor muscular adesivo massagem corporal ombro e pé massagem" },
-        { "file": "inv1p5.png", "name": "Lápis Duo Para Contorno Labial - Jasmyne" },
-        { "file": "inv1p6.png", "name": "Adaptador Tomada Universal Padrão Europeu" },
-        { "file": "inv1p7.png", "name": "Caneta laser vermelho Alta qualidade 3 em 1 1mv 49 pés laser mini lanterna led feixe de luz ponteiro" },
-        { "file": "inv1p8.png", "name": "Laço duplo com pérola no bico de pato ou meia de seda para bebê modelo infanti" },
-        { "file": "inv1p9.png", "name": "Cortador De Unha Grande Com Lixa Aço inox Manicure Pedicure" }
+        { "file": "inv3h1.png", "name": "Mini Triturador Picador Processador De Salada" },
+        { "file": "inv3h2.png", "name": "Silicone Colher Kit para Cozinha, BPA Antiferrugem, Madeira Conjunto de Utensílios De Cozinha, Jogo, 12 Peças (preto)" },
+        { "file": "inv3h3.png", "name": "Copo Termico 473 Ml Aço Inox Com Tampa" },
+        { "file": "inv3p1.png", "name": "i13_12 TWS Fone De Ouvido Sem Fio Bluetooth 5.0 Air Pro 3 Esportivo Com Microfone" },
+        { "file": "inv3p2.png", "name": "ADAPTADOR KIT Carregador de carro carregador rápido de porta dupla 240 W com cabo de dados 3 em 1" },
+        { "file": "inv3p3.png", "name": "Suporte Pra Celular Automotivo Carro Gira 360° MEX-MENOR" },
+        { "file": "inv3p4.png", "name": "Luminária Decorativa Globo LED Com Interruptor On e Off Lua Via Láctea Sistema Solar Bola De Cristal" },
+        { "file": "inv3p5.png", "name": "Mini Lanterna Tática com Led e Zoom Recarregável USB" },
+        { "file": "inv3p6.png", "name": "Mini Processador Elétrico de Alimentos Portátil com 3 lâminas de aço inox USB 250ml" },
+        { "file": "inv3p7.png", "name": "Mouse M20 Mouse Gamer Laser X7 3200dpi Led Rgb Usb 7 Botões Profissional Original" },
+        { "file": "inv3p8.png", "name": "Tripé Universal Com Nível Câmeras Celulares 1,02m Pronto Entrega YIHAN" }
+      ]
+    },
+    {
+      "id": "INVITE-5",
+      "label": "CONVIDAR 5 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv5h1.png", "name": "Calager Wireless Earbud Fingerprint Touch Music Player" },
+        { "file": "inv5h2.png", "name": "EW21 Bluetooth Smart Light Sunrise Despertador" },
+        { "file": "inv5h3.png", "name": "Mini Banco De Energía Portátil De Gran Capacidad De 10000mah" },
+        { "file": "inv5p1.png", "name": "Fone Bluetooth Sem Fio De Ouvido P9 TWS Macaron Headphone Fone de Ouvido Envio Imediato" },
+        { "file": "inv5p2.png", "name": "Microfone de Lapela K9 Vlog Sem Fio Alta Definição Compatível IPhone e TIPO C" },
+        { "file": "inv5p3.png", "name": "ROMANTIC CROWN Copo Térmico Inox 600ml com Tampa Hermética e Canudo Anti Vazamento de Aço Inoxidável" },
+        { "file": "inv5p4.png", "name": "Apoio para Notebook PS4 Xbox com Cooler Refrigerador Suporte USB - Ozzix" },
+        { "file": "inv5p5.png", "name": "Mini Aspirador de Pó Portátil Automotivo Casa Sem Fio 3 em 1 Recarregável Potente 6000Pa" },
+        { "file": "inv5p6.png", "name": "Lanterna SWAT Profissional com duas pilhas" },
+        { "file": "inv5p7.png", "name": "Esfregão Triangulo Mop De Limpeza Ajustável Giratória 360°" },
+        { "file": "inv5p8.png", "name": "Suporte Fone De Ouvido Headset E 1 Controle Gamer em Aço Preto" },
+        { "file": "inv5p9.png", "name": "Name?" }
+      ]
+    },
+    {
+      "id": "INVITE-10",
+      "label": "CONVIDAR 10 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv10h1.png", "name": "Mouse Gamer 6 Botões 12.800 Dpi Sensor Instantâneo" },
+        { "file": "inv10h2.png", "name": "Teclado de Jogo Com Fio, 87 Teclas Rgb Backlit" },
+        { "file": "inv10h3.png", "name": "Mesa Compacta Para Notebook" },
+        { "file": "inv10p1.png", "name": "Vr Box 2.0 Realidade Virtual + Controle Cardboard 3D Bluetooth" },
+        { "file": "inv10p2.png", "name": "Robô Varredora Aspirador De Pó Automática 3 Em 1 Limpeza Doméstica Robótico Inteligente E Silencioso" },
+        { "file": "inv10p3.png", "name": "H'maston RS-29 Fone De Ouvido Bluetooth Gamer Sem Fio Com Led Original jogo e música" },
+        { "file": "inv10p4.png", "name": "Kit Gamer Teclado Semi Mecânico RGB + Mouse Profissional Led Iluminado Jogos PC" },
+        { "file": "inv10p5.png", "name": "Máquina de cortar cabelo com 4 pentes e acessórios Hair Stylo - CR-02 Mondia" },
+        { "file": "inv10p6.png", "name": "Ring Light Iluminador 10 Polegadas Com Tripé De 2.10 Metro SU" },
+        { "file": "inv10p7.png", "name": "Mini Compressor de Ar Portatil Bomba De Encher Pneu Compressor Pneu Carro Recarregavél Digital" },
+        { "file": "inv10p8.png", "name": "Mop FIT Giratorio, balde com 8 litros, MOP5010 , Flash Limp" },
+        { "file": "inv10p9.png", "name": "Teclado com fio USB Black Elegante KA-651" }
+      ]
+    },{
+      "id": "INVITE-20",
+      "label": "CONVIDAR 20 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv20h1.png", "name": "Caixa de Som Portátil Bluetooth, LED RGB" },
+        { "file": "inv20h2.png", "name": "COIBEU Câmera de Segurança A28B WiFi Dual 1080P 3MP Dupla WiFi para Alarme De Detecção De Segurança" },
+        { "file": "inv20h3.png", "name": "Inova Fone de Ouvido Sem Fio Bluetooth Alto Falante Headphone Viva Voz Potente Grave 100% original Cartão de memória" },
+        { "file": "inv20p1.png", "name": "Sanduicheira Elétrica, Chapa e Grill, Antiaderente, Red Ceramic, Mondial, PG-01-RC, 127V - VERMELHO" },
+        { "file": "inv20p2.png", "name": "Sofá Inflável Portátil 3 em 1 com Bomba de Ar Poltrona Cama Dobrável Para Camping Praia e Casa" },
+        { "file": "inv20p3.png", "name": "Câmera De Segurança Wi-fi Externa À Prova D'água Full HD Monitoramento APP DAFU Speed Idali Life" },
+        { "file": "inv20p4.png", "name": "Headset Gamer Fone de ouvido Gamer iluminação LED RGB Branco Para PC Notebook Computador PS4 X-ONE" },
+        { "file": "inv20p5.png", "name": "Parafusadeira_Furadeira 21V C_ Kit Maleta COM DUAS BATERIAS Kit de 28pcs" },
+        { "file": "inv20p6.png", "name": "Mouse Gamer Cyrex 20000DPI Profissional Led RGB com Software Programável Sensor Gamer 1000Hz Ozzix" },
+        { "file": "inv20p7.png", "name": "Tripé Suporte Pedestal Caixa Som Acústica Audio Profissional" },
+        { "file": "inv20p8.png", "name": "Passadeira 2 em 1 - 110V ou 220V Ferro A Vapor De Roupas Tira Amasso Steamer Portátil 800w" },
+        { "file": "inv20p9.png", "name": "Videogame Stick 10mil 2 Controles Sem Fio Console Portatil Jogos Retro Antigo JORGE" }
       ]
     }
   ]
