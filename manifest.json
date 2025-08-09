@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@06c37df34c9547627ec76cd18ce3399f75085665/images/",
   "tiers": [
     {
       "id": "INVITE-20",
