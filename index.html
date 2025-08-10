@@ -43,14 +43,11 @@
         <div class="form-divider"></div>
         
         <label for="fullName"><strong>Nome Completo</strong></label>
-        <input type="text" name="fullName" id="fullName" required>
+        <input type="text" name="fullName" id="fullName" required placeholder="Seu nome e CPF devem ser iguais">
         <label for="phone"><strong>Número de telefone</strong></label>
         <input type="tel" name="phone" id="phone" required placeholder="(00) 00000-0000">
         <label for="zip"><strong>CEP</strong></label>
         <input type="text" name="zip" id="zip" required placeholder="00000-000">
-        
-        <label for="address"><strong>Endereço de entrega Completo</strong></label>
-        <input type="text" name="address" id="address" required>
         <label for="state"><strong>Estado</strong></label>
         <select name="state" id="state" required>
           <option value="" disabled selected>Selecione o Estado</option>
@@ -84,9 +81,21 @@
         </select>
         <label for="city"><strong>Cidade</strong></label>
         <div id="cityContainer">
-          <input type="text" name="city" id="city" required>
+          <input type="text" name="city" id="city" required placeholder="Escolha seu estado primeiro">
         </div>
-
+        
+        <label for="address"><strong>Endereço</strong></label>
+        <input type="text" name="address" id="address" required placeholder="Coloque aqui endereço adicional completo">
+        
+        <label for="neighborhood"><strong>Bairro</strong></label>
+        <input type="text" name="neighborhood" id="neighborhood" required>
+        
+        <label for="street"><strong>Rua / Avenida</strong></label>
+        <input type="text" name="street" id="street" required>
+        
+        <label for="number"><strong>Número</strong></label>
+        <input type="text" name="number" id="number" required>
+        
           <!-- Divider -->
           <div class="form-divider"></div>
 
