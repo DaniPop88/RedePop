@@ -314,3 +314,8 @@ orderForm.addEventListener('submit', async function (e) {
 
 // Inicializar catalog
 document.addEventListener('DOMContentLoaded', loadCatalog);
+
+function updateOrderSubmitBtn() {
+  // Enable submit button only if both CPF and secret code are valid
+  orderSubmitBtn.disabled = !(isCPFValid && isSecretCodeValid);
+}
