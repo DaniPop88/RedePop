@@ -81,9 +81,11 @@
           <option value="SP">São Paulo (SP)</option>
           <option value="SE">Sergipe (SE)</option>
           <option value="TO">Tocantins (TO)</option>
-          </select>
+        </select>
         <label for="city"><strong>Cidade</strong></label>
-        <input type="text" name="city" id="city" required>
+        <div id="cityContainer">
+          <input type="text" name="city" id="city" required>
+        </div>
 
           <!-- Divider -->
           <div class="form-divider"></div>
@@ -111,7 +113,9 @@
   <script>
     window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@29f6e5e8e10f4ceef693068cde98afb2cdbe8d84/manifest.json";
   </script>
+  <script src="cities.js"></script>
   <script src="main.js"></script>
+  <script src="city-selector.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
