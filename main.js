@@ -276,13 +276,16 @@ orderForm.addEventListener('submit', async function (e) {
     productName,
     productImg,
     fullName: document.getElementById('fullName').value,
-    cpf: document.getElementById('cpf').value,
     phone: document.getElementById('phone').value,
-    address: document.getElementById('address').value,
-    city: document.getElementById('city').value,
-    state: document.getElementById('state').value,
     zip: document.getElementById('zip').value,
+    state: document.getElementById('state').value,
+    city: document.getElementById('city').value,
+    address: document.getElementById('address').value,
+    address: document.getElementById('neighborhood').value,
+    address: document.getElementById('street').value,
+    address: document.getElementById('number').value,
     gameId: document.getElementById('gameId').value,
+    cpf: document.getElementById('cpf').value,
     secretCode: document.getElementById('secretCode').value
   };
 
