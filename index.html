@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>REDE POP - Catálogo de Prêmios</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="https://i.postimg.cc/R07Wy2gJ/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://i.ibb.co/BKdsNcw0/Favicon.png" type="image/x-icon">
 </head>
 <body>
   <!-- HEADER -->
   <header class="main-header">
     <div class="header-content">
-      <img class="logo-img" src="https://i.ibb.co/tpLXCxqB/logo.gif" alt="REDE POP Logo" />
+      <img class="logo-img" src="https://i.ibb.co/7PKmZ4T/NewLogo.gif" alt="REDE POP Logo" />
     </div>
   </header>
 
@@ -23,7 +23,7 @@
     </div>
   </main>
 
-  <!-- MODAL PEDIDO -->
+  <!-- ATURAN UNTUK FORM ORDER -->
   <div class="modal" id="orderModal">
     <div class="modal-content order-modal-content">
       <button class="modal-close-btn" id="orderModalCloseBtn">&times;</button>
@@ -42,10 +42,11 @@
         <input type="text" name="fullName" id="fullName" required>
         <label for="phone"><strong>Número de telefone</strong></label>
         <input type="tel" name="phone" id="phone" required placeholder="(00) 00000-0000">
+        <label for="zip"><strong>CEP</strong></label>
+        <input type="text" name="zip" id="zip" required placeholder="00000-000">
+        
         <label for="address"><strong>Endereço de entrega Completo</strong></label>
         <input type="text" name="address" id="address" required>
-        <label for="city"><strong>Cidade</strong></label>
-        <input type="text" name="city" id="city" required>
         <label for="state"><strong>Estado</strong></label>
         <select name="state" id="state" required>
           <option value="" disabled selected>Selecione o Estado</option>
@@ -77,8 +78,8 @@
           <option value="SE">Sergipe (SE)</option>
           <option value="TO">Tocantins (TO)</option>
           </select>
-          <label for="zip"><strong>CEP</strong></label>
-          <input type="text" name="zip" id="zip" required placeholder="00000-000">
+        <label for="city"><strong>Cidade</strong></label>
+        <input type="text" name="city" id="city" required>
 
           <!-- Divider -->
           <div class="form-divider"></div>
@@ -93,10 +94,10 @@
           <div style="position:relative">
             <input type="text" name="secretCode" id="secretCode" required maxlength="8" style="padding-right:34px;">
             <!-- Status spinner/icon muncul di kanan input -->
-            <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:22px;width:22px;display:flex;align-items:center;"></span>
+            <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;"></span>
           </div>
           <small style="display:block; margin-bottom:8px; color:#eb0b0a; text-align:right;"><em> Psiu!</em> Solicite o código ao seu mentor!</small>
-          <button type="submit" id="orderSubmitBtn" disabled>Enviar Pedido</button>
+          <button type="submit" id="orderSubmitBtn" disabled>ENVIAR PEDIDO</button>
           <div id="orderFormMessage"></div>
       </form>
     </div>
