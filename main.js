@@ -205,10 +205,27 @@ function validateAndUpdateCPF() {
 /* ========================================
    Secret Code Validation
 ======================================== */
-document.getElementById('secretCode').addEventListener('input', async function () {
+const secretCodeInput = document.getElementById('secretCode');
+const secretCodeStatus = document.getElementById('secretCodeStatus');
+
+function showSpinner() {
+  secretCodeStatus.innerHTML = `<svg ...spinner svg here...></svg>`;
+}
+function showCheck() {
+  secretCodeStatus.innerHTML = `<ion-icon name="checkmark-circle" style="color:#28c650;font-size:1.6em"></ion-icon>`;
+}
+function showWarning() {
+  secretCodeStatus.innerHTML = `<ion-icon name="warning" style="color:#eb0b0a;font-size:1.6em"></ion-icon>`;
+}
+function clearStatus() {
+  secretCodeStatus.innerHTML = "";
+}
+
+secretCodeInput.addEventListener('input', async function () {
   const secretCode = this.value.trim();
   const productId = document.getElementById('orderProductId').value;
   if (secretCode.length > 4 && productId) {
+    showSpinner(); // tampilkan spinner saat mulai request
     try {
       const res = await fetch(`${BACKEND_URL}/validate?product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`);
       const result = await res.json();
@@ -216,26 +233,26 @@ document.getElementById('secretCode').addEventListener('input', async function (
         isSecretCodeValid = true;
         orderFormMessage.textContent = 'Código válido! Você pode enviar.';
         orderFormMessage.style.color = 'green';
+        showCheck(); // icon ceklis
       } else {
         isSecretCodeValid = false;
         orderFormMessage.textContent = 'Código inválido ou já utilizado!';
         orderFormMessage.style.color = 'red';
+        showWarning(); // icon warning
       }
     } catch (err) {
       isSecretCodeValid = false;
       orderFormMessage.textContent = 'Erro ao validar código!';
       orderFormMessage.style.color = 'red';
+      showWarning();
     }
   } else {
     isSecretCodeValid = false;
     orderFormMessage.textContent = '';
+    clearStatus();
   }
   updateOrderSubmitBtn();
 });
-
-function updateOrderSubmitBtn() {
-  orderSubmitBtn.disabled = !(isCPFValid && isSecretCodeValid);
-}
 
 /* ========================================
    Submit Order
