@@ -281,9 +281,9 @@ orderForm.addEventListener('submit', async function (e) {
     state: document.getElementById('state').value,
     city: document.getElementById('city').value,
     address: document.getElementById('address').value,
-    address: document.getElementById('neighborhood').value,
-    address: document.getElementById('street').value,
-    address: document.getElementById('number').value,
+    neighborhood: document.getElementById('neighborhood').value,
+    street: document.getElementById('street').value,
+    number: document.getElementById('number').value,
     gameId: document.getElementById('gameId').value,
     cpf: document.getElementById('cpf').value,
     secretCode: document.getElementById('secretCode').value
