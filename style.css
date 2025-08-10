@@ -26,16 +26,56 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 /* ================== HEADER ================== */
 .main-header {
   background: var(--white);
-  height: var(--header-height-desktop);
   box-shadow: 0 5px 20px #24040433;
   display: flex; align-items: center; justify-content: center;
+  padding: 10px 0;
 }
-.logo-img { height: 50px; width: auto; margin: 0 auto; display: block; }
 .header-content { width: 100%; text-align: center; }
 
+/* Logo Text Styling */
+.logo-text {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.logo-text-main {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--red-top);
+  letter-spacing: 2px;
+  display: block;
+  line-height: 1.1;
+}
+
+.logo-text-subtitle {
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  color: #222;
+  display: block;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.logo-text-slogan {
+  font-family: var(--font-header);
+  font-size: 0.8rem;
+  color: #444;
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+}
+
 @media (max-width: 600px) {
-  .logo-img { height: 35px; }
-  .main-header { height: var(--header-height-mobile); }
+  .logo-text-main {
+    font-size: 1.6rem;
+  }
+  .logo-text-subtitle {
+    font-size: 0.75rem;
+  }
+  .logo-text-slogan {
+    font-size: 0.7rem;
+  }
 }
 
 /* ================== CONTAINER ================== */
