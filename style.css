@@ -326,7 +326,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 
 .mentor-contact-btn-row {
   display: flex;
-  gap: 18px;
+  gap: 32px;
   justify-content: center;
   align-items: center;
 }
@@ -387,7 +387,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
     margin-bottom: 12px;
   }
   .mentor-contact-btn-row {
-    gap: 12px;
+    gap: 20px;
   }
   .mentor-contact-btn {
     padding: 8px 6vw;
@@ -410,7 +410,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
     gap: 6px;
   }
   .mentor-contact-btn-row {
-    gap: 7px;
+    gap: 15px;
   }
   .mentor-contact-icon {
     width: 15px;
