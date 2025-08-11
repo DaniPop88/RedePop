@@ -303,3 +303,70 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 
 /* ================== UTIL ================== */
 .extra-product[hidden] { display: none !important; }
+
+/* ================== Mentor Contact Button Styles ================== */
+.mentor-contact-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 18px 0 10px 0;
+}
+
+.mentor-contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 2px solid var(--red-top);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px #25d36622;
+  padding: 10px 24px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.07rem;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s, transform 0.13s;
+  cursor: pointer;
+  outline: none;
+}
+
+.mentor-contact-btn:hover,
+.mentor-contact-btn:focus-visible {
+  border-color: var(--red-bottom); /* efek hover pakai warna merah tua */
+  color: var(--red-bottom); /* biar harmonis */
+}
+
+.mentor-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .mentor-contact-btn {
+    padding: 9px 7vw;
+    font-size: 0.97rem;
+    gap: 8px;
+  }
+  .mentor-contact-btn-container {
+    margin: 12px 0 8px 0;
+  }
+  .mentor-contact-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mentor-contact-btn {
+    padding: 8px 2vw;
+    font-size: 0.93rem;
+    gap: 7px;
+  }
+  .mentor-contact-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+}
