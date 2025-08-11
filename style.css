@@ -305,87 +305,115 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 .extra-product[hidden] { display: none !important; }
 
 /* ================== Mentor Contact Button Styles ================== */
-.mentor-contact-btn-container {
+.mentor-contact-section {
   width: 100%;
+  max-width: var(--max-width);
+  margin: 20px auto 14px auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mentor-contact-title {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.18rem;
+  color: var(--red-top);
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.mentor-contact-btn-row {
+  display: flex;
+  gap: 18px;
   justify-content: center;
   align-items: center;
-  margin: 18px 0 10px 0;
 }
 
 .mentor-contact-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   background: #fff;
   border: 2px solid var(--red-top);
   border-radius: 8px;
-  box-shadow: 0 2px 12px #eb0b0a22;
-  padding: 10px 24px;
+  box-shadow: 0 2px 12px #eb0b0a18;
+  padding: 11px 22px;
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.07rem;
+  font-size: 1.01rem;
   color: #222;
   text-decoration: none;
-  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s, color 0.18s, transform 0.13s;
+  transition: background 0.16s, box-shadow 0.16s, border-color 0.16s, color 0.16s, transform 0.13s;
   cursor: pointer;
   outline: none;
-  animation: mentor-btn-pop 2.2s cubic-bezier(.54,.04,.57,.99) infinite;
   will-change: transform;
+  /* Animasi halus */
+  animation: mentor-btn-gentlepop 1.6s ease-in-out infinite;
+}
+
+@keyframes mentor-btn-gentlepop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+  100% { transform: scale(1); }
 }
 
 .mentor-contact-btn:hover,
 .mentor-contact-btn:focus-visible {
   background: #fff7f6;
-  box-shadow: 0 4px 20px #eb0b0a33;
   border-color: var(--red-bottom);
-  transform: scale(1.04);
   color: var(--red-bottom);
+  box-shadow: 0 4px 16px #eb0b0a33;
+  transform: scale(1.07);
 }
 
-.mentor-contact-icon img {
-  display: block;
-  width: 28px;
-  height: 28px;
+.whatsapp-btn .mentor-contact-icon {
+  width: 24px;
+  height: 24px;
 }
 
-@keyframes mentor-btn-pop {
-  0% { transform: scale(1) translateX(0); }
-  10% { transform: scale(1.08) translateX(-2px); }
-  20% { transform: scale(1.07) translateX(2px); }
-  30% { transform: scale(1.09) translateX(-2px); }
-  40% { transform: scale(1.07) translateX(2px); }
-  50% { transform: scale(1.08) translateX(-2px); }
-  60% { transform: scale(1.07) translateX(2px); }
-  70% { transform: scale(1.08) translateX(-2px); }
-  80% { transform: scale(1.07) translateX(2px); }
-  90% { transform: scale(1.06) translateX(-1px); }
-  100% { transform: scale(1) translateX(0); }
+.telegram-btn .mentor-contact-icon {
+  width: 24px;
+  height: 24px;
 }
 
 @media (max-width: 600px) {
+  .mentor-contact-section {
+    margin: 16px auto 10px auto;
+  }
+  .mentor-contact-title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  .mentor-contact-btn-row {
+    gap: 12px;
+  }
   .mentor-contact-btn {
-    padding: 9px 7vw;
-    font-size: 0.97rem;
-    gap: 8px;
+    padding: 8px 6vw;
+    font-size: 0.95rem;
+    gap: 7px;
   }
-  .mentor-contact-btn-container {
-    margin: 12px 0 8px 0;
-  }
-  .mentor-contact-icon img {
-    width: 22px;
-    height: 22px;
+  .mentor-contact-icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
 @media (max-width: 400px) {
-  .mentor-contact-btn {
-    padding: 8px 2vw;
+  .mentor-contact-title {
     font-size: 0.93rem;
+  }
+  .mentor-contact-btn {
+    padding: 7px 2vw;
+    font-size: 0.91rem;
+    gap: 6px;
+  }
+  .mentor-contact-btn-row {
     gap: 7px;
   }
-  .mentor-contact-icon img {
-    width: 19px;
-    height: 19px;
+  .mentor-contact-icon {
+    width: 15px;
+    height: 15px;
   }
 }
