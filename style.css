@@ -320,28 +320,47 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
   background: #fff;
   border: 2px solid var(--red-top);
   border-radius: 8px;
-  box-shadow: 0 2px 12px #25d36622;
+  box-shadow: 0 2px 12px #eb0b0a22;
   padding: 10px 24px;
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.07rem;
   color: #222;
   text-decoration: none;
-  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s, transform 0.13s;
+  transition: background 0.18s, box-shadow 0.18s, border-color 0.18s, color 0.18s, transform 0.13s;
   cursor: pointer;
   outline: none;
+  animation: mentor-btn-pop 2.2s cubic-bezier(.54,.04,.57,.99) infinite;
+  will-change: transform;
 }
 
 .mentor-contact-btn:hover,
 .mentor-contact-btn:focus-visible {
-  border-color: var(--red-bottom); /* efek hover pakai warna merah tua */
-  color: var(--red-bottom); /* biar harmonis */
+  background: #fff7f6;
+  box-shadow: 0 4px 20px #eb0b0a33;
+  border-color: var(--red-bottom);
+  transform: scale(1.04);
+  color: var(--red-bottom);
 }
 
-.mentor-contact-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mentor-contact-icon img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+@keyframes mentor-btn-pop {
+  0% { transform: scale(1) translateX(0); }
+  10% { transform: scale(1.08) translateX(-2px); }
+  20% { transform: scale(1.07) translateX(2px); }
+  30% { transform: scale(1.09) translateX(-2px); }
+  40% { transform: scale(1.07) translateX(2px); }
+  50% { transform: scale(1.08) translateX(-2px); }
+  60% { transform: scale(1.07) translateX(2px); }
+  70% { transform: scale(1.08) translateX(-2px); }
+  80% { transform: scale(1.07) translateX(2px); }
+  90% { transform: scale(1.06) translateX(-1px); }
+  100% { transform: scale(1) translateX(0); }
 }
 
 @media (max-width: 600px) {
@@ -353,7 +372,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
   .mentor-contact-btn-container {
     margin: 12px 0 8px 0;
   }
-  .mentor-contact-icon svg {
+  .mentor-contact-icon img {
     width: 22px;
     height: 22px;
   }
@@ -365,7 +384,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
     font-size: 0.93rem;
     gap: 7px;
   }
-  .mentor-contact-icon svg {
+  .mentor-contact-icon img {
     width: 19px;
     height: 19px;
   }
