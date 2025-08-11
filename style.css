@@ -317,7 +317,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 .mentor-contact-title {
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 700;
-  font-size: 1.18rem;
+  font-size: 0.8rem;
   color: var(--red-top);
   text-align: center;
   margin-bottom: 16px;
@@ -383,7 +383,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
     margin: 16px auto 10px auto;
   }
   .mentor-contact-title {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-bottom: 12px;
   }
   .mentor-contact-btn-row {
@@ -402,7 +402,7 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 
 @media (max-width: 400px) {
   .mentor-contact-title {
-    font-size: 0.93rem;
+    font-size: 0.8rem;
   }
   .mentor-contact-btn {
     padding: 7px 2vw;
