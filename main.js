@@ -203,6 +203,48 @@ function validateAndUpdateCPF() {
 }
 
 /* ========================================
+   Nama Completo Validation (Tidak boleh angka)
+======================================== */
+const fullNameInput = document.getElementById('fullName');
+fullNameInput.addEventListener('input', function() {
+  // Cek jika ada angka
+  if (/\d/.test(this.value)) {
+    this.setCustomValidity('Nome não pode conter números!');
+    this.style.borderColor = '#eb0b0a';
+    orderFormMessage.textContent = 'Nome não pode conter números!';
+    orderFormMessage.style.color = 'red';
+  } else {
+    this.setCustomValidity('');
+    this.style.borderColor = '';
+    if (orderFormMessage.textContent === 'Nome não pode conter números!') {
+      orderFormMessage.textContent = '';
+      orderFormMessage.style.color = '';
+    }
+  }
+});
+
+/* ========================================
+   Game ID Validation (hanya angka, 8-12 digit, tidak boleh spasi/huruf)
+======================================== */
+const gameIdInput = document.getElementById('gameId');
+gameIdInput.addEventListener('input', function() {
+  // Hanya boleh angka dan panjang 8-12 digit
+  if (!/^\d{8,12}$/.test(this.value)) {
+    this.setCustomValidity('ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!');
+    this.style.borderColor = '#eb0b0a';
+    orderFormMessage.textContent = 'ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!';
+    orderFormMessage.style.color = 'red';
+  } else {
+    this.setCustomValidity('');
+    this.style.borderColor = '';
+    if (orderFormMessage.textContent === 'ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!') {
+      orderFormMessage.textContent = '';
+      orderFormMessage.style.color = '';
+    }
+  }
+});
+
+/* ========================================
    Secret Code Validation
 ======================================== */
 const secretCodeInput = document.getElementById('secretCode');
