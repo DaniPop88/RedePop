@@ -420,21 +420,28 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 
 /* Tambahan untuk T&C di dalam modal */
 #orderFormTC {
-  margin-top:30px;
-  background:#fff7f6;
-  border-radius:8px;
-  border:1.5px solid #eb0b0a;
-  padding:22px;
-  color:#222;
-  font-size:0.97rem;
+  font-size: 0.85rem;         /* Lebih kecil dari sebelumnya */
+  line-height: 1.5;           /* Jarak baris lebih nyaman */
+  letter-spacing: 0.01em;     /* Sedikit beri ruang */
+  padding: 14px 12px;         /* Padding lebih ramping */
 }
+
 #orderFormTC strong {
-  color:#eb0b0a;
-  font-size:1.1rem;
-  display:block;
-  margin-bottom:10px;
+  font-size: 1.0rem;          /* Judul tetap agak menonjol, tapi tidak terlalu besar */
+  margin-bottom: 7px;
 }
+
 #orderFormTC ol {
-  margin:14px 0 0 14px;
-  padding-left:10px;
+  margin: 10px 0 0 16px;
+  padding-left: 8px;
+}
+
+#orderFormTC li {
+  margin-bottom: 9px;
+}
+
+#orderFormTC .tc-section-title {
+  color: #eb0b0a;
+  font-weight: bold;
+  font-size: 0.97rem;
 }
