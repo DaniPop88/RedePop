@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@b111c08c36744b2fff872dc481aadb84b499dff3/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@cbccef303929a91fd4f5e40c6de83e7383c0561f/images/",
   "tiers": [
     {
       "id": "INVITE-2",
@@ -51,17 +51,21 @@
       "label": "CONVIDAR 5 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv5h1.png", "name": "Calager Wireless Earbud Fingerprint Touch Music Player" },
-        { "file": "inv5h2.png", "name": "EW21 Bluetooth Smart Light Sunrise Despertador" },
-        { "file": "inv5h3.png", "name": "Mini Banco De Energía Portátil De Gran Capacidad De 10000mah" },
-        { "file": "inv5p1.png", "name": "Fone Bluetooth Sem Fio De Ouvido P9 TWS Macaron Headphone Fone de Ouvido Envio Imediato" },
-        { "file": "inv5p2.png", "name": "Microfone de Lapela K9 Vlog Sem Fio Alta Definição Compatível IPhone e TIPO C" },
-        { "file": "inv5p3.png", "name": "ROMANTIC CROWN Copo Térmico Inox 600ml com Tampa Hermética e Canudo Anti Vazamento de Aço Inoxidável" },
-        { "file": "inv5p4.png", "name": "Apoio para Notebook PS4 Xbox com Cooler Refrigerador Suporte USB - Ozzix" },
-        { "file": "inv5p5.png", "name": "Mini Aspirador de Pó Portátil Automotivo Casa Sem Fio 3 em 1 Recarregável Potente 6000Pa" },
-        { "file": "inv5p6.png", "name": "Lanterna SWAT Profissional com duas pilhas" },
-        { "file": "inv5p7.png", "name": "Esfregão Triangulo Mop De Limpeza Ajustável Giratória 360°" },
-        { "file": "inv5p8.png", "name": "Suporte Fone De Ouvido Headset E 1 Controle Gamer em Aço Preto" }
+        { "file": "inv5p1.png", "name": "FONE S20 INTRA-AURICULAR BLUETOOTH À PROVA D’ÁGUA" },
+        { "file": "inv5p2.png", "name": "FONE BLUETOOTH OVER-EAR CONFORTÁVEL" },
+        { "file": "inv5p3.png", "name": "FONE JM13 BLUETOOTH ERGONÔMICO CANCELAMENTO RUÍDO" },
+        { "file": "inv5p4.png", "name": "CAIXA SOM G-SPEAKER BRANCA BLUETOOTH RELÓGIO LED" },
+        { "file": "inv5p5.png", "name": "RELÓGIO DESPERTADOR DIGITAL MESA LED USB" },
+        { "file": "inv5p6.png", "name": "LÂMPADA ESTRELA MINI LUA ASTRONAUTA" },
+        { "file": "inv5p7.png", "name": "CARREGADOR PORTÁTIL 10000MAH 4 CABOS LED" },
+        { "file": "inv5p8.png", "name": "MASSAGEADOR COM TELA VERDE" },
+        { "file": "inv5p9.png", "name": "CARREGADOR PORTÁTIL 10000MAH TRANSPARENTE A5" },
+        { "file": "inv5p10.png", "name": "COPO TÉRMICO INOX 600ML COM TAMPA E CANUDO" },
+        { "file": "inv5p11.png", "name": "COPRO TÉRMICO ROMANTIC CROWN 600ML INOX" },
+        { "file": "inv5p12.png", "name": "COPO TÉRMICO INOX 900ML TAMPA CANUDO" },
+        { "file": "inv5p13.png", "name": "FATIADOR LEGUMES AÇO INOX MULTIUSO" },
+        { "file": "inv5p14.png", "name": "FATIADOR COZINHA PROFISSIONAL 12 EM 1 INOX" },
+        { "file": "inv5p15.png", "name": "RALADOR MULTIUSO 3 EM 1 VERDE" }
       ]
     },
     {
@@ -69,36 +73,36 @@
       "label": "CONVIDAR 10 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv10h1.png", "name": "Mouse Gamer 6 Botões 12.800 Dpi Sensor Instantâneo" },
-        { "file": "inv10h2.png", "name": "Teclado de Jogo Com Fio, 87 Teclas Rgb Backlit" },
-        { "file": "inv10h3.png", "name": "Mesa Compacta Para Notebook" },
-        { "file": "inv10p1.png", "name": "Vr Box 2.0 Realidade Virtual + Controle Cardboard 3D Bluetooth" },
-        { "file": "inv10p2.png", "name": "Robô Varredora Aspirador De Pó Automática 3 Em 1 Limpeza Doméstica Robótico Inteligente E Silencioso" },
-        { "file": "inv10p3.png", "name": "H'maston RS-29 Fone De Ouvido Bluetooth Gamer Sem Fio Com Led Original jogo e música" },
-        { "file": "inv10p4.png", "name": "Kit Gamer Teclado Semi Mecânico RGB + Mouse Profissional Led Iluminado Jogos PC" },
-        { "file": "inv10p5.png", "name": "Máquina de cortar cabelo com 4 pentes e acessórios Hair Stylo - CR-02 Mondia" },
-        { "file": "inv10p6.png", "name": "Ring Light Iluminador 10 Polegadas Com Tripé De 2.10 Metro SU" },
-        { "file": "inv10p7.png", "name": "Mini Compressor de Ar Portatil Bomba De Encher Pneu Compressor Pneu Carro Recarregavél Digital" },
-        { "file": "inv10p8.png", "name": "Mop FIT Giratorio, balde com 8 litros, MOP5010 , Flash Limp" },
-        { "file": "inv10p9.png", "name": "Teclado com fio USB Black Elegante KA-651" }
+        { "file": "inv10h1.png", "name": "MOUSE GAMER 6 BOTÕES 12800 DPI" },
+        { "file": "inv10h2.png", "name": "TECLADO GAMER 87 TECLAS RGB" },
+        { "file": "inv10h3.png", "name": "MESA COMPACTA NOTEBOOK" },
+        { "file": "inv10p1.png", "name": "VR BOX 2.0 REALIDADE VIRTUAL BLUETOOTH" },
+        { "file": "inv10p2.png", "name": "ROBÔ ASPIRADOR 3 EM 1 SILENCIOSO" },
+        { "file": "inv10p3.png", "name": "FONE BLUETOOTH GAMER H’MASTON RS-29 LED" },
+        { "file": "inv10p4.png", "name": "KIT GAMER TECLADO SEMI MECÂNICO + MOUSE LED" },
+        { "file": "inv10p5.png", "name": "MÁQUINA CORTAR CABELO 4 PENTES CR-02" },
+        { "file": "inv10p6.png", "name": "RING LIGHT 10 COM TRIPÉ 2.1M" },
+        { "file": "inv10p7.png", "name": "MINI COMPRESSOR PORTÁTIL PNEU DIGITAL" },
+        { "file": "inv10p8.png", "name": "MOP GIRATÓRIO 8L MOP5010" },
+        { "file": "inv10p9.png", "name": "TECLADO USB KA-651 PRETO" }
       ]
     },{
       "id": "INVITE-20",
       "label": "CONVIDAR 20 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv20h1.png", "name": "Caixa de Som Portátil Bluetooth, LED RGB" },
-        { "file": "inv20h2.png", "name": "COIBEU Câmera de Segurança A28B WiFi Dual 1080P 3MP Dupla WiFi para Alarme De Detecção De Segurança" },
-        { "file": "inv20h3.png", "name": "Inova Fone de Ouvido Sem Fio Bluetooth Alto Falante Headphone Viva Voz Potente Grave 100% original Cartão de memória" },
-        { "file": "inv20p1.png", "name": "Sanduicheira Elétrica, Chapa e Grill, Antiaderente, Red Ceramic, Mondial, PG-01-RC, 127V - VERMELHO" },
-        { "file": "inv20p2.png", "name": "Sofá Inflável Portátil 3 em 1 com Bomba de Ar Poltrona Cama Dobrável Para Camping Praia e Casa" },
-        { "file": "inv20p3.png", "name": "Câmera De Segurança Wi-fi Externa À Prova D'água Full HD Monitoramento APP DAFU Speed Idali Life" },
-        { "file": "inv20p4.png", "name": "Headset Gamer Fone de ouvido Gamer iluminação LED RGB Branco Para PC Notebook Computador PS4 X-ONE" },
-        { "file": "inv20p5.png", "name": "Parafusadeira_Furadeira 21V C_ Kit Maleta COM DUAS BATERIAS Kit de 28pcs" },
-        { "file": "inv20p6.png", "name": "Mouse Gamer Cyrex 20000DPI Profissional Led RGB com Software Programável Sensor Gamer 1000Hz Ozzix" },
-        { "file": "inv20p7.png", "name": "Tripé Suporte Pedestal Caixa Som Acústica Audio Profissional" },
-        { "file": "inv20p8.png", "name": "Passadeira 2 em 1 - 110V ou 220V Ferro A Vapor De Roupas Tira Amasso Steamer Portátil 800w" },
-        { "file": "inv20p9.png", "name": "Videogame Stick 10mil 2 Controles Sem Fio Console Portatil Jogos Retro Antigo JORGE" }
+        { "file": "inv20h1.png", "name": "CAIXA SOM PORTÁTIL BLUETOOTH LED RGB" },
+        { "file": "inv20h2.png", "name": "CÂMERA SEGURANÇA COIBEU A28B 1080P 3MP WIFI" },
+        { "file": "inv20h3.png", "name": "FONE INOVA BLUETOOTH ALTO-FALANTE VIVA VOZ" },
+        { "file": "inv20p1.png", "name": "SANDUICHEIRA ELÉTRICA GRILL RED CERAMIC MONDIAL" },
+        { "file": "inv20p2.png", "name": "SOFÁ INFLÁVEL 3 EM 1 CAMPING PRAIA CASA" },
+        { "file": "inv20p3.png", "name": "CÂMERA SEGURANÇA WI-FI EXTERNA À PROVA D’ÁGUA" },
+        { "file": "inv20p4.png", "name": "HEADSET GAMER LED RGB BRANCO" },
+        { "file": "inv20p5.png", "name": "PARAFUSADEIRA 21V KIT 28PCS 2 BATERIAS" },
+        { "file": "inv20p6.png", "name": "MOUSE GAMER CYREX 20000DPI LED RGB" },
+        { "file": "inv20p7.png", "name": "TRIPÉ SUPORTE CAIXA SOM PROFISSIONAL" },
+        { "file": "inv20p8.png", "name": "PASSADEIRA 2 EM 1 FERRO A VAPOR 800W" },
+        { "file": "inv20p9.png", "name": "VIDEOGAME PORTÁTIL 10MIL 2 CONTROLES RETRO" }
       ]
     }
   ]
