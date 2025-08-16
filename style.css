@@ -152,9 +152,9 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
   max-width: 250px;               /* desktop */
   aspect-ratio: 1 / 1;            /* selalu 1:1 */
   object-fit: contain;            /* tampil penuh, tidak crop */
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 8px;
-  box-shadow: 0 5px 6px #eb0b0a18;
+  box-shadow: 0 8px 8px #eb0b0a18;
   background: #fff;
   border: 1px solid #eee;
 }
