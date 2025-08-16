@@ -118,16 +118,16 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
 }
 
 @media (max-width: 600px) {
-  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 }
 @media (max-width: 400px) {
-  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
 }
 
 /* ================== CARD ================== */
 .product-card {
   background: var(--white);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 2px;
   text-align: center;
   cursor: pointer;
