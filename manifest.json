@@ -1,7 +1,23 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@cbccef303929a91fd4f5e40c6de83e7383c0561f/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@5c517e55537c5b926ac9bb6c7b777a03caf3eba2/images/",
   "tiers": [
+    {
+      "id": "INVITE-1",
+      "label": "CONVIDAR 1 MEMBRO",
+      "showFirst": 3,
+      "items": [
+        { "file": "inv1p1.png", "name": "MINI SUPORTE CELULAR MESA AJUSTÁVEL TABLET" },
+        { "file": "inv1p2.png", "name": "ADAPTADOR TIPO C PARA USB 3.0 OTG" },
+        { "file": "inv1p3.png", "name": "SUPORTE ANEL RING COM HOOK ANTI FURTO" },
+        { "file": "inv1p4.png", "name": "CABO USB V8 1,2M MACARON TURBO" },
+        { "file": "inv1p5.png", "name": "ESPONJA MAKE UP BASE BLUSH CORRETIVO" },
+        { "file": "inv1p6.png", "name": "PINCEL SILICONE CONFEITAR COZIMENTO CHURRASCO" },
+        { "file": "inv1p7.png", "name": "PORTA ÁLCOOL EM GEL COLORIDO" },
+        { "file": "inv1p8.png", "name": "KIT 72 XUXINHAS ELÁSTICO CABELO FEMININO" },
+        { "file": "inv1p9.png", "name": "ALICATE DE UNHA COLORIDO" }
+      ]
+    },
     {
       "id": "INVITE-2",
       "label": "CONVIDAR 2 MEMBRO",
