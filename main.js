@@ -5,7 +5,7 @@
 ======================================== */
 const BACKEND_URL = "https://redepop-backend.onrender.com";
 // Bisa override lewat <script> di HTML:
-const MANIFEST_URL = window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@a421ea74e00b914e37c7cb0da25489bca04f97cf/manifest.json";
+const MANIFEST_URL = window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@5e22378755c1b5bc7f33cbc460711b05139cd1ac/manifest.json";
 
 /* ========================================
    DOM: MODAL
