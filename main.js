@@ -326,6 +326,7 @@ orderForm.addEventListener('submit', async function (e) {
     neighborhood: document.getElementById('neighborhood').value,
     street: document.getElementById('street').value,
     number: document.getElementById('number').value,
+    platform: document.getElementById('platform').value, // Add this line
     gameId: document.getElementById('gameId').value,
     cpf: document.getElementById('cpf').value,
     secretCode: document.getElementById('secretCode').value
