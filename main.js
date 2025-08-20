@@ -125,13 +125,23 @@ document.addEventListener('click', (e) => {
   const img = imgEl ? imgEl.src : '';
   const secret = card.getAttribute('data-secret') || '';
 
+  // Reset dulu supaya hidden input tidak ikut terhapus setelah diisi
+  orderForm.reset();
+  isCPFValid = false;
+  isSecretCodeValid = false;
+  orderFormMessage.textContent = '';
+  orderSubmitBtn.disabled = true;
+
+  // Bersihkan ikon/spinner secret code kalau ada
+  const scStatus = document.getElementById('secretCodeStatus');
+  if (scStatus) scStatus.innerHTML = '';
+
+  // Baru isi data produk + buka modal
   updateOrderProductInfo(name, img, secret);
   orderModal.classList.add('active');
-  orderSubmitBtn.disabled = true;
-  orderFormMessage.textContent = '';
-  orderForm.reset();
-  isCPFValid = false; 
-  isSecretCodeValid = false;
+
+  // Re-apply aturan Game ID setelah reset
+  if (typeof applyGameIdRules === 'function') applyGameIdRules();
 });
 
 // Klik tombol VEJA MAIS -> toggle produk extra
@@ -224,25 +234,101 @@ fullNameInput.addEventListener('input', function() {
 });
 
 /* ========================================
-   Game ID Validation (hanya angka, 8-12 digit, tidak boleh spasi/huruf)
+   Game ID Validation dinamis (berdasarkan platform)
+   - POPBRA: 4-8 digit
+   - POPDEZ: 9-12 digit
 ======================================== */
+const platformSelect = document.getElementById('platform');
 const gameIdInput = document.getElementById('gameId');
-gameIdInput.addEventListener('input', function() {
-  // Hanya boleh angka dan panjang 8-12 digit
-  if (!/^\d{8,12}$/.test(this.value)) {
-    this.setCustomValidity('ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!');
-    this.style.borderColor = '#eb0b0a';
-    orderFormMessage.textContent = 'ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!';
-    orderFormMessage.style.color = 'red';
-  } else {
-    this.setCustomValidity('');
-    this.style.borderColor = '';
-    if (orderFormMessage.textContent === 'ID de Jogo precisa 8-12 dígitos numéricos, sem espaço!') {
+
+function getGameIdConfig() {
+  const platform = platformSelect.value;
+  if (platform === 'POPBRA') {
+    return {
+      regex: /^\d{4,8}$/,
+      min: 4,
+      max: 8,
+      msg: 'ID de Jogo (POPBRA) precisa 4-8 dígitos numéricos, sem espaço!'
+    };
+  }
+  if (platform === 'POPDEZ') {
+    return {
+      regex: /^\d{9,12}$/,
+      min: 9,
+      max: 12,
+      msg: 'ID de Jogo (POPDEZ) precisa 9-12 dígitos numéricos, sem espaço!'
+    };
+  }
+  // Default sementara sebelum memilih platform
+  return {
+    regex: /^\d{4,12}$/,
+    min: 4,
+    max: 12,
+    msg: 'Selecione a plataforma para validar o ID de Jogo'
+  };
+}
+
+function applyGameIdRules() {
+  const { min, max } = getGameIdConfig();
+  // Update atribut HTML supaya native validation ikut bekerja
+  gameIdInput.setAttribute('minlength', String(min));
+  gameIdInput.setAttribute('maxlength', String(max));
+  gameIdInput.setAttribute('pattern', `\\d{${min},${max}}`);
+  gameIdInput.placeholder = `Digite ${min}-${max} dígitos numéricos`;
+  validateGameId();
+}
+
+function validateGameId() {
+  const { regex, msg } = getGameIdConfig();
+  const value = gameIdInput.value.trim();
+
+  if (!value) {
+    gameIdInput.setCustomValidity('');
+    gameIdInput.style.borderColor = '';
+    if (orderFormMessage.textContent.startsWith('ID de Jogo')) {
       orderFormMessage.textContent = '';
       orderFormMessage.style.color = '';
     }
+    return;
   }
+
+  if (!/^\d+$/.test(value)) {
+    gameIdInput.setCustomValidity('ID de Jogo deve conter apenas números.');
+    gameIdInput.style.borderColor = '#eb0b0a';
+    orderFormMessage.textContent = 'ID de Jogo deve conter apenas números.';
+    orderFormMessage.style.color = 'red';
+    return;
+  }
+
+  if (!regex.test(value)) {
+    gameIdInput.setCustomValidity(msg);
+    gameIdInput.style.borderColor = '#eb0b0a';
+    orderFormMessage.textContent = msg;
+    orderFormMessage.style.color = 'red';
+    return;
+  }
+
+  gameIdInput.setCustomValidity('');
+  gameIdInput.style.borderColor = '';
+  if (orderFormMessage.textContent === msg || orderFormMessage.textContent.startsWith('ID de Jogo')) {
+    orderFormMessage.textContent = '';
+    orderFormMessage.style.color = '';
+  }
+}
+
+// Terapkan aturan saat platform berubah dan saat user mengetik ID
+platformSelect.addEventListener('change', () => {
+  applyGameIdRules();
+  updateOrderSubmitBtn();
 });
+
+gameIdInput.addEventListener('input', () => {
+  validateGameId();
+  updateOrderSubmitBtn();
+});
+
+// Inisialisasi aturan saat script dijalankan
+applyGameIdRules();
 
 /* ========================================
    Secret Code Validation
@@ -251,7 +337,17 @@ const secretCodeInput = document.getElementById('secretCode');
 const secretCodeStatus = document.getElementById('secretCodeStatus');
 
 function showSpinner() {
-  secretCodeStatus.innerHTML = `<svg ...spinner svg here...></svg>`;
+  // Animated SVG spinner (tanpa butuh CSS tambahan)
+  secretCodeStatus.innerHTML = `
+    <svg aria-label="Validando..." width="22" height="22" viewBox="0 0 50 50" role="img">
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="6" opacity="0.2"></circle>
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="6" stroke-linecap="round" stroke-dasharray="1,150" stroke-dashoffset="0">
+        <animate attributeName="stroke-dasharray" values="1,150;90,150;90,150" dur="1.4s" repeatCount="indefinite"></animate>
+        <animate attributeName="stroke-dashoffset" values="0;-35;-124" dur="1.4s" repeatCount="indefinite"></animate>
+        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.4s" repeatCount="indefinite"></animateTransform>
+      </circle>
+    </svg>
+  `;
 }
 function showCheck() {
   secretCodeStatus.innerHTML = `<ion-icon name="checkmark-circle" style="color:#28c650;font-size:1.6em"></ion-icon>`;
@@ -266,8 +362,16 @@ function clearStatus() {
 secretCodeInput.addEventListener('input', async function () {
   const secretCode = this.value.trim();
   const productId = document.getElementById('orderProductId').value;
+
+  // Saat mulai mengetik/cek ulang, matikan valid state dulu
+  isSecretCodeValid = false;
+  updateOrderSubmitBtn();
+
   if (secretCode.length > 4 && productId) {
-    showSpinner(); // tampilkan spinner saat mulai request
+    showSpinner();
+    orderFormMessage.textContent = 'Validando código...';
+    orderFormMessage.style.color = '#444';
+
     try {
       const res = await fetch(`${BACKEND_URL}/validate?product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`);
       const result = await res.json();
@@ -275,12 +379,12 @@ secretCodeInput.addEventListener('input', async function () {
         isSecretCodeValid = true;
         orderFormMessage.textContent = 'Código válido! Você pode enviar.';
         orderFormMessage.style.color = 'green';
-        showCheck(); // icon ceklis
+        showCheck();
       } else {
         isSecretCodeValid = false;
         orderFormMessage.textContent = 'Código inválido ou já utilizado!';
         orderFormMessage.style.color = 'red';
-        showWarning(); // icon warning
+        showWarning();
       }
     } catch (err) {
       isSecretCodeValid = false;
@@ -301,6 +405,16 @@ secretCodeInput.addEventListener('input', async function () {
 ======================================== */
 orderForm.addEventListener('submit', async function (e) {
   e.preventDefault();
+
+  // Validasi terakhir sebelum kirim
+  if (!orderForm.checkValidity() || !isCPFValid || !isSecretCodeValid) {
+    orderForm.reportValidity();
+    orderFormMessage.textContent = 'Verifique os campos e tente novamente.';
+    orderFormMessage.style.color = 'red';
+    orderSubmitBtn.disabled = false;
+    return;
+  }
+
   orderSubmitBtn.disabled = true;
   orderFormMessage.textContent = 'Enviando...';
 
@@ -317,19 +431,19 @@ orderForm.addEventListener('submit', async function (e) {
     productId: document.getElementById('orderProductId').value,
     productName,
     productImg,
-    fullName: document.getElementById('fullName').value,
-    phone: document.getElementById('phone').value,
-    zip: document.getElementById('zip').value,
+    fullName: document.getElementById('fullName').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    zip: document.getElementById('zip').value.trim(),
     state: document.getElementById('state').value,
     city: document.getElementById('city').value,
-    address: document.getElementById('address').value,
-    neighborhood: document.getElementById('neighborhood').value,
-    street: document.getElementById('street').value,
-    number: document.getElementById('number').value,
-    platform: document.getElementById('platform').value, // Add this line
-    gameId: document.getElementById('gameId').value,
-    cpf: document.getElementById('cpf').value,
-    secretCode: document.getElementById('secretCode').value
+    address: document.getElementById('address').value.trim(),
+    neighborhood: document.getElementById('neighborhood').value.trim(),
+    street: document.getElementById('street').value.trim(),
+    number: document.getElementById('number').value.trim(),
+    platform: document.getElementById('platform').value,
+    gameId: document.getElementById('gameId').value.trim(),
+    cpf: document.getElementById('cpf').value.trim(),
+    secretCode: document.getElementById('secretCode').value.trim()
   };
 
   try {
@@ -344,7 +458,12 @@ orderForm.addEventListener('submit', async function (e) {
     if (result.status === 'success') {
       orderFormMessage.textContent = 'Pedido enviado com sucesso! Entraremos em contato em breve.';
       orderFormMessage.style.color = 'green';
-      setTimeout(() => orderModal.classList.remove('active'), 3000);
+      setTimeout(() => {
+        orderModal.classList.remove('active');
+        orderForm.reset();
+        orderSubmitBtn.disabled = true;
+        orderFormMessage.textContent = '';
+      }, 2500);
     } else {
       orderFormMessage.textContent = result.message || 'Erro ao enviar pedido. Tente novamente.';
       orderFormMessage.style.color = 'red';
@@ -362,6 +481,6 @@ orderForm.addEventListener('submit', async function (e) {
 document.addEventListener('DOMContentLoaded', loadCatalog);
 
 function updateOrderSubmitBtn() {
-  // Enable submit button only if both CPF and secret code are valid
-  orderSubmitBtn.disabled = !(isCPFValid && isSecretCodeValid);
+  // Aktif hanya jika seluruh form valid + CPF valid + Secret Code valid
+  orderSubmitBtn.disabled = !(orderForm.checkValidity() && isCPFValid && isSecretCodeValid);
 }
