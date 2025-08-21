@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@754eabeac1a71cfd5b6fb1bdf5308bc3bbe7c503/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@9118475ed48c7993baa265656388539b58d1b5d9/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -89,20 +89,30 @@
       "label": "CONVIDAR 10 MEMBRO",
       "showFirst": 3,
       "items": [
-        { "file": "inv10h1.png", "name": "MOUSE GAMER 6 BOTÕES 12800 DPI" },
-        { "file": "inv10h2.png", "name": "TECLADO GAMER 87 TECLAS RGB" },
-        { "file": "inv10h3.png", "name": "MESA COMPACTA NOTEBOOK" },
-        { "file": "inv10p1.png", "name": "VR BOX 2.0 REALIDADE VIRTUAL BLUETOOTH" },
-        { "file": "inv10p2.png", "name": "ROBÔ ASPIRADOR 3 EM 1 SILENCIOSO" },
-        { "file": "inv10p3.png", "name": "FONE BLUETOOTH GAMER H’MASTON RS-29 LED" },
-        { "file": "inv10p4.png", "name": "KIT GAMER TECLADO SEMI MECÂNICO + MOUSE LED" },
-        { "file": "inv10p5.png", "name": "MÁQUINA CORTAR CABELO 4 PENTES CR-02" },
-        { "file": "inv10p6.png", "name": "RING LIGHT 10 COM TRIPÉ 2.1M" },
-        { "file": "inv10p7.png", "name": "MINI COMPRESSOR PORTÁTIL PNEU DIGITAL" },
-        { "file": "inv10p8.png", "name": "MOP GIRATÓRIO 8L MOP5010" },
-        { "file": "inv10p9.png", "name": "TECLADO USB KA-651 PRETO" }
+        { "file": "inv10p1.png", "name": "CAIXA SOM ALEXA ECHO DOT 5ª GERAÇÃO" },
+        { "file": "inv10p2.png", "name": "RELÓGIO T800 ULTRA 3 MAX SMARTWATCH ESPORTIVO" },
+        { "file": "inv10p3.png", "name": "FONE BLUETOOTH 5.3 TWS CANCELAMENTO RUÍDO" },
+        { "file": "inv10p4.png", "name": "POWER BANK SOLAR 20000MAH 5 EM 1 LED" },
+        { "file": "inv10p5.png", "name": "MINI COMPRESSOR PORTÁTIL PNEU DIGITAL" },
+        { "file": "inv10p6.png", "name": "POWER BANK 20000MAH 22.5W USB-C RÁPIDO" },
+        { "file": "inv10p7.png", "name": "CAMPAINHA WI-FI COM CÂMERA VÍDEO PORTEIRO" },
+        { "file": "inv10p8.png", "name": "ROBÔ ASPIRADOR GRANDE-G 3 EM 1 SILENCIOSO" },
+        { "file": "inv10p9.png", "name": "KIT BABÁ ELETRÔNICA CÂMERA VISÃO NOTURNA" },
+        { "file": "inv10p10.png", "name": "PROJETOR ASTRONAUTA GALÁXIA NEBULOSA COM CONTROLE" },
+        { "file": "inv10p11.png", "name": "CAIXA SOM BLUETOOTH KARAOKE LED RGB TWS" },
+        { "file": "inv10p12.png", "name": "ÓCULOS VR BOX 3D + CONTROLE BLUETOOTH" },
+        { "file": "inv10p13.png", "name": "LIMPADOR PINCEL ESPONJA MAQUIAGEM ELÉTRICO USB" },
+        { "file": "inv10p14.png", "name": "PRANCHA CHAPINHA NANO TITANIUM OPTIMA 3000" },
+        { "file": "inv10p15.png", "name": "SECADOR NANO TITANIUM 3200W BIVOLT" },
+        { "file": "inv10p16.png", "name": "MÁQUINA FAZER DONUTS ROSQUINHAS 110V" },
+        { "file": "inv10p17.png", "name": "PANQUEQUEIRA OMELETEIRA DUPLA ANTIADERENTE JOLLY" },
+        { "file": "inv10p18.png", "name": "PANELA ELÉTRICA WAFFLE QUICHE EGG 220V" },
+        { "file": "inv10p19.png", "name": "PICADOR TRITURADOR ELÉTRICO 2L INOX 110V" },
+        { "file": "inv10p20.png", "name": "COZEDOR ELÉTRICO MULTIFUNCIONAL OVO MILHO VAPOR" },
+        { "file": "inv10p21.png", "name": "COPO LIQUIDIFICADOR MONDIAL INOX TURBO L1000-L1200" }
       ]
-    },{
+    },
+    {
       "id": "INVITE-20",
       "label": "CONVIDAR 20 MEMBRO",
       "showFirst": 3,
