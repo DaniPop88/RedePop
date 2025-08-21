@@ -481,6 +481,5 @@ orderForm.addEventListener('submit', async function (e) {
 document.addEventListener('DOMContentLoaded', loadCatalog);
 
 function updateOrderSubmitBtn() {
-  // Aktif hanya jika seluruh form valid + CPF valid + Secret Code valid
   orderSubmitBtn.disabled = !(orderForm.checkValidity() && isCPFValid && isSecretCodeValid);
 }
