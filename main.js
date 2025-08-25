@@ -4,8 +4,29 @@
    KONFIG
 ======================================== */
 const BACKEND_URL = "https://redepop-backend.onrender.com";
-// Bisa override lewat <script> di HTML:
-const MANIFEST_URL = window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json";
+
+// Multiple fallback URLs for manifest loading
+const MANIFEST_URLS = [
+  // Primary: Current jsDelivr URL
+  "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json",
+  // Fallback 1: GitHub raw content
+  "https://raw.githubusercontent.com/DaniPop88/RedePop/main/manifest.json",
+  // Fallback 2: Different jsDelivr endpoint
+  "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@main/manifest.json",
+  // Fallback 3: Local file (absolute URL)
+  `${window.location.origin}/manifest.json`
+];
+
+// Configuration for loading
+const LOADING_CONFIG = {
+  timeout: 10000, // 10 seconds per URL attempt
+  maxRetries: 3, // Maximum retries per URL
+  retryDelay: 1000, // Initial retry delay (1 second)
+  backoffFactor: 2 // Exponential backoff multiplier
+};
+
+// Maintain backward compatibility
+const MANIFEST_URL = window.REDEPOP_MANIFEST_URL || MANIFEST_URLS[0];
 
 /* ========================================
    DOM: MODAL
@@ -87,28 +108,187 @@ function buildTierSection(tier, baseUrl) {
   return section;
 }
 
-async function loadCatalog() {
+/* ========================================
+   ENHANCED MANIFEST LOADING WITH FALLBACKS
+======================================== */
+
+// Helper function to create timeout promise
+function createTimeoutPromise(ms) {
+  return new Promise((_, reject) => 
+    setTimeout(() => reject(new Error(`Timeout after ${ms}ms`)), ms)
+  );
+}
+
+// Helper function to fetch with timeout
+async function fetchWithTimeout(url, options = {}, timeout = LOADING_CONFIG.timeout) {
   try {
-    const res = await fetch(MANIFEST_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const manifest = await res.json();
-
-    // baseUrl opsional (fallback ke string kosong)
-    const baseUrl = (manifest.baseUrl || '').trim();
-    const tiers = Array.isArray(manifest.tiers) ? manifest.tiers : [];
-
-    // bersihkan container
-    catalog.innerHTML = '';
-
-    // render tiap tier
-    tiers.forEach(tier => {
-      const section = buildTierSection(tier, baseUrl);
-      catalog.appendChild(section);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      cache: 'default', // Use default cache strategy instead of 'no-cache'
     });
-  } catch (err) {
-    console.error('Gagal memuat manifest:', err);
-    catalog.innerHTML = '<p style="color:red;text-align:center">Falha ao carregar catálogo. Tente novamente mais tarde.</p>';
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    return response;
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error(`Request timeout after ${timeout}ms`);
+    }
+    throw error;
   }
+}
+
+// Helper function to retry with exponential backoff
+async function retryWithBackoff(fn, maxRetries, initialDelay, backoffFactor) {
+  let lastError;
+  
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      lastError = error;
+      
+      if (attempt === maxRetries) {
+        break; // No more retries
+      }
+      
+      const delay = initialDelay * Math.pow(backoffFactor, attempt);
+      console.warn(`Attempt ${attempt + 1} failed: ${error.message}. Retrying in ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  
+  throw lastError;
+}
+
+// Enhanced manifest loader with multiple URLs and retry logic
+async function loadManifestFromUrl(url, urlIndex, totalUrls) {
+  const loadingDetails = document.getElementById('loading-details');
+  
+  try {
+    // Handle relative URLs for loading details display
+    let displayUrl;
+    try {
+      displayUrl = new URL(url).hostname;
+    } catch {
+      displayUrl = 'servidor local'; // For relative URLs like "./manifest.json"
+    }
+    
+    if (loadingDetails) {
+      loadingDetails.textContent = `Tentativa ${urlIndex + 1}/${totalUrls}: ${displayUrl}...`;
+    }
+    
+    console.log(`Trying to load manifest from: ${url}`);
+    
+    // Attempt to load with retries
+    const response = await retryWithBackoff(
+      () => fetchWithTimeout(url, {}, LOADING_CONFIG.timeout),
+      LOADING_CONFIG.maxRetries,
+      LOADING_CONFIG.retryDelay,
+      LOADING_CONFIG.backoffFactor
+    );
+    
+    const manifest = await response.json();
+    console.log(`Successfully loaded manifest from: ${url}`);
+    return manifest;
+    
+  } catch (error) {
+    console.warn(`Failed to load manifest from ${url}:`, error.message);
+    throw error;
+  }
+}
+
+async function loadCatalog() {
+  const catalog = document.getElementById('catalog');
+  const loadingDiv = document.getElementById('catalog-loading');
+  const loadingDetails = document.getElementById('loading-details');
+  
+  // Show loading indicator
+  if (loadingDiv) {
+    loadingDiv.style.display = 'block';
+  }
+  catalog.innerHTML = ''; // Clear any previous content
+  
+  let lastError;
+  
+  // Try each URL in sequence
+  for (let i = 0; i < MANIFEST_URLS.length; i++) {
+    const url = MANIFEST_URLS[i];
+    
+    try {
+      const manifest = await loadManifestFromUrl(url, i, MANIFEST_URLS.length);
+      
+      // Successfully loaded manifest
+      if (loadingDiv) {
+        loadingDiv.style.display = 'none';
+      }
+      
+      // baseUrl opsional (fallback ke string kosong)
+      const baseUrl = (manifest.baseUrl || '').trim();
+      const tiers = Array.isArray(manifest.tiers) ? manifest.tiers : [];
+      
+      // render tiap tier
+      tiers.forEach(tier => {
+        const section = buildTierSection(tier, baseUrl);
+        catalog.appendChild(section);
+      });
+      
+      console.log(`Catalog loaded successfully from URL ${i + 1}/${MANIFEST_URLS.length}`);
+      return; // Success! Exit function
+      
+    } catch (error) {
+      lastError = error;
+      console.error(`Failed to load from URL ${i + 1}:`, error.message);
+      
+      // Continue to next URL unless this is the last one
+      if (i < MANIFEST_URLS.length - 1) {
+        if (loadingDetails) {
+          try {
+            const hostname = new URL(url).hostname;
+            loadingDetails.textContent = `Falha no ${hostname}. Tentando próximo...`;
+          } catch {
+            loadingDetails.textContent = `Falha no servidor local. Tentando próximo...`;
+          }
+        }
+        // Small delay before trying next URL
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+  }
+  
+  // If we get here, all URLs failed
+  if (loadingDiv) {
+    loadingDiv.style.display = 'none';
+  }
+  
+  console.error('All manifest URLs failed:', lastError);
+  
+  // Show enhanced error message with retry option
+  catalog.innerHTML = `
+    <div class="error-message">
+      <p><strong>Falha ao carregar catálogo</strong></p>
+      <p>Não foi possível conectar aos servidores. Isso pode ser devido a:</p>
+      <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+        <li>Problemas de conexão com a internet</li>
+        <li>Bloqueios de rede ou firewall</li>
+        <li>Servidores temporariamente indisponíveis</li>
+      </ul>
+      <button class="retry-button" onclick="loadCatalog()">
+        Tentar Novamente
+      </button>
+      <p style="font-size: 0.8rem; margin-top: 15px; color: #888;">
+        Erro técnico: ${lastError.message}
+      </p>
+    </div>
+  `;
 }
 
 /* ========================================
