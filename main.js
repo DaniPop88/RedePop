@@ -238,27 +238,38 @@ fullNameInput.addEventListener('input', function() {
    - POPBRA: 4-8 digit
    - POPDEZ: 9-12 digit
 ======================================== */
-const platformSelect = document.getElementById('platform');
-const gameIdInput = document.getElementById('gameId');
-
 function getGameIdConfig() {
   const platform = platformSelect.value;
-  if (platform === 'POPBRA') {
+  
+  // Plataformas com regra de 4-8 dígitos (como POPBRA)
+  const shortDigitPlatforms = [
+    'POPBRA', 'POP888', 'POP678', 'POPPG', 
+    'POP555', 'POPLUA', 'POPBEM', 'POPCEU'
+  ];
+  
+  // Plataformas com regra de 9-12 dígitos (como POPDEZ)
+  const longDigitPlatforms = [
+    'POPDEZ', 'POPWB', 'POPBOA'
+  ];
+  
+  if (shortDigitPlatforms.includes(platform)) {
     return {
       regex: /^\d{4,8}$/,
       min: 4,
       max: 8,
-      msg: 'ID de Jogo (POPBRA) precisa 4-8 dígitos numéricos, sem espaço!'
+      msg: `ID de Jogo (${platform}) precisa 4-8 dígitos numéricos, sem espaço!`
     };
   }
-  if (platform === 'POPDEZ') {
+  
+  if (longDigitPlatforms.includes(platform)) {
     return {
       regex: /^\d{9,12}$/,
       min: 9,
       max: 12,
-      msg: 'ID de Jogo (POPDEZ) precisa 9-12 dígitos numéricos, sem espaço!'
+      msg: `ID de Jogo (${platform}) precisa 9-12 dígitos numéricos, sem espaço!`
     };
   }
+  
   // Default sementara sebelum memilih platform
   return {
     regex: /^\d{4,12}$/,
