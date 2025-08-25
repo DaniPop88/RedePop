@@ -4,7 +4,7 @@
    KONFIG
 ======================================== */
 const BACKEND_URL = "https://redepop-backend.onrender.com";
-const MANIFEST_URL = window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@7db6c484b9f0ccd52228bb343f8b1a4216c86233/manifest.json";
+const MANIFEST_URL = window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json";
 
 /* ========================================
    DOM: MODAL
