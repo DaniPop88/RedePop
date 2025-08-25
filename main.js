@@ -235,37 +235,47 @@ fullNameInput.addEventListener('input', function() {
 
 /* ========================================
    Game ID Validation dinamis (berdasarkan platform)
-   - POPBRA: 4-8 digit
-   - POPDEZ: 9-12 digit
+   - POPBRA group: 4-8 digit
+   - POPDEZ group: 9-12 digit
 ======================================== */
-const platformSelect = document.getElementById('platform');
-const gameIdInput = document.getElementById('gameId');
-
 function getGameIdConfig() {
   const platform = platformSelect.value;
-  if (platform === 'POPBRA','POP888','POP678','POPPG','POP555','POPLUA','POPBEM','POPCEU') {
-    return {
-      regex: /^\d{4,8}$/,
-      min: 4,
-      max: 8,
-      msg: 'ID de Jogo (POPBRA) precisa 4-8 dígitos numéricos, sem espaço!'
-    };
+  
+  // Menggunakan switch-case
+  switch (platform) {
+    case 'POPBRA':
+    case 'POP888':
+    case 'POP678':
+    case 'POPPG':
+    case 'POP555':
+    case 'POPLUA':
+    case 'POPBEM':
+    case 'POPCEU':
+      return {
+        regex: /^\d{3,8}$/,
+        min: 4,
+        max: 8,
+        msg: 'ID de Jogo precisa 3-8 dígitos numéricos, sem espaço!'
+      };
+    
+    case 'POPDEZ':
+    case 'POPWB':
+    case 'POPBOA':
+      return {
+        regex: /^\d{9,12}$/,
+        min: 9,
+        max: 12,
+        msg: 'ID de Jogo precisa 9-12 dígitos numéricos, sem espaço!'
+      };
+    
+    default:
+      return {
+        regex: /^\d{4,12}$/,
+        min: 3,
+        max: 12,
+        msg: 'Selecione a plataforma para validar o ID de Jogo'
+      };
   }
-  if (platform === 'POPDEZ','POPWB','POPBOA') {
-    return {
-      regex: /^\d{9,12}$/,
-      min: 9,
-      max: 12,
-      msg: 'ID de Jogo (POPDEZ) precisa 9-12 dígitos numéricos, sem espaço!'
-    };
-  }
-  // Default sementara sebelum memilih platform
-  return {
-    regex: /^\d{4,12}$/,
-    min: 4,
-    max: 12,
-    msg: 'Selecione a plataforma para validar o ID de Jogo'
-  };
 }
 
 function applyGameIdRules() {
