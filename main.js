@@ -87,11 +87,123 @@ function buildTierSection(tier, baseUrl) {
   return section;
 }
 
-async function loadCatalog() {
+// Catalog loading utilities
+function createCatalogSpinner() {
+  return `
+    <div style="text-align:center;padding:40px;">
+      <svg aria-label="Carregando catálogo..." width="40" height="40" viewBox="0 0 50 50" role="img">
+        <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="4" opacity="0.2"></circle>
+        <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="4" stroke-linecap="round" stroke-dasharray="1,150" stroke-dashoffset="0">
+          <animate attributeName="stroke-dasharray" values="1,150;90,150;90,150" dur="1.4s" repeatCount="indefinite"></animate>
+          <animate attributeName="stroke-dashoffset" values="0;-35;-124" dur="1.4s" repeatCount="indefinite"></animate>
+          <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.4s" repeatCount="indefinite"></animateTransform>
+        </circle>
+      </svg>
+      <p style="margin-top:15px;color:#666;">Carregando catálogo...</p>
+    </div>
+  `;
+}
+
+// CDN fallback sources
+const CDN_SOURCES = [
+  // Use the configured MANIFEST_URL as primary
+  MANIFEST_URL,
+  // Statically CDN as backup
+  "https://cdn.statically.io/gh/DaniPop88/RedePop/802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json",
+  // Raw GitHub as final fallback  
+  "https://raw.githubusercontent.com/DaniPop88/RedePop/802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json",
+  // Local fallback for testing
+  "./manifest.json"
+];
+
+// Network speed detection
+function detectNetworkSpeed() {
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (connection) {
+    const effectiveType = connection.effectiveType;
+    if (effectiveType === 'slow-2g' || effectiveType === '2g') {
+      return { timeout: 15000, label: 'lenta' };
+    } else if (effectiveType === '3g') {
+      return { timeout: 10000, label: 'média' };
+    }
+  }
+  return { timeout: 8000, label: 'normal' };
+}
+
+// Fetch with timeout
+async function fetchWithTimeout(url, options = {}) {
+  const networkSpeed = detectNetworkSpeed();
+  const timeout = options.timeout || networkSpeed.timeout;
+  
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+  
   try {
-    const res = await fetch(MANIFEST_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const manifest = await res.json();
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      cache: 'no-cache'
+    });
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    return response;
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') {
+      throw new Error(`Timeout após ${timeout/1000}s - conexão ${networkSpeed.label} detectada`);
+    }
+    throw err;
+  }
+}
+
+// Retry with exponential backoff
+async function retryWithBackoff(fn, maxRetries = 3, initialDelay = 1000) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn(attempt);
+    } catch (err) {
+      if (attempt === maxRetries) {
+        throw err;
+      }
+      
+      const delay = initialDelay * Math.pow(2, attempt - 1);
+      console.warn(`Tentativa ${attempt} falhou, tentando novamente em ${delay}ms:`, err.message);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+}
+
+async function loadCatalog() {
+  // Show loading indicator
+  catalog.innerHTML = createCatalogSpinner();
+  
+  try {
+    const manifest = await retryWithBackoff(async (attempt) => {
+      // Try CDN sources in order
+      for (let i = 0; i < CDN_SOURCES.length; i++) {
+        const url = CDN_SOURCES[i];
+        const cdnName = url.includes('jsdelivr') ? 'jsDelivr' : 
+                        url.includes('statically') ? 'Statically' : 'GitHub';
+        
+        try {
+          console.log(`Tentativa ${attempt}: Carregando de ${cdnName}...`);
+          const res = await fetchWithTimeout(url);
+          const data = await res.json();
+          console.log(`Sucesso: Manifest carregado de ${cdnName}`);
+          return data;
+        } catch (err) {
+          console.warn(`${cdnName} falhou:`, err.message);
+          if (i === CDN_SOURCES.length - 1) {
+            throw new Error(`Todas as fontes CDN falharam na tentativa ${attempt}`);
+          }
+          // Continue to next CDN source
+        }
+      }
+    }, 3, 1500); // 3 retries, starting with 1.5s delay
 
     // baseUrl opsional (fallback ke string kosong)
     const baseUrl = (manifest.baseUrl || '').trim();
@@ -100,14 +212,56 @@ async function loadCatalog() {
     // bersihkan container
     catalog.innerHTML = '';
 
+    if (tiers.length === 0) {
+      catalog.innerHTML = '<p style="text-align:center;padding:40px;color:#666;">Nenhum produto encontrado no catálogo.</p>';
+      return;
+    }
+
     // render tiap tier
     tiers.forEach(tier => {
       const section = buildTierSection(tier, baseUrl);
       catalog.appendChild(section);
     });
+    
+    console.log(`Catálogo carregado com sucesso: ${tiers.length} categorias`);
+    
   } catch (err) {
-    console.error('Gagal memuat manifest:', err);
-    catalog.innerHTML = '<p style="color:red;text-align:center">Falha ao carregar catálogo. Tente novamente mais tarde.</p>';
+    console.error('Erro ao carregar catálogo:', err);
+    
+    // Show detailed error message with retry option
+    const networkSpeed = detectNetworkSpeed();
+    const errorHtml = `
+      <div style="text-align:center;padding:40px;max-width:600px;margin:0 auto;">
+        <div style="color:#eb0b0a;font-size:48px;margin-bottom:20px;">⚠️</div>
+        <h3 style="color:#eb0b0a;margin-bottom:15px;">Falha ao carregar catálogo</h3>
+        <p style="color:#666;margin-bottom:10px;font-size:14px;">
+          <strong>Erro:</strong> ${err.message}
+        </p>
+        <p style="color:#666;margin-bottom:20px;font-size:14px;">
+          <strong>Conexão detectada:</strong> ${networkSpeed.label}
+        </p>
+        <div style="margin-bottom:20px;">
+          <p style="color:#666;font-size:14px;">Possíveis causas:</p>
+          <ul style="text-align:left;display:inline-block;color:#666;font-size:14px;">
+            <li>Conexão de internet instável</li>
+            <li>CDN indisponível na sua região</li>
+            <li>Firewall ou proxy bloqueando acesso</li>
+          </ul>
+        </div>
+        <button 
+          onclick="loadCatalog()" 
+          style="background:#eb0b0a;color:white;border:none;padding:12px 24px;border-radius:5px;cursor:pointer;font-size:14px;"
+          onmouseover="this.style.background='#d60a09'" 
+          onmouseout="this.style.background='#eb0b0a'"
+        >
+          🔄 Tentar Novamente
+        </button>
+        <p style="color:#999;margin-top:15px;font-size:12px;">
+          Se o problema persistir, entre em contato com o suporte.
+        </p>
+      </div>
+    `;
+    catalog.innerHTML = errorHtml;
   }
 }
 
