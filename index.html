@@ -37,6 +37,7 @@
 
   <main>
     <div class="container">
+      <!-- KATALOG AKAN DIRENDER OTOMATIS DARI manifest.json -->
       <div id="catalog"></div>
       <noscript>Ative o JavaScript para ver o catálogo.</noscript>
     </div>
@@ -67,7 +68,7 @@
     </div>
   </header>
 
-  <!-- MODAL PEDIDO -->
+  <!-- ATURAN UNTUK FORM ORDER -->
   <div class="modal" id="orderModal">
     <div class="modal-content order-modal-content">
       <button class="modal-close-btn" id="orderModalCloseBtn">&times;</button>
@@ -79,6 +80,7 @@
       <form id="orderForm">
         <input type="hidden" name="productId" id="orderProductId">
         
+        <!-- Divider -->
         <div class="form-divider"></div>
         
         <label for="fullName"><strong>NOME COMPLETO</strong></label>
@@ -143,80 +145,84 @@
         <input type="text" name="address" id="address" required placeholder="Ex. Apto 101, Conj. 3, Bloco B">
         <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite apartamento, bloco, conjunto ou unidade, etc.</small>
         
-        <div class="form-divider"></div>
+          <!-- Divider -->
+          <div class="form-divider"></div>
 
-        <!-- PLATFORM (ATUALIZADO) -->
-        <label for="platform"><strong>PLATAFORMA</strong></label>
-        <select name="platform" id="platform" required>
-          <option value="" disabled selected>Escolha a plataforma</option>
-          <!-- Grupo A (4-8 dígitos) -->
-          <option value="POPBRA">POPBRA</option>
-          <option value="POP888">POP888</option>
+          <!-- Bagian bawah form -->
+          <label for="platform"><strong>PLATAFORMA</strong></label>
+          <select name="platform" id="platform" required>
+            <option value="" disabled selected>Escolha a plataforma</option>
+            <option value="POPBRA">POPBRA</option>
+            <option value="POP888">POP888</option>
             <option value="POP678">POP678</option>
-          <option value="POPPG">POPPG</option>
-          <option value="POP555">POP555</option>
-          <option value="POPLUA">POPLUA</option>
-          <option value="POPBEM">POPBEM</option>
-          <option value="POPCEU">POPCEU</option>
-          <!-- Grupo B (9-12 dígitos) -->
-          <option value="POPDEZ">POPDEZ</option>
-          <option value="POPWB">POPWB</option>
-          <option value="POPBOA">POPBOA</option>
-        </select>
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Escolha a plataforma correta</small>
+            <option value="POPPG">POPPG</option>
+            <option value="POP555">POP555</option>
+            <option value="POPLUA">POPLUA</option>
+            <option value="POPBEM">POPBEM</option>
+            <option value="POPCEU">POPCEU</option>
+            <option value="POPDEZ">POPDEZ</option>
+            <option value="POPWB">POPWB</option>
+            <option value="POPBOA">POPBOA</option>
+          </select>
+          <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Escolha a plataforma correta</small>
           
-        <label for="gameId"><strong>ID DE JOGO</strong></label>
-        <input
-          type="text"
-          name="gameId"
-          id="gameId"
-          required
-          maxlength="12"
-          placeholder="Selecione a plataforma para ver o formato"
-        />
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite ID de Jogo na POP</small>
+          <!-- ganti bagian input gameId ini -->
+          <label for="gameId"><strong>ID DE JOGO</strong></label>
+          <input
+            type="text"
+            name="gameId"
+            id="gameId"
+            required
+            maxlength="12"
+            placeholder="Selecione a plataforma para ver o formato"
+          />
+          <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite ID de Jogo na POP</small>
         
-        <label for="cpf"><strong>CPF</strong></label>
-        <input type="text" name="cpf" id="cpf" required maxlength="14" placeholder="000.000.000-00">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite CPF já registrado na POP</small>
+          <label for="cpf"><strong>CPF</strong></label>
+          <input type="text" name="cpf" id="cpf" required maxlength="14" placeholder="000.000.000-00">
+          <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite CPF já registrado na POP</small>
           
-        <label for="secretCode"><strong>CÓDIGO SECRETO</strong></label>
-        <div style="position:relative">
-          <input type="text" name="secretCode" id="secretCode" required maxlength="8" style="padding-right:34px;">
-          <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;"></span>
-        </div>
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;"><em> Psiu!</em> Solicite o código ao seu mentor!</small>
-        <button type="submit" id="orderSubmitBtn" disabled>ENVIAR PEDIDO</button>
-        <div id="orderFormMessage"></div>
+          <label for="secretCode"><strong>CÓDIGO SECRETO</strong></label>
+          <div style="position:relative">
+            <input type="text" name="secretCode" id="secretCode" required maxlength="8" style="padding-right:34px;">
+            <!-- Status spinner/icon muncul di kanan input -->
+            <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;"></span>
+          </div>
+          <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;"><em> Psiu!</em> Solicite o código ao seu mentor!</small>
+          <button type="submit" id="orderSubmitBtn" disabled>ENVIAR PEDIDO</button>
+          <div id="orderFormMessage"></div>
 
-        <div id="orderFormTC">
-          <div style="text-align:center; font-weight:bold; color:#F87171; font-size:1rem; margin-bottom:10px;">
-            ⚠️ ATENÇÃO ⚠️
+          <!-- T&C Section: Added below submit button -->
+          <div id="orderFormTC">
+            <div style="text-align:center; font-weight:bold; color:#F87171; font-size:1rem; margin-bottom:10px;">
+              ⚠️ ATENÇÃO ⚠️
+            </div>
+            <ol>
+              <li>Certifique-se de inserir seus dados corretamente; caso contrário, o pedido será cancelado e o prêmio não será entregue.</li>
+              <li>O Código Secreto é único e só pode ser usado uma vez, preencha todas as informações corretamente.</li>
+              <li>Não nos responsabilizamos por atrasos causados por dados incorretos ou fatores externos.</li>
+            </ol>
           </div>
-          <ol>
-            <li>Certifique-se de inserir seus dados corretamente; caso contrário, o pedido será cancelado e o prêmio não será entregue.</li>
-            <li>O Código Secreto é único e só pode ser usado uma vez, preencha todas as informações corretamente.</li>
-            <li>Não nos responsabilizamos por atrasos causados por dados incorretos ou fatores externos.</li>
-          </ol>
-        </div>
           
-        <div class="mentor-contact-section" style="margin-top:18px;">
-          <div class="mentor-contact-title">Ainda não tem seu código secreto? Encontre um mentor</div>
-          <div class="mentor-contact-btn-row">
-            <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
-              <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
-              <span>WHATSAPP</span>
-            </a>
-            <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
-              <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
-              <span>TELEGRAM</span>
-            </a>
+          <!-- Mentor Contact Section below T&C -->
+          <div class="mentor-contact-section" style="margin-top:18px;">
+            <div class="mentor-contact-title">Ainda não tem seu código secreto? Encontre um mentor</div>
+            <div class="mentor-contact-btn-row">
+              <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
+                <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
+                <span>WHATSAPP</span>
+              </a>
+              <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
+                <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
+                <span>TELEGRAM</span>
+              </a>
+            </div>
           </div>
-        </div>
       </form>
     </div>
   </div>
 
+  <!-- URL manifest.json (pakai jsDelivr dari repo kamu) -->
   <script>
     window.REDEPOP_MANIFEST_URL = "https://cdn.jsdelivr.net/gh/DaniPop88/RedePop@802e4f4bb53a9e10a76191186d6509cadffc2dc9/manifest.json";
   </script>
