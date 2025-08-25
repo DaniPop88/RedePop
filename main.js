@@ -253,7 +253,7 @@ function getGameIdConfig() {
     case 'POPCEU':
       return {
         regex: /^\d{3,8}$/,
-        min: 4,
+        min: 3,
         max: 8,
         msg: 'ID de Jogo precisa 3-8 dígitos numéricos, sem espaço!'
       };
@@ -270,7 +270,7 @@ function getGameIdConfig() {
     
     default:
       return {
-        regex: /^\d{4,12}$/,
+        regex: /^\d{3,12}$/,
         min: 3,
         max: 12,
         msg: 'Selecione a plataforma para validar o ID de Jogo'
