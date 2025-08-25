@@ -445,3 +445,62 @@ img { max-width: 100%; display: block; -webkit-user-drag: none; user-select: non
   font-weight: bold;
   font-size: 0.97rem;
 }
+
+/* ================== CATALOG LOADING ================== */
+.catalog-loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: #444;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 20px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--red-top);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--red-top);
+}
+
+.loading-details {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+.error-message {
+  color: #eb0b0a;
+  text-align: center;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.retry-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--red-gradient);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retry-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(235, 11, 10, 0.3);
+}
