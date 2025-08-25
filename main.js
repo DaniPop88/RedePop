@@ -17,6 +17,12 @@ const orderSubmitBtn = document.getElementById('orderSubmitBtn');
 const orderFormMessage = document.getElementById('orderFormMessage');
 
 /* ========================================
+   DOM: FORM ELEMENTS
+======================================== */
+const platformSelect = document.getElementById('platform');
+const gameIdInput = document.getElementById('gameId');
+
+/* ========================================
    UTIL: UPDATE INFO MODAL
 ======================================== */
 function updateOrderProductInfo(name, img, secret) {
