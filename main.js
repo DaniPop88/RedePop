@@ -681,3 +681,21 @@ criticalImages.forEach(src => {
   const img = new Image();
   img.src = src;
 });
+
+// Tambahkan retry logic dalam loadCatalog()
+const maxRetries = 3;
+let retryCount = 0;
+
+async function fetchWithRetry(url, options) {
+  while (retryCount < maxRetries) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) return response;
+      throw new Error(`HTTP ${response.status}`);
+    } catch (error) {
+      retryCount++;
+      if (retryCount === maxRetries) throw error;
+      await new Promise(resolve => setTimeout(resolve, 1000 * retryCount));
+    }
+  }
+}
