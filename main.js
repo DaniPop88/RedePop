@@ -17,12 +17,6 @@ const orderSubmitBtn = document.getElementById('orderSubmitBtn');
 const orderFormMessage = document.getElementById('orderFormMessage');
 
 /* ========================================
-   DOM: FORM ELEMENTS
-======================================== */
-const platformSelect = document.getElementById('platform');
-const gameIdInput = document.getElementById('gameId');
-
-/* ========================================
    UTIL: UPDATE INFO MODAL
 ======================================== */
 function updateOrderProductInfo(name, img, secret) {
@@ -241,9 +235,12 @@ fullNameInput.addEventListener('input', function() {
 
 /* ========================================
    Game ID Validation dinamis (berdasarkan platform)
-   - POPBRA: 4-8 digit
-   - POPDEZ: 9-12 digit
+   - POPBRA, POP888, POP678, POPPG, POP555, POPLUA, POPBEM, POPCEU: 4-8 digit
+   - POPDEZ, POPWB, POPBOA: 9-12 digit
 ======================================== */
+const platformSelect = document.getElementById('platform');
+const gameIdInput = document.getElementById('gameId');
+
 function getGameIdConfig() {
   const platform = platformSelect.value;
   
