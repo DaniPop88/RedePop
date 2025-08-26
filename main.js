@@ -44,14 +44,33 @@ function createIntersectionObserver() {
       if (entry.isIntersecting) {
         const img = entry.target;
         if (img.dataset.src) {
+          perfMetrics.totalImages++;
           img.classList.add('loading');
-          img.src = img.dataset.src;
-          img.onload = () => {
+          
+          // Create a new image to preload
+          const newImg = new Image();
+          newImg.onload = () => {
+            img.src = newImg.src;
             img.classList.remove('loading');
             img.classList.add('loaded');
+            perfMetrics.imagesLoaded++;
+            
+            // Report loading progress
+            const progress = (perfMetrics.imagesLoaded / perfMetrics.totalImages) * 100;
+            if (progress % 25 === 0) { // Log every 25% progress
+              console.log(`Image loading progress: ${progress}%`);
+            }
           };
+          newImg.onerror = () => {
+            img.classList.remove('loading');
+            img.classList.add('error');
+            // Show placeholder
+            img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="100%" height="100%" fill="%23f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23999">Imagem não disponível</text></svg>';
+          };
+          newImg.src = img.dataset.src;
           img.removeAttribute('data-src');
         }
+        entry.target.observer?.unobserve(entry.target);
       }
     });
   }, { 
@@ -187,11 +206,14 @@ async function loadCatalog() {
       loadingOverlay.style.display = 'flex';
     }
     
-    // Simulate minimum loading time for smooth UX
-    const [response] = await Promise.all([
-      fetch(MANIFEST_URL, { cache: 'no-cache' }),
-      new Promise(resolve => setTimeout(resolve, 1500)) // Minimum 1.5s loading
-    ]);
+    // Smart loading - parallel fetch with minimum visual feedback
+    const startTime = performance.now();
+    const response = await fetchWithRetry(MANIFEST_URL, { 
+      cache: 'force-cache',
+      headers: {
+        'Cache-Control': 'max-age=300' // 5 minutes cache
+      }
+    });
     
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     
@@ -216,7 +238,38 @@ async function loadCatalog() {
       images.forEach(img => imageObserver.observe(img));
     });
     
-    // Hide loading overlay
+    perfMetrics.loadTime = performance.now() - perfMetrics.startTime;
+    console.log(`Catalog loaded in ${perfMetrics.loadTime.toFixed(2)}ms`);
+    
+    // Smart loading overlay hide - ensure minimum visual feedback
+    const loadTime = performance.now() - startTime;
+    const minShowTime = loadTime < 800 ? 800 - loadTime : 0;
+    
+    if (loadingOverlay) {
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+        }, 500);
+      }, minShowTime);
+    }
+    
+  } catch (err) {
+    console.error('Failed to load manifest:', err);
+    
+    // Show user-friendly error with retry option
+    catalog.innerHTML = `
+      <div style="text-align:center;padding:40px;color:#333;">
+        <h3 style="color:#eb0b0a;margin-bottom:16px;">⚠️ Erro ao Carregar Catálogo</h3>
+        <p style="margin-bottom:20px;">Não foi possível carregar o catálogo de prêmios.</p>
+        <p style="font-size:0.9rem;color:#666;margin-bottom:20px;">Erro: ${err.message}</p>
+        <button onclick="loadCatalog()" style="background:var(--red-gradient);color:white;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:600;">
+          🔄 Tentar Novamente
+        </button>
+      </div>
+    `;
+    
+    // Hide loading overlay on error
     if (loadingOverlay) {
       setTimeout(() => {
         loadingOverlay.classList.add('hidden');
@@ -224,20 +277,6 @@ async function loadCatalog() {
           loadingOverlay.style.display = 'none';
         }, 500);
       }, 500);
-    }
-    
-  } catch (err) {
-    console.error('Gagal memuat manifest:', err);
-    catalog.innerHTML = '<p style="color:red;text-align:center;padding:20px;">Falha ao carregar catálogo. Tente novamente mais tarde.</p>';
-    
-    // Hide loading overlay even on error
-    if (loadingOverlay) {
-      setTimeout(() => {
-        loadingOverlay.classList.add('hidden');
-        setTimeout(() => {
-          loadingOverlay.style.display = 'none';
-        }, 500);
-      }, 1000);
     }
   }
 }
@@ -657,6 +696,27 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ========================================
    PERFORMANCE OPTIMIZATIONS
 ======================================== */
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('SW registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+
+// Performance monitoring
+const perfMetrics = {
+  startTime: performance.now(),
+  loadTime: null,
+  imagesLoaded: 0,
+  totalImages: 0
+};
+
 // Throttle scroll events for better performance
 let ticking = false;
 function updateOnScroll() {
@@ -682,20 +742,35 @@ criticalImages.forEach(src => {
   img.src = src;
 });
 
-// Tambahkan retry logic dalam loadCatalog()
-const maxRetries = 3;
-let retryCount = 0;
-
-async function fetchWithRetry(url, options) {
+async function fetchWithRetry(url, options = {}) {
+  let retryCount = 0;
+  const maxRetries = 3;
+  const baseDelay = 1000;
+  
   while (retryCount < maxRetries) {
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          'Cache-Control': 'max-age=300',
+          ...options.headers
+        }
+      });
       if (response.ok) return response;
-      throw new Error(`HTTP ${response.status}`);
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     } catch (error) {
       retryCount++;
-      if (retryCount === maxRetries) throw error;
-      await new Promise(resolve => setTimeout(resolve, 1000 * retryCount));
+      console.warn(`Fetch attempt ${retryCount} failed:`, error.message);
+      
+      if (retryCount === maxRetries) {
+        console.error('All fetch attempts failed:', error);
+        throw error;
+      }
+      
+      // Exponential backoff with jitter
+      const delay = baseDelay * Math.pow(2, retryCount - 1) + Math.random() * 1000;
+      console.log(`Retrying in ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
 }
