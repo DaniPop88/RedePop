@@ -47,7 +47,7 @@ function createIntersectionObserver() {
           perfMetrics.totalImages++;
           img.classList.add('loading');
           
-          // Create a new image to preload
+          // Create a new image to preload with retry logic
           const newImg = new Image();
           newImg.onload = () => {
             img.src = newImg.src;
@@ -56,25 +56,36 @@ function createIntersectionObserver() {
             perfMetrics.imagesLoaded++;
             
             // Report loading progress
-            const progress = (perfMetrics.imagesLoaded / perfMetrics.totalImages) * 100;
+            const progress = Math.round((perfMetrics.imagesLoaded / perfMetrics.totalImages) * 100);
             if (progress % 25 === 0) { // Log every 25% progress
-              console.log(`Image loading progress: ${progress}%`);
+              console.log(`🖼️ Image loading progress: ${progress}%`);
             }
           };
           newImg.onerror = () => {
             img.classList.remove('loading');
             img.classList.add('error');
-            // Show placeholder
-            img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="100%" height="100%" fill="%23f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23999">Imagem não disponível</text></svg>';
+            // Show placeholder SVG
+            img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+              <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250">
+                <rect width="100%" height="100%" fill="#f8f9fa"/>
+                <text x="50%" y="45%" text-anchor="middle" fill="#999" font-family="Arial, sans-serif" font-size="14">
+                  Imagem não
+                </text>
+                <text x="50%" y="55%" text-anchor="middle" fill="#999" font-family="Arial, sans-serif" font-size="14">
+                  disponível
+                </text>
+              </svg>
+            `);
+            console.warn('Failed to load image:', img.dataset.src);
           };
           newImg.src = img.dataset.src;
           img.removeAttribute('data-src');
         }
-        entry.target.observer?.unobserve(entry.target);
+        entry.target.observer?.unobserve?.(entry.target);
       }
     });
   }, { 
-    rootMargin: '50px',
+    rootMargin: '100px', // Increased for better UX
     threshold: 0.1 
   });
 }
@@ -130,11 +141,12 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured }, index) {
     card.appendChild(badge);
   }
   
-  // Lazy loading image
+  // Lazy loading image with modern attributes
   const img = el('img', 'product-img', { 
     'data-src': src, 
     alt: name,
-    loading: 'lazy'
+    loading: 'lazy',
+    decoding: 'async'
   });
   
   const title = el('div', 'product-name', { text: name });
@@ -691,6 +703,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Load catalog
   loadCatalog();
+  
+  // Log performance metrics after initial load
+  setTimeout(() => perfMetrics.logMetrics(), 2000);
 });
 
 /* ========================================
@@ -714,7 +729,18 @@ const perfMetrics = {
   startTime: performance.now(),
   loadTime: null,
   imagesLoaded: 0,
-  totalImages: 0
+  totalImages: 0,
+  
+  // Log performance metrics
+  logMetrics() {
+    console.group('🚀 RedePop Performance Metrics');
+    console.log(`⏱️ Total load time: ${this.loadTime?.toFixed(2)}ms`);
+    console.log(`🖼️ Images loaded: ${this.imagesLoaded}/${this.totalImages}`);
+    console.log(`💾 Service Worker: ${navigator.serviceWorker ? 'Supported' : 'Not supported'}`);
+    console.log(`📶 Connection: ${navigator.connection?.effectiveType || 'Unknown'}`);
+    console.log(`🔄 Page visibility: ${document.visibilityState}`);
+    console.groupEnd();
+  }
 };
 
 // Throttle scroll events for better performance

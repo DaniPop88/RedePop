@@ -1,0 +1,28 @@
+{
+  "name": "REDE POP - Catálogo de Prêmios",
+  "short_name": "REDE POP",
+  "description": "Catálogo de prêmios da plataforma POP com os maiores bônus do Brasil",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eb0b0a",
+  "theme_color": "#eb0b0a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/BKdsNcw0/Favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "https://i.ibb.co/BKdsNcw0/Favicon.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "lang": "pt-BR",
+  "scope": "/",
+  "prefer_related_applications": false
+}
