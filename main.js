@@ -380,7 +380,8 @@ const RULE_GROUP_A = new Set(['POPBRA','POP888','POP678','POPPG','POP555','POPLU
 const RULE_GROUP_B = new Set(['POPDEZ','POPWB','POPBOA']);
 
 function getGameIdConfig() {
-  if (!platformSelect) {
+  // ADD SAFETY CHECK
+  if (!platformSelect || !platformSelect.value) {
     return { regex:/^\d{4,12}$/, min:4, max:12, msg:'Selecione a plataforma para validar o ID de Jogo' };
   }
   const platform = platformSelect.value;
@@ -394,8 +395,10 @@ function getGameIdConfig() {
 }
 
 function applyGameIdRules() {
+  // ADD SAFETY CHECK
+  if (!gameIdInput || !platformSelect) return;
+  
   const { min, max } = getGameIdConfig();
-  if (!gameIdInput) return;
   gameIdInput.setAttribute('minlength', String(min));
   gameIdInput.setAttribute('maxlength', String(max));
   gameIdInput.setAttribute('pattern', `\\d{${min},${max}}`);
@@ -404,7 +407,9 @@ function applyGameIdRules() {
 }
 
 function validateGameId() {
-  if (!gameIdInput) return;
+  // ADD SAFETY CHECK
+  if (!gameIdInput || !platformSelect) return;
+  
   const { regex, msg } = getGameIdConfig();
   const value = gameIdInput.value.trim();
 
