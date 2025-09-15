@@ -37,7 +37,10 @@
         { "file": "inv2p12.png", "name": "KIT FACAS CHURRASCO 6 PEÇAS PROFISSIONAL ANTIADERENTE" },
         { "file": "inv2p13.png", "name": "JOGO PULA PIRATA PEQUENO – BRINQUEDO DE MESA FAMÍLIA" },
         { "file": "inv2p14.png", "name": "ABACATE BRINQUEDO INTERATIVO COM CATNIP PARA GATOS" },
-        { "file": "inv2p15.png", "name": "TAPETE BANHEIRO OVAL ANTIDERRAPANTE SORTIDO" }
+        { "file": "inv2p15.png", "name": "TAPETE BANHEIRO OVAL ANTIDERRAPANTE SORTIDO" },
+        { "file": "inv2p16.png", "name": "FONES BLUETOOTH E6S TWS 5.2" },
+        { "file": "inv2p17.png", "name": "DIFUSOR UMIDIFICADOR DE AR USB LED PORTÁTIL" },
+        { "file": "inv2p18.png", "name": "LIXADOR DE PÉ ELÉTRICO PORTÁTIL" }
       ]
     },
     {
@@ -59,7 +62,10 @@
         { "file": "inv3p12.png", "name": "LUMINÁRIA GALÁXIA LED" },
         { "file": "inv3p13.png", "name": "CARREGADOR CARRO 5V USB C" },
         { "file": "inv3p14.png", "name": "CARREGADOR USB C PD 120W" },
-        { "file": "inv3p15.png", "name": "GLOBO LED RGB FESTA" }
+        { "file": "inv3p15.png", "name": "GLOBO LED RGB FESTA" },
+        { "file": "inv3p16.png", "name": "BOLSA TRANSVERSAL FEMININA NYLON IMPERMEÁVEL" },
+        { "file": "inv3p17.png", "name": "REPELENTE ELETRÔNICO ULTRASSÔNICO BIVOLT" },
+        { "file": "inv3p18.png", "name": "BARBEADOR E MAQUINA DE CORTE DRAGÃO KIT MASCULINO" }
       ]
     },
     {
@@ -81,7 +87,10 @@
         { "file": "inv5p12.png", "name": "COPO TÉRMICO INOX 900ML TAMPA CANUDO" },
         { "file": "inv5p13.png", "name": "FATIADOR LEGUMES AÇO INOX MULTIUSO" },
         { "file": "inv5p14.png", "name": "FATIADOR COZINHA PROFISSIONAL 12 EM 1 INOX" },
-        { "file": "inv5p15.png", "name": "RALADOR MULTIUSO 3 EM 1 VERDE" }
+        { "file": "inv5p15.png", "name": "RALADOR MULTIUSO 3 EM 1 VERDE" },
+        { "file": "inv5p16.png", "name": "JOGO DE COZINHA 12PÇS SILICONE SUPORTE CABO MADEIRA" },
+        { "file": "inv5p17.png", "name": "BOLSA TIRACOLO GRANDE DE OMBRO VIAGEM" },
+        { "file": "inv5p18.png", "name": "BALANÇA CORPORAL DIGITAL BLUETOOTH ATÉ 180KG" }
       ]
     },
     {
@@ -109,7 +118,8 @@
         { "file": "inv10p18.png", "name": "PANELA ELÉTRICA WAFFLE QUICHE EGG 220V" },
         { "file": "inv10p19.png", "name": "PICADOR TRITURADOR ELÉTRICO 2L INOX 110V" },
         { "file": "inv10p20.png", "name": "COZEDOR ELÉTRICO MULTIFUNCIONAL OVO MILHO VAPOR" },
-        { "file": "inv10p21.png", "name": "COPO LIQUIDIFICADOR MONDIAL INOX TURBO L1000-L1200" }
+        { "file": "inv10p21.png", "name": "COPO LIQUIDIFICADOR MONDIAL INOX TURBO L1000-L1200" },
+        { "file": "inv10p22.png", "name": "ESCOVA SECADORA 5 EM 1 MODELADOR ALISADOR 110V" }
       ]
     },
     {
