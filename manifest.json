@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@f831bc73ecae19489e3666d74eacea5943bda039/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@8fdf9601d485779e6a61d5f11426595dc7c9d150/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -138,7 +138,8 @@
         { "file": "inv20p6.png", "name": "MOUSE GAMER CYREX 20000DPI LED RGB" },
         { "file": "inv20p7.png", "name": "TRIPÉ SUPORTE CAIXA SOM PROFISSIONAL" },
         { "file": "inv20p8.png", "name": "PASSADEIRA 2 EM 1 FERRO A VAPOR 800W" },
-        { "file": "inv20p9.png", "name": "VIDEOGAME PORTÁTIL 10MIL 2 CONTROLES RETRO" }
+        { "file": "inv20p9.png", "name": "VIDEOGAME PORTÁTIL 10MIL 2 CONTROLES RETRO" },
+        { "file": "inv20p10.png", "name": "BICICLETA DE EQUILÍBRIO INFANTIL 4 RODAS SEM PEDAL" }
       ]
     }
   ]
