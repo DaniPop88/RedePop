@@ -350,6 +350,19 @@ function validateCPF(cpf) {
 
 let isCPFValid = false, isSecretCodeValid = false;
 
+// Filter input agar hanya angka dan maksimal 11 digit
+const cpfInput = document.getElementById('cpf');
+if (cpfInput) {
+  cpfInput.addEventListener('input', function() {
+    // Hapus semua karakter kecuali angka
+    this.value = this.value.replace(/[^\d]/g, '');
+    // Batasi maksimal 11 digit
+    if (this.value.length > 11) {
+      this.value = this.value.slice(0, 11);
+    }
+  });
+}
+
 /* ========================================
    Nama Completo Validation (Tidak boleh angka)
 ======================================== */
