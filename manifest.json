@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@8fdf9601d485779e6a61d5f11426595dc7c9d150/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@d544f3bfa79a7c61c5a47596634be4d63feabf14/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -65,7 +65,9 @@
         { "file": "inv3p15.png", "name": "GLOBO LED RGB FESTA" },
         { "file": "inv3p16.png", "name": "BOLSA TRANSVERSAL FEMININA NYLON IMPERMEÁVEL" },
         { "file": "inv3p17.png", "name": "REPELENTE ELETRÔNICO ULTRASSÔNICO BIVOLT" },
-        { "file": "inv3p18.png", "name": "BARBEADOR E MAQUINA DE CORTE DRAGÃO KIT MASCULINO" }
+        { "file": "inv3p18.png", "name": "BARBEADOR E MAQUINA DE CORTE DRAGÃO KIT MASCULINO" },
+        { "file": "inv3p19.png", "name": "FRIGIDEIRA ANTIADERENTE 12CM TEFLON PREMIUM OVOS" },
+        { "file": "inv3p20.png", "name": "KIT 3 NECESSAIRE TRANSPARENTE IMPERMEÁVEL WASHBAG" }
       ]
     },
     {
@@ -90,7 +92,10 @@
         { "file": "inv5p15.png", "name": "RALADOR MULTIUSO 3 EM 1 VERDE" },
         { "file": "inv5p16.png", "name": "JOGO DE COZINHA 12PÇS SILICONE SUPORTE CABO MADEIRA" },
         { "file": "inv5p17.png", "name": "BOLSA TIRACOLO GRANDE DE OMBRO VIAGEM" },
-        { "file": "inv5p18.png", "name": "BALANÇA CORPORAL DIGITAL BLUETOOTH ATÉ 180KG" }
+        { "file": "inv5p18.png", "name": "BALANÇA CORPORAL DIGITAL BLUETOOTH ATÉ 180KG" },
+        { "file": "inv5p19.png", "name": "FRIGIDEIRA ANTIADERENTE 4 PARTES OVO ou HAMBÚRGUER" },
+        { "file": "inv5p20.png", "name": "FRIGIDEIRA ALTA 24CM TAMPA DE VIDRO + ESPÁTULA" },
+        { "file": "inv5p21.png", "name": "MINI FERRO DE PASSAR ROUPA VIAGEM BIVOLT" }
       ]
     },
     {
@@ -119,7 +124,12 @@
         { "file": "inv10p19.png", "name": "PICADOR TRITURADOR ELÉTRICO 2L INOX 110V" },
         { "file": "inv10p20.png", "name": "COZEDOR ELÉTRICO MULTIFUNCIONAL OVO MILHO VAPOR" },
         { "file": "inv10p21.png", "name": "COPO LIQUIDIFICADOR MONDIAL INOX TURBO L1000-L1200" },
-        { "file": "inv10p22.png", "name": "ESCOVA SECADORA 5 EM 1 MODELADOR ALISADOR 110V" }
+        { "file": "inv10p22.png", "name": "ESCOVA SECADORA 5 EM 1 MODELADOR ALISADOR 110V" },
+        { "file": "inv10p23.png", "name": "BOLA SOCIETY TOPPER SLICK CUP GRAMA SINTÉTICA" },
+        { "file": "inv10p24.png", "name": "MINI TRAVE FUTEBOL 76CM BOLA E BOMBA DM TOYS" },
+        { "file": "inv10p25.png", "name": "BOLA DE BASQUETE PENALTY PLAYOFF LARANJA" },
+        { "file": "inv10p26.png", "name": "ESPREMEDOR ELÉTRICO RECARREGÁVEL USB FRUTAS" },
+        { "file": "inv10p27.png", "name": "ESCOVA ELÉTRICA 9 EM 1 GIRATÓRIA" }
       ]
     },
     {
@@ -139,7 +149,10 @@
         { "file": "inv20p7.png", "name": "TRIPÉ SUPORTE CAIXA SOM PROFISSIONAL" },
         { "file": "inv20p8.png", "name": "PASSADEIRA 2 EM 1 FERRO A VAPOR 800W" },
         { "file": "inv20p9.png", "name": "VIDEOGAME PORTÁTIL 10MIL 2 CONTROLES RETRO" },
-        { "file": "inv20p10.png", "name": "BICICLETA DE EQUILÍBRIO INFANTIL 4 RODAS SEM PEDAL" }
+        { "file": "inv20p10.png", "name": "BICICLETA DE EQUILÍBRIO INFANTIL 4 RODAS SEM PEDAL" },
+        { "file": "inv20p11.png", "name": "KIT BOLA VÔLEI + SACOLA + REDE 9M" },
+        { "file": "inv20p12.png", "name": "LUVA FHÉRAS BOXE / MUAY THAI / KICKBOXING" },
+        { "file": "inv20p13.png", "name": "MÁQUINA DE BOXE ELETRÔNICA MÚSICA + LUVAS" }
       ]
     }
   ]
