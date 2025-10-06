@@ -102,20 +102,21 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured }, index) {
   const cardClass = `product-card${isExtra ? ' extra-product' : ''}${isFeatured ? ' featured' : ''}`;
   const card = el('div', cardClass, { 'data-secret': secret });
   
-  // Add animation delay
-  card.style.animationDelay = `${index * 0.1}s`;
+  card.style.animationDelay = `${index * 0.05}s`; // Reduced from 0.1s
   
-  // Featured badge
   if (isFeatured) {
     const badge = el('div', 'featured-badge', { text: '⭐' });
     card.appendChild(badge);
   }
   
-  // Lazy loading image
+  // OPTIMIZED: Use smaller placeholder and modern formats
   const img = el('img', 'product-img', { 
     'data-src': src, 
     alt: name,
-    loading: 'lazy'
+    loading: 'lazy',
+    decoding: 'async', // ADD THIS
+    // ADD BLUR PLACEHOLDER
+    src: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"%3E%3Crect fill="%23f0f0f0" width="300" height="300"/%3E%3C/svg%3E'
   });
   
   const title = el('div', 'product-name', { text: name });
@@ -179,65 +180,73 @@ function buildTierSection(tier, baseUrl) {
 ======================================== */
 async function loadCatalog() {
   try {
-    // Set random color scheme
     setRandomColorScheme();
-    
+
     // Show loading
     if (loadingOverlay) {
       loadingOverlay.style.display = 'flex';
     }
-    
-    // Simulate minimum loading time for smooth UX
-    const [response] = await Promise.all([
-      fetch(MANIFEST_URL, { cache: 'no-cache' }),
-      new Promise(resolve => setTimeout(resolve, 1500)) // Minimum 1.5s loading
-    ]);
-    
+
+    // OPTIMIZED: Fetch with a hard timeout via AbortController
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout budget
+
+    // Start network early; rely on cache if available
+    const response = await fetch(MANIFEST_URL, {
+      cache: 'force-cache',
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    
+
     const manifest = await response.json();
     const baseUrl = (manifest.baseUrl || '').trim();
     const tiers = Array.isArray(manifest.tiers) ? manifest.tiers : [];
-    
-    // JANGAN RANDOMIZE URUTAN TIER - PERTAHANKAN URUTAN ASLI
-    // Hanya randomize produk dalam setiap tier (dilakukan di buildTierSection)
-    
+
+    // OPTIMIZED: single repaint—build everything in-memory first
     catalog.innerHTML = '';
-    
-    // Create intersection observer for lazy loading
+    const fragment = document.createDocumentFragment();
+
+    // Lazy image observer (reuse if your helper returns a shared instance)
     const imageObserver = createIntersectionObserver();
-    
-    tiers.forEach(tier => {
+
+    // Keep original tier order; only shuffle items inside buildTierSection (if you do)
+    tiers.forEach((tier) => {
       const tierSection = buildTierSection(tier, baseUrl);
-      catalog.appendChild(tierSection);
-      
-      // Setup lazy loading for images in this tier
-      const images = tierSection.querySelectorAll('.product-img[data-src]');
-      images.forEach(img => imageObserver.observe(img));
+      fragment.appendChild(tierSection);
+
+      // Wire up lazy images inside this section
+      tierSection
+        .querySelectorAll('.product-img[data-src]')
+        .forEach((img) => imageObserver.observe(img));
     });
-    
-    // Hide loading overlay
+
+    // One DOM commit
+    catalog.appendChild(fragment);
+
+    // Faster exit for loading overlay
     if (loadingOverlay) {
       setTimeout(() => {
         loadingOverlay.classList.add('hidden');
         setTimeout(() => {
           loadingOverlay.style.display = 'none';
-        }, 500);
-      }, 500);
+        }, 300); // 300ms
+      }, 200); // 200ms
     }
-    
   } catch (err) {
     console.error('Gagal memuat manifest:', err);
-    catalog.innerHTML = '<p style="color:red;text-align:center;padding:20px;">Falha ao carregar catálogo. Tente novamente mais tarde.</p>';
-    
-    // Hide loading overlay even on error
+    catalog.innerHTML =
+      '<p style="color:red;text-align:center;padding:20px;">Falha ao carregar catálogo. Tente novamente.</p>';
+
     if (loadingOverlay) {
       setTimeout(() => {
         loadingOverlay.classList.add('hidden');
         setTimeout(() => {
           loadingOverlay.style.display = 'none';
-        }, 500);
-      }, 1000);
+        }, 300);
+      }, 500);
     }
   }
 }
