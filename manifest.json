@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@d544f3bfa79a7c61c5a47596634be4d63feabf14/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@027943fc804f49f1ff0a9435cf41f7712d54fe53/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -152,7 +152,11 @@
         { "file": "inv20p10.png", "name": "BICICLETA DE EQUILÍBRIO INFANTIL 4 RODAS SEM PEDAL" },
         { "file": "inv20p11.png", "name": "KIT BOLA VÔLEI + SACOLA + REDE 9M" },
         { "file": "inv20p12.png", "name": "LUVA FHÉRAS BOXE / MUAY THAI / KICKBOXING" },
-        { "file": "inv20p13.png", "name": "MÁQUINA DE BOXE ELETRÔNICA MÚSICA + LUVAS" }
+        { "file": "inv20p13.png", "name": "MÁQUINA DE BOXE ELETRÔNICA MÚSICA + LUVAS" },
+        { "file": "inv20p14.png", "name": "MESA P/ COMPUTADOR VITÓRIA | PRETO" },
+        { "file": "inv20p15.png", "name": "MESA P/ COMPUTADOR VITÓRIA | BRANCO" },
+        { "file": "inv20p16.png", "name": "MESA P/ COMPUTADOR VITÓRIA | FREIJÓ" },
+        { "file": "inv20p17.png", "name": "MESA P/ COMPUTADOR VITÓRIA | NATURE" }
       ]
     }
   ]
