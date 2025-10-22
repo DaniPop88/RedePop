@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@6b59fc2a1bcf5f3eb96921e206178baffad4e2d8/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@42a606c179d53f2c0fc3e055ee14a53693b0a458/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -40,7 +40,13 @@
         { "file": "inv2p15.webp", "name": "TAPETE BANHEIRO OVAL ANTIDERRAPANTE SORTIDO" },
         { "file": "inv2p16.webp", "name": "FONES BLUETOOTH E6S TWS 5.2" },
         { "file": "inv2p17.webp", "name": "DIFUSOR UMIDIFICADOR DE AR USB LED PORTÁTIL" },
-        { "file": "inv2p18.webp", "name": "LIXADOR DE PÉ ELÉTRICO PORTÁTIL" }
+        { "file": "inv2p18.webp", "name": "LIXADOR DE PÉ ELÉTRICO PORTÁTIL" },
+        { "file": "inv2p19.webp", "name": "LEITE EM PÓ INTEGRAL LA SERENÍSSIMA 200G" },
+        { "file": "inv2p20.webp", "name": "TÁBUA DE CORTE ANTIBACTERIANA C/ ALÇA COZINHA" },
+        { "file": "inv2p21.webp", "name": "AVENTAL IMPERMEÁVEL DE COZINHA À PROVA D'ÁGUA" },
+        { "file": "inv2p22.webp", "name": "GEL DE LIMPEZA FACIAL DARROW ACTINE 40G" },
+        { "file": "inv2p23.webp", "name": "GEL HIDRATANTE BEIJÁVEL MORANGO BLOW GIRL" },
+        { "file": "inv2p24.webp", "name": "PORTA OVOS 4 ANDARES DISPENSER P/ GELADEIRA" }
       ]
     },
     {
@@ -67,7 +73,9 @@
         { "file": "inv3p17.webp", "name": "REPELENTE ELETRÔNICO ULTRASSÔNICO BIVOLT" },
         { "file": "inv3p18.webp", "name": "BARBEADOR E MAQUINA DE CORTE DRAGÃO KIT MASCULINO" },
         { "file": "inv3p19.webp", "name": "FRIGIDEIRA ANTIADERENTE 12CM TEFLON PREMIUM OVOS" },
-        { "file": "inv3p20.webp", "name": "KIT 3 NECESSAIRE TRANSPARENTE IMPERMEÁVEL WASHBAG" }
+        { "file": "inv3p20.webp", "name": "KIT 3 NECESSAIRE TRANSPARENTE IMPERMEÁVEL WASHBAG" },
+        { "file": "inv3p21.webp", "name": "SMIRNOFF ICE 275ML (KIT 3 UNIDADES)" },
+        { "file": "inv3p22.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 380G" }
       ]
     },
     {
@@ -95,7 +103,14 @@
         { "file": "inv5p18.webp", "name": "BALANÇA CORPORAL DIGITAL BLUETOOTH ATÉ 180KG" },
         { "file": "inv5p19.webp", "name": "FRIGIDEIRA ANTIADERENTE 4 PARTES OVO ou HAMBÚRGUER" },
         { "file": "inv5p20.webp", "name": "FRIGIDEIRA ALTA 24CM TAMPA DE VIDRO + ESPÁTULA" },
-        { "file": "inv5p21.webp", "name": "MINI FERRO DE PASSAR ROUPA VIAGEM BIVOLT" }
+        { "file": "inv5p21.webp", "name": "MINI FERRO DE PASSAR ROUPA VIAGEM BIVOLT" },
+        { "file": "inv5p22.webp", "name": "KIT CHURRASCO 8 PEÇAS FACAS INOX GOURMET" },
+        { "file": "inv5p23.webp", "name": "VODKA SMIRNOFF RED 600ML" },
+        { "file": "inv5p24.webp", "name": "WHISKY JOHNNIE WALKER RED LABEL 500ML" },
+        { "file": "inv5p25.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 575G" },
+        { "file": "inv5p26.webp", "name": "COMPOSTO LÁCTEO NINHO FASE 1 800G" },
+        { "file": "inv5p27.webp", "name": "KIT 10 POTES DE VIDRO HERMÉTICO RETANGULAR" },
+        { "file": "inv5p28.webp", "name": "KIT SKIN CARE MELASMA VITAMINA C CLAREADOR FACIAL" }
       ]
     },
     {
@@ -129,7 +144,13 @@
         { "file": "inv10p24.webp", "name": "MINI TRAVE FUTEBOL 76CM BOLA E BOMBA DM TOYS" },
         { "file": "inv10p25.webp", "name": "BOLA DE BASQUETE PENALTY PLAYOFF LARANJA" },
         { "file": "inv10p26.webp", "name": "ESPREMEDOR ELÉTRICO RECARREGÁVEL USB FRUTAS" },
-        { "file": "inv10p27.webp", "name": "ESCOVA ELÉTRICA 9 EM 1 GIRATÓRIA" }
+        { "file": "inv10p27.webp", "name": "ESCOVA ELÉTRICA 9 EM 1 GIRATÓRIA" },
+        { "file": "inv10p28.webp", "name": "APARELHO ABDOMINAL VENTOSA 3 NÍVEIS AJUSTE CASA/ACADEMIA" },
+        { "file": "inv10p29.webp", "name": "KIT 4 PINCÉIS DUO MAANGE 8 PONTAS MAKE PROFISSIONAL" },
+        { "file": "inv10p30.webp", "name": "LIXEIRA INTELIGENTE 16L SENSOR AUTOMÁTICO MULTIUSO" },
+        { "file": "inv10p31.webp", "name": "VODKA ABSOLUT 750ML" },
+        { "file": "inv10p32.webp", "name": "CERVEJA BRAHMA CHOPP LATA 350ML (CAIXA 12 UNID)" },
+        { "file": "inv10p33.webp", "name": "PINGÔMETRO DE PAREDE C/ ROLETA SHOT DIVERTIDO" }
       ]
     },
     {
@@ -156,7 +177,16 @@
         { "file": "inv20p14.webp", "name": "MESA P/ COMPUTADOR VITÓRIA | PRETO" },
         { "file": "inv20p15.webp", "name": "MESA P/ COMPUTADOR VITÓRIA | BRANCO" },
         { "file": "inv20p16.webp", "name": "MESA P/ COMPUTADOR VITÓRIA | FREIJÓ" },
-        { "file": "inv20p17.webp", "name": "MESA P/ COMPUTADOR VITÓRIA | NATURE" }
+        { "file": "inv20p17.webp", "name": "MESA P/ COMPUTADOR VITÓRIA | NATURE" },
+        { "file": "inv20p18.webp", "name": "PROJETOR HY300 PRO MAGCUBIC 1080P WIFI" },
+        { "file": "inv20p19.webp", "name": "CERVEJA HEINEKEN KEG 5L" },
+        { "file": "inv20p20.webp", "name": "GIN TANQUERAY CLÁSSICO 750ML" },
+        { "file": "inv20p21.webp", "name": "WHISKY OLD PARR 12 ANOS 1L" },
+        { "file": "inv20p22.webp", "name": "WHISKY JOHNNIE WALKER BLONDE 750ML" },
+        { "file": "inv20p23.webp", "name": "ESPELHO DE MESA LED 3 CORES RECARREGÁVEL DOBRÁVEL" },
+        { "file": "inv20p24.webp", "name": "KIT 2 NINHO 3+ COMPOSTO LÁCTEO 800G" },
+        { "file": "inv20p25.webp", "name": "LIQUIDIFICADOR MONDIAL EASY POWER L-550-W 220V" },
+        { "file": "inv20p26.webp", "name": "LIQUIDIFICADOR MONDIAL TURBO POWER L-99 FR 220V" }
       ]
     }
   ]
