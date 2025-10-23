@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@ab18b7d856b75cbbc8893130f8f3410a2f438570/images/",
+  "baseUrl": "https://cdn.jsdelivr.net/gh/popindi/qq8820img@65b0a6d0c903b9a3499a9c1e1e8a4fabaf5d6dfd/images/",
   "tiers": [
     {
       "id": "INVITE-1",
@@ -46,7 +46,14 @@
         { "file": "inv2p21.webp", "name": "AVENTAL IMPERMEÁVEL DE COZINHA À PROVA D'ÁGUA" },
         { "file": "inv2p22.webp", "name": "GEL DE LIMPEZA FACIAL DARROW ACTINE 40G" },
         { "file": "inv2p23.webp", "name": "GEL HIDRATANTE BEIJÁVEL MORANGO BLOW GIRL" },
-        { "file": "inv2p24.webp", "name": "PORTA OVOS 4 ANDARES DISPENSER P/ GELADEIRA" }
+        { "file": "inv2p24.webp", "name": "PORTA OVOS 4 ANDARES DISPENSER P/ GELADEIRA" },
+        { "file": "inv2p25.webp", "name": "PANETTONE TOMMY FRUTAS 400G (SOB ENCOMENDA)" },
+        { "file": "inv2p26.webp", "name": "PANETTONE TOMMY CHOCOLATE 400G (SOB ENCOMENDA)" },
+        { "file": "inv2p27.webp", "name": "PANETTONE VISCONTI CHOCOLATE 400G" },
+        { "file": "inv2p28.webp", "name": "GEL FIXADOR CLEAR MEN 300G" },
+        { "file": "inv2p29.webp", "name": "KIT 3 BEBIDA LÁCTEA WHEY ZERO LACTOSE MORANGO 250ML" },
+        { "file": "inv2p30.webp", "name": "KIT 2 BEBIDA LÁCTEA MILKY MOO BRIGADEIRO/MORANGO 250ML" },
+        { "file": "inv2p31.webp", "name": "TÁBUA DE CORTE ANTIBACTERIANA 30CM C/ SUPORTE REDONDA 35CM" }
       ]
     },
     {
@@ -75,7 +82,14 @@
         { "file": "inv3p19.webp", "name": "FRIGIDEIRA ANTIADERENTE 12CM TEFLON PREMIUM OVOS" },
         { "file": "inv3p20.webp", "name": "KIT 3 NECESSAIRE TRANSPARENTE IMPERMEÁVEL WASHBAG" },
         { "file": "inv3p21.webp", "name": "SMIRNOFF ICE 275ML (KIT 3 UNIDADES)" },
-        { "file": "inv3p22.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 380G" }
+        { "file": "inv3p22.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 380G" },
+        { "file": "inv3p23.webp", "name": "CHOCOTTONE BAUDUCCO CHOCOLATE 400G" },
+        { "file": "inv3p24.webp", "name": "KIT 3 BEBIDA LÁCTEA ZQUAD VITA HIT 250ML" },
+        { "file": "inv3p25.webp", "name": "PANETTONE SANTA EDWIGES DOCE DE LEITE 500G" },
+        { "file": "inv3p26.webp", "name": "PANETTONE BAUDUCCO FRUTAS 400G" },
+        { "file": "inv3p27.webp", "name": "PALETA DE SOMBRA MISS FRANCE CINTILANTE | PALETA 1" },
+        { "file": "inv3p28.webp", "name": "PALETA DE SOMBRA MISS FRANCE CINTILANTE | PALETA 3" },
+        { "file": "inv3p29.webp", "name": "LUMINÁRIA LED RECARREGÁVEL SENSOR MADEIRA MESA/PAREDE" }
       ]
     },
     {
@@ -110,7 +124,24 @@
         { "file": "inv5p25.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 575G" },
         { "file": "inv5p26.webp", "name": "COMPOSTO LÁCTEO NINHO FASE 1 800G" },
         { "file": "inv5p27.webp", "name": "KIT 10 POTES DE VIDRO HERMÉTICO RETANGULAR" },
-        { "file": "inv5p28.webp", "name": "KIT SKIN CARE MELASMA VITAMINA C CLAREADOR FACIAL" }
+        { "file": "inv5p28.webp", "name": "KIT SKIN CARE MELASMA VITAMINA C CLAREADOR FACIAL" },
+        { "file": "inv5p29.webp", "name": "DORITOS QUEIJO NACHO 300G" },
+        { "file": "inv5p30.webp", "name": "SUSTAGEN KIDS CHOCOLATE 350G" },
+        { "file": "inv5p31.webp", "name": "NUTREN KIDS CHOCOLATE 350G" },
+        { "file": "inv5p32.webp", "name": "SUSTAGEN KIDS MORANGO 350G" },
+        { "file": "inv5p33.webp", "name": "PANETTONE ALPINO RECHEIO CREMOSO 450G" },
+        { "file": "inv5p34.webp", "name": "PALETA DE SOMBRA RUBY ROSE GLASS MIRROR" },
+        { "file": "inv5p35.webp", "name": "KIT 3 SABONETE FACIAL PHÁLLEBEAUTY ROSA MOSQUETA" },
+        { "file": "inv5p36.webp", "name": "KIT 3 SABONETE FACIAL PHÁLLEBEAUTY ANTIOLEOSIDADE" },
+        { "file": "inv5p37.webp", "name": "TÁBUA DE CORTE INOX 304 ANTIBACTERIANA 46CM" },
+        { "file": "inv5p38.webp", "name": "ORGANIZADOR ACRÍLICO GIRATÓRIO 360° MAQUIAGEM" },
+        { "file": "inv5p39.webp", "name": "KIT HIGIENE BEBÊ 13 PEÇAS COMPLETO" },
+        { "file": "inv5p40.webp", "name": "GARRAFA TÉRMICA INOX 500ML PREMIUM C/ TAMPA VÁCUO" },
+        { "file": "inv5p41.webp", "name": "SÉRUM LABIAL KOASIS HIDRATAÇÃO INTENSA KM005" },
+        { "file": "inv5p42.webp", "name": "BATOM LÍQUIDO KOASIS MATTE LONGA DURAÇÃO KM004" },
+        { "file": "inv5p43.webp", "name": "CESTA BÁSICA FAMILIAR GRANDE 12 ITENS" },
+        { "file": "inv5p44.webp", "name": "KIT TALHERES BEBÊ 8 PEÇAS SILICONE C/ VENTOSA" },
+        { "file": "inv5p45.webp", "name": "KIT 2 PANETTONES DI SANTO 300G (CHOCOLATE + FRUTAS)" }
       ]
     },
     {
@@ -150,7 +181,12 @@
         { "file": "inv10p30.webp", "name": "LIXEIRA INTELIGENTE 16L SENSOR AUTOMÁTICO MULTIUSO" },
         { "file": "inv10p31.webp", "name": "VODKA ABSOLUT 750ML" },
         { "file": "inv10p32.webp", "name": "CERVEJA BRAHMA CHOPP LATA 350ML (CAIXA 12 UNID)" },
-        { "file": "inv10p33.webp", "name": "PINGÔMETRO DE PAREDE C/ ROLETA SHOT DIVERTIDO" }
+        { "file": "inv10p33.webp", "name": "PINGÔMETRO DE PAREDE C/ ROLETA SHOT DIVERTIDO" },
+        { "file": "inv10p34.webp", "name": "VENTILADOR DE TETO LED 80W SILENCIOSO 6 HÉLICES BIVOLT" },
+        { "file": "inv10p35.webp", "name": "VARAL DE CHÃO 3 ANDARES DOBRÁVEL PORTÁTIL" },
+        { "file": "inv10p36.webp", "name": "CESTA BÁSICA COMPLETA 14 ITENS" },
+        { "file": "inv10p37.webp", "name": "CESTA DE LIMPEZA COMPLETA 13 ITENS" },
+        { "file": "inv10p38.webp", "name": "CESTA BÁSICA HIGIENE/LIMPEZA 13 ITENS ECONÔMICA" }
       ]
     },
     {
@@ -186,7 +222,15 @@
         { "file": "inv20p23.webp", "name": "ESPELHO DE MESA LED 3 CORES RECARREGÁVEL DOBRÁVEL" },
         { "file": "inv20p24.webp", "name": "KIT 2 NINHO 3+ COMPOSTO LÁCTEO 800G" },
         { "file": "inv20p25.webp", "name": "LIQUIDIFICADOR MONDIAL EASY POWER L-550-W 220V" },
-        { "file": "inv20p26.webp", "name": "LIQUIDIFICADOR MONDIAL TURBO POWER L-99 FR 220V" }
+        { "file": "inv20p26.webp", "name": "LIQUIDIFICADOR MONDIAL TURBO POWER L-99 FR 220V" },
+        { "file": "inv20p27.webp", "name": "PEDIASURE MORANGO 400G" },
+        { "file": "inv20p28.webp", "name": "KIT 4 LUMINÁRIAS SOLARES BK-888 SENSOR EXTERNA" },
+        { "file": "inv20p29.webp", "name": "MINI MÁQUINA DE LAVAR 9L DOBRÁVEL PORTÁTIL" },
+        { "file": "inv20p30.webp", "name": "AQUECEDOR ELÉTRICO DE XÍCARAS BASE MANTÉM QUENTE" },
+        { "file": "inv20p31.webp", "name": "CESTA BÁSICA 18 ITENS + KIT LIMPEZA 7 ITENS" },
+        { "file": "inv20p32.webp", "name": "CESTA DE ALIMENTOS COMPLETA 18 ITENS" },
+        { "file": "inv20p33.webp", "name": "CESTA HIGIENE E LIMPEZA 17 ITENS" },
+        { "file": "inv20p34.webp", "name": "CESTA DE ALIMENTOS ESSENCIAL II 9 ITENS 5KG" }
       ]
     }
   ]
