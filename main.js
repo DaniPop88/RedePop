@@ -21,44 +21,6 @@ const COLOR_SCHEMES = [
 /* ========================================
    UTILITY FUNCTIONS
 ======================================== */
-
-/* ========================================
-   🌍 LANGUAGE FIX: Indonesian → Portuguese
-   Backend returns Indonesian messages, we translate them!
-======================================== */
-function translateBackendMessage(message) {
-  if (!message) return message;
-  
-  // Indonesian to Portuguese translation map
-  const translations = {
-    'Code tidak ditemukan': 'Código não encontrado',
-    'code tidak ditemukan': 'Código não encontrado',
-    'Code sudah digunakan': 'Código já foi utilizado',
-    'code sudah digunakan': 'Código já foi utilizado',
-    'Code tidak valid': 'Código inválido',
-    'code tidak valid': 'Código inválido',
-    'Produk tidak ditemukan': 'Produto não encontrado',
-    'produk tidak ditemukan': 'Produto não encontrado',
-    'Error validasi': 'Erro de validação',
-    'error validasi': 'Erro de validação',
-    'Tidak ada data': 'Sem dados',
-    'tidak ada data': 'Sem dados',
-    'Gagal memproses': 'Falha ao processar',
-    'gagal memproses': 'Falha ao processar',
-    'Permintaan tidak valid': 'Solicitação inválida',
-    'permintaan tidak valid': 'Solicitação inválida'
-  };
-  
-  // Check if message contains any Indonesian words and translate
-  for (const [indonesian, portuguese] of Object.entries(translations)) {
-    if (message.toLowerCase().includes(indonesian.toLowerCase())) {
-      return message.replace(new RegExp(indonesian, 'gi'), portuguese);
-    }
-  }
-  
-  return message;
-}
-
 function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -603,8 +565,7 @@ const debouncedValidation = debounce(async function(secretCode, productId) {
     showWarning();
   } else {
     isSecretCodeValid = false;
-    // 🌍 Translate Indonesian backend messages to Portuguese
-    orderFormMessage.textContent = translateBackendMessage(result.message) || 'Código inválido!';
+    orderFormMessage.textContent = result.message || 'Código inválido!';
     orderFormMessage.style.color = 'red';
     showWarning();
   }
@@ -713,8 +674,7 @@ if (orderForm) {
           isCPFValid = false;
         }, 2500);
       } else {
-        // 🌍 Translate Indonesian backend messages to Portuguese
-        orderFormMessage.textContent = translateBackendMessage(result.message) || 'Erro ao enviar pedido. Tente novamente.';
+        orderFormMessage.textContent = result.message || 'Erro ao enviar pedido. Tente novamente.';
         orderFormMessage.style.color = 'red';
         orderSubmitBtn.disabled = false;
       }
