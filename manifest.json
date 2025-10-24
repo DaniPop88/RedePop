@@ -47,9 +47,6 @@
         { "file": "inv2p22.webp", "name": "GEL DE LIMPEZA FACIAL DARROW ACTINE 40G" },
         { "file": "inv2p23.webp", "name": "GEL HIDRATANTE BEIJÁVEL MORANGO BLOW GIRL" },
         { "file": "inv2p24.webp", "name": "PORTA OVOS 4 ANDARES DISPENSER P/ GELADEIRA" },
-        { "file": "inv2p25.webp", "name": "PANETTONE TOMMY FRUTAS 400G (SOB ENCOMENDA)" },
-        { "file": "inv2p26.webp", "name": "PANETTONE TOMMY CHOCOLATE 400G (SOB ENCOMENDA)" },
-        { "file": "inv2p27.webp", "name": "PANETTONE VISCONTI CHOCOLATE 400G" },
         { "file": "inv2p28.webp", "name": "GEL FIXADOR CLEAR MEN 300G" },
         { "file": "inv2p29.webp", "name": "KIT 3 BEBIDA LÁCTEA WHEY ZERO LACTOSE MORANGO 250ML" },
         { "file": "inv2p30.webp", "name": "KIT 2 BEBIDA LÁCTEA MILKY MOO BRIGADEIRO/MORANGO 250ML" },
@@ -85,8 +82,6 @@
         { "file": "inv3p22.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 380G" },
         { "file": "inv3p23.webp", "name": "CHOCOTTONE BAUDUCCO CHOCOLATE 400G" },
         { "file": "inv3p24.webp", "name": "KIT 3 BEBIDA LÁCTEA ZQUAD VITA HIT 250ML" },
-        { "file": "inv3p25.webp", "name": "PANETTONE SANTA EDWIGES DOCE DE LEITE 500G" },
-        { "file": "inv3p26.webp", "name": "PANETTONE BAUDUCCO FRUTAS 400G" },
         { "file": "inv3p27.webp", "name": "PALETA DE SOMBRA MISS FRANCE CINTILANTE | PALETA 1" },
         { "file": "inv3p28.webp", "name": "PALETA DE SOMBRA MISS FRANCE CINTILANTE | PALETA 3" },
         { "file": "inv3p29.webp", "name": "LUMINÁRIA LED RECARREGÁVEL SENSOR MADEIRA MESA/PAREDE" }
@@ -129,7 +124,6 @@
         { "file": "inv5p30.webp", "name": "SUSTAGEN KIDS CHOCOLATE 350G" },
         { "file": "inv5p31.webp", "name": "NUTREN KIDS CHOCOLATE 350G" },
         { "file": "inv5p32.webp", "name": "SUSTAGEN KIDS MORANGO 350G" },
-        { "file": "inv5p33.webp", "name": "PANETTONE ALPINO RECHEIO CREMOSO 450G" },
         { "file": "inv5p34.webp", "name": "PALETA DE SOMBRA RUBY ROSE GLASS MIRROR" },
         { "file": "inv5p35.webp", "name": "KIT 3 SABONETE FACIAL PHÁLLEBEAUTY ROSA MOSQUETA" },
         { "file": "inv5p36.webp", "name": "KIT 3 SABONETE FACIAL PHÁLLEBEAUTY ANTIOLEOSIDADE" },
@@ -140,8 +134,7 @@
         { "file": "inv5p41.webp", "name": "SÉRUM LABIAL KOASIS HIDRATAÇÃO INTENSA KM005" },
         { "file": "inv5p42.webp", "name": "BATOM LÍQUIDO KOASIS MATTE LONGA DURAÇÃO KM004" },
         { "file": "inv5p43.webp", "name": "CESTA BÁSICA FAMILIAR GRANDE 12 ITENS" },
-        { "file": "inv5p44.webp", "name": "KIT TALHERES BEBÊ 8 PEÇAS SILICONE C/ VENTOSA" },
-        { "file": "inv5p45.webp", "name": "KIT 2 PANETTONES DI SANTO 300G (CHOCOLATE + FRUTAS)" }
+        { "file": "inv5p44.webp", "name": "KIT TALHERES BEBÊ 8 PEÇAS SILICONE C/ VENTOSA" }
       ]
     },
     {
@@ -186,7 +179,14 @@
         { "file": "inv10p35.webp", "name": "VARAL DE CHÃO 3 ANDARES DOBRÁVEL PORTÁTIL" },
         { "file": "inv10p36.webp", "name": "CESTA BÁSICA COMPLETA 14 ITENS" },
         { "file": "inv10p37.webp", "name": "CESTA DE LIMPEZA COMPLETA 13 ITENS" },
-        { "file": "inv10p38.webp", "name": "CESTA BÁSICA HIGIENE/LIMPEZA 13 ITENS ECONÔMICA" }
+        { "file": "inv10p38.webp", "name": "CESTA BÁSICA HIGIENE/LIMPEZA 13 ITENS ECONÔMICA" },
+        { "file": "inv5p33.webp", "name": "PANETTONE ALPINO RECHEIO CREMOSO 450G" },
+        { "file": "inv3p25.webp", "name": "PANETTONE SANTA EDWIGES DOCE DE LEITE 500G" },
+        { "file": "inv3p26.webp", "name": "PANETTONE BAUDUCCO FRUTAS 400G" },
+        { "file": "inv2p25.webp", "name": "PANETTONE TOMMY FRUTAS 400G (SOB ENCOMENDA)" },
+        { "file": "inv2p26.webp", "name": "PANETTONE TOMMY CHOCOLATE 400G (SOB ENCOMENDA)" },
+        { "file": "inv2p27.webp", "name": "PANETTONE VISCONTI CHOCOLATE 400G" },
+        { "file": "inv5p45.webp", "name": "KIT 2 PANETTONES DI SANTO 300G (CHOCOLATE + FRUTAS)" },
       ]
     },
     {
