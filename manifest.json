@@ -117,7 +117,6 @@
         { "file": "inv5p24.webp", "name": "WHISKY JOHNNIE WALKER RED LABEL 500ML" },
         { "file": "inv5p25.webp", "name": "LEITE EM PÓ NINHO INTEGRAL 575G" },
         { "file": "inv5p26.webp", "name": "COMPOSTO LÁCTEO NINHO FASE 1 800G" },
-        { "file": "inv5p27.webp", "name": "KIT 10 POTES DE VIDRO HERMÉTICO RETANGULAR" },
         { "file": "inv5p28.webp", "name": "KIT SKIN CARE MELASMA VITAMINA C CLAREADOR FACIAL" },
         { "file": "inv5p29.webp", "name": "DORITOS QUEIJO NACHO 300G" },
         { "file": "inv5p30.webp", "name": "SUSTAGEN KIDS CHOCOLATE 350G" },
@@ -230,6 +229,7 @@
         { "file": "inv20p31.webp", "name": "CESTA BÁSICA 18 ITENS + KIT LIMPEZA 7 ITENS" },
         { "file": "inv20p32.webp", "name": "CESTA DE ALIMENTOS COMPLETA 18 ITENS" },
         { "file": "inv20p33.webp", "name": "CESTA HIGIENE E LIMPEZA 17 ITENS" },
+        { "file": "inv5p27.webp", "name": "KIT 10 POTES DE VIDRO HERMÉTICO RETANGULAR" },
         { "file": "inv20p34.webp", "name": "CESTA DE ALIMENTOS ESSENCIAL II 9 ITENS 5KG" }
       ]
     }
