@@ -113,7 +113,7 @@ function el(tag, className, attrs = {}) {
   return node;
 }
 
-function buildProductCard({ src, name, secret, isExtra, isFeatured }, index) {
+function buildProductCard({ src, name, secret, isExtra, isFeatured, overlayUrl }, index) {
   const cardClass = `product-card${isExtra ? ' extra-product' : ''}${isFeatured ? ' featured' : ''}`;
   const card = el('div', cardClass, { 'data-secret': secret });
   
@@ -126,6 +126,9 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured }, index) {
     card.appendChild(badge);
   }
   
+  // Create wrapper for image + overlay
+  const imgWrapper = el('div', 'product-img-wrapper');
+  
   // Lazy loading image with placeholder
   const img = el('img', 'product-img', { 
     'data-src': src, 
@@ -135,9 +138,22 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured }, index) {
     src: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"%3E%3Crect fill="%23f0f0f0" width="300" height="300"/%3E%3C/svg%3E'
   });
   
+  // Add overlay frame
+  if (overlayUrl) {
+    const overlay = el('img', 'product-overlay', {
+      src: overlayUrl,
+      alt: 'frame',
+      loading: 'lazy'
+    });
+    imgWrapper.appendChild(img);
+    imgWrapper.appendChild(overlay);
+  } else {
+    imgWrapper.appendChild(img);
+  }
+  
   const title = el('div', 'product-name', { text: name });
   
-  card.appendChild(img);
+  card.appendChild(imgWrapper);
   card.appendChild(title);
   
   if (isExtra) card.hidden = true;
@@ -176,8 +192,9 @@ function buildTierSection(tier, baseUrl) {
     const name = item.name || item.file || item.url || 'Produto';
     const isExtra = idx >= showFirst;
     const isFeatured = featuredIndices.has(idx) && !isExtra;
+    const overlayUrl = baseUrl + 'overlay.webp'; // Add overlay URL
     
-    const card = buildProductCard({ src, name, secret: tier.id, isExtra, isFeatured }, idx);
+    const card = buildProductCard({ src, name, secret: tier.id, isExtra, isFeatured, overlayUrl }, idx);
     grid.appendChild(card);
   });
   

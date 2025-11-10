@@ -401,6 +401,31 @@ img {
   animation: cardFadeIn 0.5s ease-out forwards, featuredPulse 2s ease-in-out infinite;
 }
 
+/* ============================================
+   PRODUCT OVERLAY FRAME
+   ============================================ */
+.product-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  object-fit: contain;
+}
+
+.product-img-wrapper .product-img {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes featuredPulse {
   0%, 100% {
     box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
