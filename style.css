@@ -418,7 +418,9 @@ img {
   height: 100%;
   pointer-events: none;
   z-index: 2;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: multiply; /* Biar frame blend sama gambar */
 }
 
 .product-img-wrapper .product-img {
