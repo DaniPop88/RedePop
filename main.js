@@ -364,7 +364,7 @@ if (orderModalCloseBtn) {
    GAME ID VALIDATION
 ======================================== */
 const RULE_GROUP_A = new Set(['POPBRA', 'POP888', 'POP678', 'POPPG', 'POP555', 'POPLUA', 'POPBEM', 'POPCEU']);
-const RULE_GROUP_B = new Set(['POPDEZ', 'POPWB', 'POPBOA', 'POPFLU']);
+const RULE_GROUP_B = new Set(['POPDEZ', 'POPWB', 'POPBOA', 'POPFLU', 'POPBIS']);
 
 function getGameIdConfig() {
   if (!platformSelect || !platformSelect.value) {
