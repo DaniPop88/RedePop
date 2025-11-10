@@ -8,9 +8,9 @@
    ============================================ */
 :root {
   /* Brand Colors - Red Theme */
-  --red-top: #eb0b0a;
-  --red-bottom: #310404;
-  --red-gradient: linear-gradient(180deg, var(--red-top), var(--red-bottom));
+  --pink-bright: #FF4EB2;
+  --purple-dark: #FF4EB2;
+  --red-gradient: linear-gradient(180deg, var(--pink-bright), var(--purple-dark));
   --white: #fff;
   
   /* Typography */
@@ -23,10 +23,10 @@
   --max-width: 700px;
   
   /* Shadows */
-  --shadow: 0 2px 12px rgba(235, 11, 10, 0.08);
+  --shadow: 0 2px 12px rgba(255, 78, 178, 0.08);
   
   /* Dynamic Colors (for flexible theming) */
-  --dynamic-primary: #eb0b0a;
+  --dynamic-primary: #FF4EB2;
   --dynamic-secondary: #310404;
   --dynamic-gradient: linear-gradient(135deg, var(--dynamic-primary), var(--dynamic-secondary));
 }
@@ -66,7 +66,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #eb0b0a, #310404);
+  background: linear-gradient(45deg, #FF4EB2, #310404);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,6 +211,45 @@ img {
 }
 
 /* ============================================
+   🌸 FLOATING FLOWERS DECORATION 🌺
+   ============================================ */
+.flower-decoration {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: -1; /* BEHIND EVERYTHING! */
+  opacity: 0.5;
+  animation: floatFlower 6s ease-in-out infinite;
+  user-select: none;
+  will-change: transform;
+}
+
+@keyframes floatFlower {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-25px) rotate(3deg);
+  }
+}
+
+.flower-decoration:nth-child(odd) {
+  animation-duration: 5s;
+  animation-delay: -1s;
+}
+
+.flower-decoration:nth-child(even) {
+  animation-duration: 7s;
+  animation-delay: -2s;
+}
+
+/* ============================================
    MAIN CONTAINER
    ============================================ */
 .container {
@@ -238,7 +277,7 @@ img {
   margin-bottom: 20px;
   background: var(--white);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(235, 11, 10, 0.08);
+  box-shadow: 0 4px 20px rgba(255, 78, 178, 0.08);
   padding: 0 12px 16px;
   overflow: hidden;
   opacity: 0;
@@ -249,7 +288,7 @@ img {
 
 .reward-tier:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(235, 11, 10, 0.15);
+  box-shadow: 0 8px 30px rgba(255, 78, 178, 0.15);
 }
 
 @keyframes tierSlideUp {
@@ -269,7 +308,7 @@ img {
   margin: 0 -12px 16px;
   border-radius: 16px 16px 0 0;
   letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(235, 11, 10, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 78, 178, 0.2);
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -335,7 +374,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(235, 11, 10, 0.05), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255, 78, 178, 0.05), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -344,7 +383,7 @@ img {
 .product-card:active {
   border-color: var(--dynamic-primary);
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(235, 11, 10, 0.2);
+  box-shadow: 0 10px 25px rgba(255, 78, 178, 0.2);
 }
 
 .product-card:hover::before {
@@ -412,7 +451,7 @@ img {
 
 .product-img.loaded {
   opacity: 1;
-  box-shadow: 0 4px 12px rgba(235, 11, 10, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 78, 178, 0.1);
 }
 
 .product-img.loading {
@@ -498,7 +537,7 @@ img {
   color: #fff;
   border-color: var(--dynamic-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(235, 11, 10, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 78, 178, 0.3);
 }
 
 .veja-mais-btn .btn-text {
@@ -561,7 +600,7 @@ img {
 
 .form-divider {
   margin: 20px 0;
-  border-top: 2px solid #eb0b0a;
+  border-top: 2px solid #dd40a9;
 }
 
 .order-product-info-centered {
@@ -608,7 +647,7 @@ img {
 }
 
 .modal-close-btn:hover {
-  background: linear-gradient(180deg, #f92c2b, #4a0508);
+  background: linear-gradient(180deg, #FF4EB2, #310404);
 }
 
 /* ============================================
@@ -637,9 +676,9 @@ img {
 
 #orderForm input:focus,
 #orderForm select:focus {
-  border: 1.2px solid var(--red-top);
+  border: 1.2px solid var(--pink-bright);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(235, 11, 10, 0.12);
+  box-shadow: 0 0 0 3px rgba(255, 78, 178, 0.12);
 }
 
 #orderFormMessage {
@@ -701,7 +740,7 @@ img {
   text-align: center;
   margin-bottom: 18px;
   letter-spacing: 1px;
-  text-shadow: 1px 1px 2px rgba(235, 11, 10, 0.1);
+  text-shadow: 1px 1px 2px rgba(255, 78, 178, 0.1);
   color: var(--dynamic-primary);
   font-weight: 700;
 }
@@ -720,7 +759,7 @@ img {
   background: #fff;
   border: 2px solid var(--dynamic-primary);
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(235, 11, 10, 0.15);
+  box-shadow: 0 4px 15px rgba(255, 78, 178, 0.15);
   padding: 12px 24px;
   font-size: 1rem;
   text-decoration: none;
@@ -756,7 +795,7 @@ img {
   color: #fff;
   border-color: var(--dynamic-secondary);
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(235, 11, 10, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 78, 178, 0.3);
 }
 
 .mentor-contact-btn img,
@@ -800,7 +839,7 @@ img {
 }
 
 #orderFormTC .tc-section-title {
-  color: #eb0b0a;
+  color: #FF66CC;
   font-weight: 700;
   font-size: 0.97rem;
 }

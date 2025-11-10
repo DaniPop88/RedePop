@@ -11,11 +11,11 @@ const MANIFEST_URL = window.REDEPOP_MANIFEST_URL || "./manifest.json";
 ======================================== */
 // Dynamic color schemes
 const COLOR_SCHEMES = [
-  { primary: '#eb0b0a', secondary: '#310404' },
-  { primary: '#d32f2f', secondary: '#1b0000' },
-  { primary: '#f44336', secondary: '#310404' },
-  { primary: '#e53935', secondary: '#2c0000' },
-  { primary: '#c62828', secondary: '#1a0000' },
+  { primary: '#FF4EB2', secondary: '#310404' },  // Pink ke Dark Red
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
 ];
 
 /* ========================================
@@ -432,7 +432,7 @@ function validateGameId() {
   if (!/^\d+$/.test(gameId)) {
     const errorMsg = 'ID de Jogo deve conter apenas números.';
     gameIdInput.setCustomValidity(errorMsg);
-    gameIdInput.style.borderColor = '#eb0b0a';
+    gameIdInput.style.borderColor = '#FF4EB2';
     orderFormMessage.textContent = errorMsg;
     orderFormMessage.style.color = 'red';
     return;
@@ -440,7 +440,7 @@ function validateGameId() {
 
   if (!regex.test(gameId)) {
     gameIdInput.setCustomValidity(msg);
-    gameIdInput.style.borderColor = '#eb0b0a';
+    gameIdInput.style.borderColor = '#FF4EB2';
     orderFormMessage.textContent = msg;
     orderFormMessage.style.color = 'red';
     return;
@@ -469,8 +469,8 @@ function showSpinner() {
   if (!secretCodeStatus) return;
   secretCodeStatus.innerHTML = `
     <svg aria-label="Validando..." width="22" height="22" viewBox="0 0 50 50" role="img">
-      <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="6" opacity="0.2"></circle>
-      <circle cx="25" cy="25" r="20" fill="none" stroke="#eb0b0a" stroke-width="6" stroke-linecap="round" stroke-dasharray="1,150" stroke-dashoffset="0">
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#FF4EB2" stroke-width="6" opacity="0.2"></circle>
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#FF4EB2" stroke-width="6" stroke-linecap="round" stroke-dasharray="1,150" stroke-dashoffset="0">
         <animate attributeName="stroke-dasharray" values="1,150;90,150;90,150" dur="1.4s" repeatCount="indefinite"></animate>
         <animate attributeName="stroke-dashoffset" values="0;-35;-124" dur="1.4s" repeatCount="indefinite"></animate>
         <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.4s" repeatCount="indefinite"></animateTransform>
@@ -486,7 +486,7 @@ function showCheck() {
 
 function showWarning() {
   if (!secretCodeStatus) return;
-  secretCodeStatus.innerHTML = '<ion-icon name="warning" style="color:#eb0b0a;font-size:1.6em"></ion-icon>';
+  secretCodeStatus.innerHTML = '<ion-icon name="warning" style="color:#FF4EB2;font-size:1.6em"></ion-icon>';
 }
 
 function clearStatus() {
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fullNameInput.addEventListener('input', function() {
       if (/\d/.test(this.value)) {
         this.setCustomValidity('Nome não pode conter números!');
-        this.style.borderColor = '#eb0b0a';
+        this.style.borderColor = '#FF4EB2';
         orderFormMessage.textContent = 'Nome não pode conter números!';
         orderFormMessage.style.color = 'red';
       } else {
@@ -798,3 +798,148 @@ criticalImages.forEach(src => {
   const img = new Image();
   img.src = src;
 });
+
+/* ========================================
+   🌸 FLOATING FLOWERS DECORATION 🌺
+   WITH SUPER STRICT ANTI-COLLISION SYSTEM
+======================================== */
+(function() {
+  const flowers = ['🌸', '🌺', '🌷'];
+  const flowerCount = 8; // REDUCED to 8 for safety
+  const flowerPositions = []; // Track all flower positions
+  
+  // EXCLUSION ZONES - in viewport percentages
+  const exclusionZones = [
+    // Top header
+    { x: 0, y: 0, width: 100, height: 20 },
+    // Center column - main content area
+    { x: 15, y: 10, width: 70, height: 85 },
+    // Bottom footer
+    { x: 0, y: 90, width: 100, height: 10 }
+  ];
+  
+  // Check if position overlaps with exclusion zone
+  function isInExclusionZone(x, y, buffer = 5) {
+    return exclusionZones.some(zone => {
+      return x >= (zone.x - buffer) && x <= (zone.x + zone.width + buffer) &&
+             y >= (zone.y - buffer) && y <= (zone.y + zone.height + buffer);
+    });
+  }
+  
+  // Check if position is too close to existing flowers
+  // Using strict pixel-based distance
+  function isTooClose(x, y) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const xPx = (x / 100) * vw;
+    const yPx = (y / 100) * vh;
+    const minDistancePx = 150; // INCREASED to 150px minimum
+    
+    return flowerPositions.some(pos => {
+      const posXPx = (pos.x / 100) * vw;
+      const posYPx = (pos.y / 100) * vh;
+      const distance = Math.sqrt(Math.pow(xPx - posXPx, 2) + Math.pow(yPx - posYPx, 2));
+      return distance < minDistancePx;
+    });
+  }
+  
+  // Generate safe position - ONLY in safe corners
+  function getSafePosition() {
+    let attempts = 0;
+    const maxAttempts = 100;
+    
+    // Define ONLY safe corner areas (far from center)
+    const safeAreas = [
+      { x: 0, y: 25, width: 10, height: 15 },    // Left middle
+      { x: 90, y: 25, width: 10, height: 15 },   // Right middle
+      { x: 0, y: 45, width: 10, height: 15 },    // Left lower-middle
+      { x: 90, y: 45, width: 10, height: 15 },   // Right lower-middle
+      { x: 0, y: 70, width: 10, height: 15 },    // Left lower
+      { x: 90, y: 70, width: 10, height: 15 }    // Right lower
+    ];
+    
+    while (attempts < maxAttempts) {
+      // Pick a random safe area
+      const area = safeAreas[Math.floor(Math.random() * safeAreas.length)];
+      
+      // Generate position within that safe area
+      const x = area.x + Math.random() * area.width;
+      const y = area.y + Math.random() * area.height;
+      
+      // Check if position is safe
+      if (!isInExclusionZone(x, y, 10) && !isTooClose(x, y)) {
+        return { x, y };
+      }
+      
+      attempts++;
+    }
+    
+    // Fallback: return null if can't find safe position
+    return null;
+  }
+  
+  function createFlowers() {
+    const flowerContainer = document.createElement('div');
+    flowerContainer.style.position = 'fixed';
+    flowerContainer.style.top = '0';
+    flowerContainer.style.left = '0';
+    flowerContainer.style.width = '100%';
+    flowerContainer.style.height = '100%';
+    flowerContainer.style.pointerEvents = 'none';
+    flowerContainer.style.zIndex = '-1';
+    flowerContainer.style.overflow = 'hidden';
+    
+    let successfulFlowers = 0;
+    
+    for (let i = 0; i < flowerCount && successfulFlowers < flowerCount; i++) {
+      // Get safe position with strict collision detection
+      const pos = getSafePosition();
+      
+      // Skip if can't find safe position
+      if (!pos) {
+        console.log('Could not find safe position for flower', i);
+        continue;
+      }
+      
+      const flower = document.createElement('div');
+      flower.className = 'flower-decoration';
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      
+      flowerPositions.push(pos);
+      
+      flower.style.left = pos.x + '%';
+      flower.style.top = pos.y + '%';
+      
+      // Consistent size
+      const size = 2 + Math.random() * 0.5; // 2rem to 2.5rem
+      flower.style.fontSize = size + 'rem';
+      
+      // Random animation delay
+      flower.style.animationDelay = (Math.random() * -5) + 's';
+      
+      // Random animation duration
+      const duration = 5 + Math.random() * 3; // 5-8 seconds
+      flower.style.animationDuration = duration + 's';
+      
+      // Triple safety
+      flower.style.pointerEvents = 'none';
+      flower.style.userSelect = 'none';
+      flower.style.webkitUserSelect = 'none';
+      
+      flowerContainer.appendChild(flower);
+      successfulFlowers++;
+    }
+    
+    console.log(`Created ${successfulFlowers} flowers safely positioned`);
+    document.body.appendChild(flowerContainer);
+  }
+  
+  // Create flowers after page is fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(createFlowers, 100); // Small delay for viewport to stabilize
+    });
+  } else {
+    setTimeout(createFlowers, 100);
+  }
+})();
