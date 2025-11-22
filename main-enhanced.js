@@ -94,6 +94,145 @@ function debounce(func, wait) {
 }
 
 /* ========================================
+   🎯 FLOATING LABELS & ERROR HANDLING
+======================================== */
+function initFloatingLabels() {
+  const formFields = document.querySelectorAll('#orderForm input, #orderForm select');
+  
+  formFields.forEach(field => {
+    // Check on load if field has value
+    if (field.value) {
+      field.closest('.form-field')?.classList.add('has-value');
+    }
+    
+    // Update on input
+    field.addEventListener('input', function() {
+      const formField = this.closest('.form-field');
+      if (this.value) {
+        formField?.classList.add('has-value');
+      } else {
+        formField?.classList.remove('has-value');
+      }
+    });
+    
+    // Update on change (for select)
+    field.addEventListener('change', function() {
+      const formField = this.closest('.form-field');
+      if (this.value) {
+        formField?.classList.add('has-value');
+      } else {
+        formField?.classList.remove('has-value');
+      }
+    });
+  });
+}
+
+/* ========================================
+   🎯 ERROR MODAL
+======================================== */
+function showErrorModal(errors) {
+  // Remove existing modal if any
+  const existingModal = document.querySelector('.error-modal-overlay');
+  if (existingModal) existingModal.remove();
+  
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'error-modal-overlay';
+  
+  // Create modal
+  const modal = document.createElement('div');
+  modal.className = 'error-modal';
+  
+  // Create error list
+  const errorList = errors.map(err => `<li>${err}</li>`).join('');
+  
+  modal.innerHTML = `
+    <div class="error-modal-title">
+      ⚠️ Atenção!
+    </div>
+    <p style="color:#666;margin-bottom:12px;">Preencha os seguintes campos:</p>
+    <ul class="error-modal-list">
+      ${errorList}
+    </ul>
+    <button class="error-modal-button" onclick="closeErrorModal()">OK, ENTENDI</button>
+  `;
+  
+  document.body.appendChild(overlay);
+  document.body.appendChild(modal);
+  
+  // Trigger animation
+  setTimeout(() => {
+    overlay.classList.add('active');
+    modal.classList.add('active');
+  }, 10);
+  
+  // Close on overlay click
+  overlay.addEventListener('click', closeErrorModal);
+}
+
+function closeErrorModal() {
+  const overlay = document.querySelector('.error-modal-overlay');
+  const modal = document.querySelector('.error-modal');
+  
+  if (overlay) {
+    overlay.classList.remove('active');
+    setTimeout(() => overlay.remove(), 300);
+  }
+  
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => modal.remove(), 300);
+  }
+}
+
+// Make it global
+window.closeErrorModal = closeErrorModal;
+
+/* ========================================
+   🎯 FIELD VALIDATION WITH VISUAL FEEDBACK
+======================================== */
+function validateField(field, isValid, errorMsg = '') {
+  const formField = field.closest('.form-field');
+  if (!formField) return;
+  
+  // Remove all states
+  formField.classList.remove('error', 'success', 'loading');
+  
+  // Remove existing error message
+  const existingError = formField.querySelector('.error-message');
+  if (existingError) existingError.remove();
+  
+  if (isValid) {
+    formField.classList.add('success');
+  } else if (errorMsg) {
+    formField.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = errorMsg;
+    formField.appendChild(errorDiv);
+  }
+}
+
+/* ========================================
+   🎯 SCROLL TO FIRST ERROR
+======================================== */
+function scrollToFirstError() {
+  const firstError = document.querySelector('.form-field.error');
+  if (firstError) {
+    firstError.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'center' 
+    });
+    
+    // Shake the field
+    const input = firstError.querySelector('input, select');
+    if (input) {
+      input.focus();
+    }
+  }
+}
+
+/* ========================================
    DOM ELEMENTS
 ======================================== */
 const orderModal = document.getElementById('orderModal');
@@ -592,30 +731,176 @@ function validateGameId() {
 orderForm.addEventListener('submit', async function(e) {
   e.preventDefault();
   
-  if (!isSecretValid) {
-    orderFormMessage.textContent = '❌ Código secreto inválido!';
-    orderFormMessage.style.color = 'red';
+  // Clear all previous errors
+  document.querySelectorAll('.form-field').forEach(f => {
+    f.classList.remove('error', 'success');
+  });
+  
+  // Collect validation errors
+  const errors = [];
+  const errorFields = [];
+  
+  // Validate all required fields
+  const fullName = document.getElementById('fullName');
+  const phone = document.getElementById('phone');
+  const zip = document.getElementById('zip');
+  const state = document.getElementById('state');
+  const city = document.getElementById('city');
+  const neighborhood = document.getElementById('neighborhood');
+  const street = document.getElementById('street');
+  const number = document.getElementById('number');
+  const address = document.getElementById('address');
+  const platform = platformSelect;
+  const gameId = gameIdInput;
+  const cpf = document.getElementById('cpf');
+  const secretCode = secretCodeInput;
+  
+  // Check each field
+  if (!fullName.value.trim()) {
+    errors.push('Nome Completo');
+    errorFields.push(fullName);
+    validateField(fullName, false, 'Campo obrigatório');
+  } else if (/\d/.test(fullName.value)) {
+    errors.push('Nome não pode conter números');
+    errorFields.push(fullName);
+    validateField(fullName, false, 'Nome não pode conter números');
+  } else {
+    validateField(fullName, true);
+  }
+  
+  if (!phone.value.trim()) {
+    errors.push('Número de Telefone');
+    errorFields.push(phone);
+    validateField(phone, false, 'Campo obrigatório');
+  } else {
+    validateField(phone, true);
+  }
+  
+  if (!zip.value.trim()) {
+    errors.push('CEP');
+    errorFields.push(zip);
+    validateField(zip, false, 'Campo obrigatório');
+  } else {
+    validateField(zip, true);
+  }
+  
+  if (!state.value) {
+    errors.push('Estado');
+    errorFields.push(state);
+    validateField(state, false, 'Selecione o Estado');
+  } else {
+    validateField(state, true);
+  }
+  
+  if (!city.value.trim()) {
+    errors.push('Cidade');
+    errorFields.push(city);
+    validateField(city, false, 'Campo obrigatório');
+  } else {
+    validateField(city, true);
+  }
+  
+  if (!neighborhood.value.trim()) {
+    errors.push('Bairro');
+    errorFields.push(neighborhood);
+    validateField(neighborhood, false, 'Campo obrigatório');
+  } else {
+    validateField(neighborhood, true);
+  }
+  
+  if (!street.value.trim()) {
+    errors.push('Rua/Avenida');
+    errorFields.push(street);
+    validateField(street, false, 'Campo obrigatório');
+  } else {
+    validateField(street, true);
+  }
+  
+  if (!number.value.trim()) {
+    errors.push('Número');
+    errorFields.push(number);
+    validateField(number, false, 'Campo obrigatório');
+  } else {
+    validateField(number, true);
+  }
+  
+  if (!address.value.trim()) {
+    errors.push('Complemento/Descrição do Prédio');
+    errorFields.push(address);
+    validateField(address, false, 'Campo obrigatório');
+  } else {
+    validateField(address, true);
+  }
+  
+  if (!platform.value) {
+    errors.push('Plataforma');
+    errorFields.push(platform);
+    validateField(platform, false, 'Escolha a plataforma');
+  } else {
+    validateField(platform, true);
+  }
+  
+  if (!gameId.value.trim()) {
+    errors.push('ID de Jogo');
+    errorFields.push(gameId);
+    validateField(gameId, false, 'Campo obrigatório');
+  } else if (!isGameIdValid) {
+    errors.push('ID de Jogo inválido para a plataforma');
+    errorFields.push(gameId);
+    validateField(gameId, false, 'ID inválido para esta plataforma');
+  } else {
+    validateField(gameId, true);
+  }
+  
+  if (!cpf.value.trim()) {
+    errors.push('CPF');
+    errorFields.push(cpf);
+    validateField(cpf, false, 'Campo obrigatório');
+  } else if (!isCPFValid) {
+    errors.push('CPF inválido');
+    errorFields.push(cpf);
+    validateField(cpf, false, 'CPF inválido! Confira os números');
+  } else {
+    validateField(cpf, true);
+  }
+  
+  if (!secretCode.value.trim()) {
+    errors.push('Código Secreto');
+    errorFields.push(secretCode);
+    validateField(secretCode, false, 'Campo obrigatório');
+  } else if (!isSecretValid) {
+    errors.push('Código Secreto inválido');
+    errorFields.push(secretCode);
+    validateField(secretCode, false, 'Código incorreto! Solicite ao mentor');
+  } else {
+    validateField(secretCode, true);
+  }
+  
+  // If there are errors, show modal and scroll to first error
+  if (errors.length > 0) {
+    showErrorModal(errors);
+    
+    // Scroll to first error after a short delay
+    setTimeout(() => {
+      scrollToFirstError();
+    }, 100);
+    
+    // Show error message
+    orderFormMessage.textContent = `❌ ${errors.length} campo(s) precisam ser corrigidos`;
+    orderFormMessage.className = 'error';
+    orderFormMessage.style.display = 'block';
+    
     return;
   }
   
-  if (!isCPFValid) {
-    orderFormMessage.textContent = '❌ CPF inválido!';
-    orderFormMessage.style.color = 'red';
-    return;
-  }
-  
-  if (!isGameIdValid) {
-    orderFormMessage.textContent = '❌ ID de Jogo inválido para a plataforma selecionada!';
-    orderFormMessage.style.color = 'red';
-    return;
-  }
-  
+  // All validation passed, submit form
   const fd = new FormData(this);
   const data = Object.fromEntries(fd.entries());
   
   orderSubmitBtn.disabled = true;
   orderFormMessage.textContent = '⏳ Enviando pedido...';
-  orderFormMessage.style.color = '#FF4EB2';
+  orderFormMessage.className = 'loading';
+  orderFormMessage.style.display = 'block';
   
   try {
     const res = await fetch(`${BACKEND_URL}/submit-order`, {
@@ -628,26 +913,35 @@ orderForm.addEventListener('submit', async function(e) {
     
     if (res.ok && result.success) {
       orderFormMessage.textContent = '✅ Pedido enviado com sucesso!';
-      orderFormMessage.style.color = '#10b981';
+      orderFormMessage.className = 'success';
+      orderFormMessage.style.display = 'block';
       orderForm.reset();
       isSecretValid = false;
       isCPFValid = false;
       isGameIdValid = false;
       secretCodeStatus.textContent = '';
       
+      // Clear all field states
+      document.querySelectorAll('.form-field').forEach(f => {
+        f.classList.remove('error', 'success', 'has-value');
+      });
+      
       setTimeout(() => {
         orderModal.classList.remove('active');
-        orderFormMessage.textContent = '';
+        orderFormMessage.style.display = 'none';
+        orderFormMessage.className = '';
       }, 2000);
     } else {
       orderFormMessage.textContent = `❌ ${result.message || 'Erro ao enviar pedido'}`;
-      orderFormMessage.style.color = 'red';
+      orderFormMessage.className = 'error';
+      orderFormMessage.style.display = 'block';
       orderSubmitBtn.disabled = false;
     }
   } catch (err) {
     console.error('Error submitting order:', err);
     orderFormMessage.textContent = '❌ Erro de conexão. Tente novamente.';
-    orderFormMessage.style.color = 'red';
+    orderFormMessage.className = 'error';
+    orderFormMessage.style.display = 'block';
     orderSubmitBtn.disabled = false;
   }
 });
@@ -724,6 +1018,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   applyGameIdRules();
+  
+  // 🎯 INITIALIZE FLOATING LABELS
+  initFloatingLabels();
   
   // 🎯 CREATE FLOATING CTA
   createFloatingCTA();

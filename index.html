@@ -48,11 +48,11 @@
   <div class="mentor-contact-section">
     <div class="mentor-contact-title">CONTATE O MENTOR PARA OBTER PRÊMIO</div>
     <div class="mentor-contact-btn-row">
-      <a href="https://pop-agent.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
+      <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
         <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
         <span>WHATSAPP</span>
       </a>
-      <a href="https://pop-agent.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
+      <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
         <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
         <span>TELEGRAM</span>
       </a>
@@ -70,11 +70,11 @@
   <div class="mentor-contact-section">
     <div class="mentor-contact-title">CONTATE O MENTOR PARA OBTER PRÊMIO</div>
     <div class="mentor-contact-btn-row">
-      <a href="https://pop-agent.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
+      <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
         <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
         <span>WHATSAPP</span>
       </a>
-      <a href="https://pop-agent.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
+      <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
         <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
         <span>TELEGRAM</span>
       </a>
@@ -107,100 +107,127 @@
         
         <div class="form-divider"></div>
         
-        <label for="fullName"><strong>NOME COMPLETO</strong></label>
-        <input type="text" name="fullName" id="fullName" required placeholder="Seu nome e CPF devem ser iguais">
-        
-        <label for="phone"><strong>NÚMERO DE TELEFONE</strong></label>
-        <input type="tel" name="phone" id="phone" required placeholder="(00) 00000-0000">
-        
-        <label for="zip"><strong>CEP</strong></label>
-        <input type="text" name="zip" id="zip" required placeholder="Ex. 01311-200">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite o CEP no formato 00000-000</small>
-        
-        <label for="state"><strong>ESTADO</strong></label>
-        <select name="state" id="state" required>
-          <option value="" disabled selected>Selecione o Estado</option>
-          <option value="AC">Acre (AC)</option>
-          <option value="AL">Alagoas (AL)</option>
-          <option value="AP">Amapá (AP)</option>
-          <option value="AM">Amazonas (AM)</option>
-          <option value="BA">Bahia (BA)</option>
-          <option value="CE">Ceará (CE)</option>
-          <option value="DF">Distrito Federal (DF)</option>
-          <option value="ES">Espírito Santo (ES)</option>
-          <option value="GO">Goiás (GO)</option>
-          <option value="MA">Maranhão (MA)</option>
-          <option value="MT">Mato Grosso (MT)</option>
-          <option value="MS">Mato Grosso do Sul (MS)</option>
-          <option value="MG">Minas Gerais (MG)</option>
-          <option value="PA">Pará (PA)</option>
-          <option value="PB">Paraíba (PB)</option>
-          <option value="PR">Paraná (PR)</option>
-          <option value="PE">Pernambuco (PE)</option>
-          <option value="PI">Piauí (PI)</option>
-          <option value="RJ">Rio de Janeiro (RJ)</option>
-          <option value="RN">Rio Grande do Norte (RN)</option>
-          <option value="RS">Rio Grande do Sul (RS)</option>
-          <option value="RO">Rondônia (RO)</option>
-          <option value="RR">Roraima (RR)</option>
-          <option value="SC">Santa Catarina (SC)</option>
-          <option value="SP">São Paulo (SP)</option>
-          <option value="SE">Sergipe (SE)</option>
-          <option value="TO">Tocantins (TO)</option>
-        </select>
-        <label for="city"><strong>CIDADE</strong></label>
-        <div id="cityContainer">
-          <input type="text" name="city" id="city" required placeholder="Escolha seu estado primeiro">
-          <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Use a ESTADO-CIDADE correta conforme o CEP</small>
+        <div class="form-field">
+          <input type="text" name="fullName" id="fullName" required placeholder=" ">
+          <label for="fullName">NOME COMPLETO</label>
+          <span class="success-icon">✓</span>
         </div>
         
-        <label for="neighborhood"><strong>BAIRRO</strong></label>
-        <input type="text" name="neighborhood" id="neighborhood" required placeholder="Ex. Moema, Barra da Tijuca, Santa Cecília">
+        <div class="form-field">
+          <input type="tel" name="phone" id="phone" required placeholder=" ">
+          <label for="phone">NÚMERO DE TELEFONE</label>
+          <span class="success-icon">✓</span>
+        </div>
         
-        <label for="street"><strong>RUA / AVENIDA</strong></label>
-        <input type="text" name="street" id="street" required placeholder="Ex. Rua das Flores, Avenida Paulista">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite seu Rua ou Avenida</small>
+        <div class="form-field">
+          <input type="text" name="zip" id="zip" required placeholder=" ">
+          <label for="zip">CEP</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Formato: 00000-000</small>
+        </div>
         
-        <label for="number"><strong>NÚMERO</strong></label>
-        <input type="text" name="number" id="number" required placeholder="Ex. 45 (ou digite SN se não houver número)">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite SN se não houver número</small>
+        <div class="form-field">
+          <select name="state" id="state" required>
+            <option value="" disabled selected></option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>
+          </select>
+          <label for="state">ESTADO</label>
+          <span class="success-icon">✓</span>
+        </div>
         
-        <label for="address"><strong>COMPLEMENTO/REFERÊNCIAS PRÓX./DESCRIÇÃO DO PRÉDIO</strong></label>
-        <input type="text" name="address" id="address" required placeholder="Ex. Apto 101, Conj. 3, Bloco B">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite apartamento, bloco, conjunto ou unidade, etc.</small>
+        <div class="form-field" id="cityContainer">
+          <input type="text" name="city" id="city" required placeholder=" ">
+          <label for="city">CIDADE</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Escolha seu estado primeiro</small>
+        </div>
+        
+        <div class="form-field">
+          <input type="text" name="neighborhood" id="neighborhood" required placeholder=" ">
+          <label for="neighborhood">BAIRRO</label>
+          <span class="success-icon">✓</span>
+        </div>
+        
+        <div class="form-field">
+          <input type="text" name="street" id="street" required placeholder=" ">
+          <label for="street">RUA / AVENIDA</label>
+          <span class="success-icon">✓</span>
+        </div>
+        
+        <div class="form-field">
+          <input type="text" name="number" id="number" required placeholder=" ">
+          <label for="number">NÚMERO</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Digite SN se não houver número</small>
+        </div>
+        
+        <div class="form-field">
+          <input type="text" name="address" id="address" required placeholder=" ">
+          <label for="address">COMPLEMENTO / DESCRIÇÃO</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Apartamento, bloco, conjunto, etc.</small>
+        </div>
         
         <div class="form-divider"></div>
 
-        <!-- PLATFORM -->
-        <label for="platform"><strong>PLATAFORMA</strong></label>
-        <select name="platform" id="platform" required>
-          <option value="" disabled selected>Escolha a plataforma</option>
-          <option value="POPBIS">🌸 POPBIS 🌸</option>
-          <option value="POPN1">-</option>
-        </select>
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Escolha a plataforma correta</small>
-          
-        <label for="gameId"><strong>ID DE JOGO</strong></label>
-        <input
-          type="text"
-          name="gameId"
-          id="gameId"
-          required
-          maxlength="12"
-          placeholder="Selecione a plataforma para ver o formato"
-        />
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite ID de Jogo na POP</small>
-        
-        <label for="cpf"><strong>CPF</strong></label>
-        <input type="text" name="cpf" id="cpf" required maxlength="11" placeholder="Digite 11 dígitos do CPF">
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;">Digite CPF já registrado na POP</small>
-          
-        <label for="secretCode"><strong>CÓDIGO SECRETO</strong></label>
-        <div style="position:relative">
-          <input type="text" name="secretCode" id="secretCode" required maxlength="8" style="padding-right:34px;">
-          <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;"></span>
+        <div class="form-field">
+          <select name="platform" id="platform" required>
+            <option value="" disabled selected></option>
+            <option value="POPBIS">🌸 POPBIS 🌸</option>
+            <option value="POPN1">-</option>
+          </select>
+          <label for="platform">PLATAFORMA</label>
+          <span class="success-icon">✓</span>
         </div>
-        <small style="display:block; margin-bottom:8px; color:#F87171; text-align:right;"><em> Psiu!</em> Solicite o código ao seu mentor!</small>
+          
+        <div class="form-field">
+          <input type="text" name="gameId" id="gameId" required maxlength="12" placeholder=" ">
+          <label for="gameId">ID DE JOGO</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Selecione a plataforma primeiro</small>
+        </div>
+        
+        <div class="form-field">
+          <input type="text" name="cpf" id="cpf" required maxlength="11" placeholder=" ">
+          <label for="cpf">CPF</label>
+          <span class="success-icon">✓</span>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Digite 11 dígitos (sem pontos ou traços)</small>
+        </div>
+          
+        <div class="form-field">
+          <div style="position:relative">
+            <input type="text" name="secretCode" id="secretCode" required maxlength="8" placeholder=" " style="padding-right:40px;">
+            <label for="secretCode">CÓDIGO SECRETO</label>
+            <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;z-index:10;"></span>
+          </div>
+          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;"><em>Psiu!</em> Solicite o código ao seu mentor</small>
+        </div>
         <button type="submit" id="orderSubmitBtn" disabled>ENVIAR PEDIDO</button>
         <div id="orderFormMessage"></div>
 
@@ -218,11 +245,11 @@
         <div class="mentor-contact-section" style="margin-top:18px;">
           <div class="mentor-contact-title">Não tem Código Secreto? Encontre um mentor</div>
           <div class="mentor-contact-btn-row">
-            <a href="https://pop-agent.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
+            <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
               <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
               <span>WHATSAPP</span>
             </a>
-            <a href="https://pop-agent.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
+            <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
               <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
               <span>TELEGRAM</span>
             </a>

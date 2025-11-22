@@ -106,10 +106,55 @@
 .mentor-contact-btn,.mentor-contact-title{font-family:Poppins,Arial,sans-serif;color:var(--dynamic-primary);font-weight:700}
 .modal-close-btn:hover{background:linear-gradient(180deg,#ff4eb2,#310404)}
 
-#orderForm label{margin-top:10px;margin-bottom:3px;font-size:.98rem;color:#393939;font-weight:500}
-#orderForm input,#orderForm select{width:100%;padding:10px 14px;margin-bottom:8px;border-radius:7px;border:1.2px solid #eee;font-size:1rem;background:#f8f8fa;outline:0;transition:border .2s,background .2s,box-shadow .2s}
-#orderForm input:focus,#orderForm select:focus{border:1.2px solid var(--pink-bright);background:#fff;box-shadow:0 0 0 3px rgba(255,78,178,.12)}
-#orderFormMessage{margin-top:10px;font-weight:700;min-height:1.2em}
+/* 🎯 FLOATING LABELS */
+.form-field{position:relative;margin-bottom:20px}
+.form-field label{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#999;pointer-events:none;transition:all .3s cubic-bezier(.4, 0, .2, 1);background:#fff;padding:0 4px;font-weight:400}
+.form-field input:focus ~ label,
+.form-field input:not(:placeholder-shown) ~ label,
+.form-field select:focus ~ label,
+.form-field select:not([value=""]) ~ label,
+.form-field.has-value label{top:0;font-size:.75rem;color:var(--pink-bright);font-weight:500}
+.form-field input,
+.form-field select{width:100%;padding:12px 14px;border-radius:7px;border:1.5px solid #e0e0e0;font-size:1rem;background:#fff;outline:0;transition:all .3s cubic-bezier(.4, 0, .2, 1)}
+.form-field input:focus,
+.form-field select:focus{border:1.5px solid var(--pink-bright);box-shadow:0 0 0 3px rgba(255,78,178,.12)}
+
+/* 🎯 ERROR STATES */
+.form-field.error input,
+.form-field.error select{border:1.5px solid #ef4444;background:#fef2f2;animation:.5s shake}
+.form-field.error label{color:#ef4444}
+.form-field .error-message{display:none;color:#ef4444;font-size:.85rem;margin-top:4px;font-weight:500}
+.form-field.error .error-message{display:block;animation:.3s fadeIn}
+
+/* 🎯 SUCCESS STATES */
+.form-field.success input,
+.form-field.success select{border:1.5px solid #10b981;background:#f0fdf4}
+.form-field.success label{color:#10b981}
+.form-field .success-icon{display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#10b981;font-size:1.2rem}
+.form-field.success .success-icon{display:block}
+
+/* 🎯 LOADING STATES */
+.form-field.loading input{border:1.5px solid #f59e0b;background:#fffbeb}
+.form-field .loading-icon{display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#f59e0b;font-size:1rem}
+.form-field.loading .loading-icon{display:block;animation:1s linear infinite spin}
+
+/* 🎯 SHAKE ANIMATION */
+@keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-5px)}20%,40%,60%,80%{transform:translateX(5px)}}
+
+/* 🎯 ERROR MODAL */
+.error-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.3);z-index:10000;max-width:90%;width:400px;padding:24px;transition:all .3s cubic-bezier(.4, 0, .2, 1);opacity:0}
+.error-modal.active{transform:translate(-50%,-50%) scale(1);opacity:1}
+.error-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s}
+.error-modal-overlay.active{opacity:1;pointer-events:all}
+.error-modal-title{font-size:1.3rem;font-weight:700;color:#ef4444;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.error-modal-list{list-style:none;padding:0;margin:16px 0}
+.error-modal-list li{padding:8px 12px;background:#fef2f2;border-left:3px solid #ef4444;margin-bottom:8px;font-size:.95rem;color:#991b1b}
+.error-modal-button{width:100%;padding:12px;background:linear-gradient(135deg,#FF4EB2,#310404);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s}
+.error-modal-button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,78,178,.3)}
+#orderFormMessage{margin-top:16px;font-weight:700;min-height:1.2em;padding:12px;border-radius:8px;text-align:center;display:none}
+#orderFormMessage.success{display:block;background:#f0fdf4;color:#10b981;border:1px solid #10b981}
+#orderFormMessage.error{display:block;background:#fef2f2;color:#ef4444;border:1px solid #ef4444}
+#orderFormMessage.loading{display:block;background:#fffbeb;color:#f59e0b;border:1px solid #f59e0b}
 #orderSubmitBtn{margin-top:18px;padding:10px 0;width:100%;border-radius:8px;font-size:1.05rem;font-weight:700;border:none;transition:background .18s,filter .18s}
 #orderSubmitBtn:hover{filter:brightness(1.08)}
 #orderSubmitBtn:disabled{background:#ccc!important;color:#888!important;cursor:not-allowed}
