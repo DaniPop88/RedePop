@@ -1,0 +1,54 @@
+backend:
+  name: github
+  repo: DaniPop88/RedePops.github.io  # your GitHub repository
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  site_domain: https://pop-love.vip/
+
+media_folder: "assets/uploads"          # where images are stored
+public_folder: "/assets/uploads"        # how they’re referenced in HTML
+
+collections:
+  - name: "products"
+    label: "Products by Tier"
+    file: "manifest.json"
+    description: "Edit the product tiers and items"
+    fields:
+      - label: "Tiers"
+        name: "tiers"
+        widget: "list"
+        fields:
+          - label: "Tier Name"
+            name: "name"
+            widget: "string"
+          - label: "Featured"
+            name: "featured"
+            widget: "boolean"
+            default: false
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Subtitle"
+                name: "subtitle"
+                widget: "string"
+                required: false
+              - label: "Price"
+                name: "price"
+                widget: "number"
+                required: false
+              - label: "Image"
+                name: "image"
+                widget: "image"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+              - label: "Active"
+                name: "active"
+                widget: "boolean"
+                default: true
