@@ -44,7 +44,7 @@ function setRandomColorScheme() {
 }
 
 /* ========================================
-   🎯 NEW: ENHANCED LAZY LOADING WITH BLUR-UP
+   🎯 NEW: ENHANCED LAZY LOADING WITH ERROR HANDLING
 ======================================== */
 function createIntersectionObserver() {
   return new IntersectionObserver((entries) => {
@@ -52,28 +52,32 @@ function createIntersectionObserver() {
       if (entry.isIntersecting) {
         const img = entry.target;
         if (img.dataset.src) {
-          // Add blur-up effect
-          img.style.filter = 'blur(10px)';
-          img.style.transition = 'filter 0.3s ease-out';
+          const realSrc = img.dataset.src;
           
-          const tempImg = new Image();
-          tempImg.onload = () => {
-            img.src = img.dataset.src;
-            // Remove blur when loaded
-            setTimeout(() => {
-              img.style.filter = 'blur(0)';
-              img.classList.remove('loading');
-              img.classList.add('loaded');
-            }, 50);
+          // Load image directly (blur-up removed for reliability)
+          img.classList.add('loading');
+          img.src = realSrc;
+          
+          img.onload = () => {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+            console.log('Image loaded:', realSrc);
           };
-          tempImg.src = img.dataset.src;
+          
+          img.onerror = () => {
+            console.error('Failed to load image:', realSrc);
+            img.classList.remove('loading');
+            img.classList.add('error');
+            // Keep placeholder visible
+          };
+          
           img.removeAttribute('data-src');
         }
       }
     });
   }, { 
-    rootMargin: '100px', // Increased for earlier loading
-    threshold: 0.01 
+    rootMargin: '50px',
+    threshold: 0.1 
   });
 }
 
@@ -173,14 +177,14 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured, overlayUrl }
   // Create wrapper for image + overlay
   const imgWrapper = el('div', 'product-img-wrapper');
   
-  // 🎯 PROGRESSIVE BLUR-UP - Tiny blurred placeholder
+  // 🎯 SIMPLE PLACEHOLDER - Reliable gray square
   const img = el('img', 'product-img', { 
     'data-src': src, 
     alt: name,
     loading: 'lazy',
     decoding: 'async',
-    // Blurred SVG placeholder
-    src: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"%3E%3Cdefs%3E%3ClinearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"%3E%3Cstop offset="0%25" style="stop-color:%23ffd4ec;stop-opacity:1" /%3E%3Cstop offset="100%25" style="stop-color:%23ffe4f2;stop-opacity:1" /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill="url(%23g)" width="300" height="300"/%3E%3C/svg%3E'
+    // Simple gray placeholder (more reliable)
+    src: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"%3E%3Crect fill="%23f0f0f0" width="300" height="300"/%3E%3C/svg%3E'
   });
   
   // Add overlay frame
@@ -302,6 +306,10 @@ async function loadCatalog() {
     const tiers = Array.isArray(manifest.tiers) ? manifest.tiers : [];
     
     catalog.innerHTML = '';
+    
+    console.log('📦 Manifest loaded:', manifest);
+    console.log('🌐 Base URL:', baseUrl);
+    console.log('📚 Tiers count:', tiers.length);
     
     // Create intersection observer for lazy loading
     const imageObserver = createIntersectionObserver();
