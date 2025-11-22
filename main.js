@@ -9,67 +9,14 @@ const MANIFEST_URL = window.REDEPOP_MANIFEST_URL || "./manifest.json";
 /* ========================================
    DYNAMIC CONFIGURATION
 ======================================== */
+// Dynamic color schemes
 const COLOR_SCHEMES = [
-  { primary: '#FF4EB2', secondary: '#310404' },
-  { primary: '#FF4EB2', secondary: '#310404' },
-  { primary: '#FF4EB2', secondary: '#310404' },
-  { primary: '#FF4EB2', secondary: '#310404' },
-  { primary: '#FF4EB2', secondary: '#310404' },
+  { primary: '#FF4EB2', secondary: '#310404' },  // Pink ke Dark Red
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
+  { primary: '#FF4EB2', secondary: '#310404' },  // Sama
 ];
-
-/* ========================================
-   🚀 STICKY CTA DOCK - Show/Hide on Scroll
-======================================== */
-let lastScrollY = 0;
-let stickyCTADock = null;
-const SCROLL_THRESHOLD = 5;
-
-function initStickyCTADock() {
-  // Create sticky CTA dock
-  stickyCTADock = document.createElement('div');
-  stickyCTADock.className = 'sticky-cta-dock';
-  stickyCTADock.innerHTML = `
-    <a href="https://poppremio.com/wa" target="_blank" class="sticky-cta-btn whatsapp-btn">
-      <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" />
-      <span>WHATSAPP</span>
-    </a>
-    <a href="https://poppremio.com/tg" target="_blank" class="sticky-cta-btn telegram-btn">
-      <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" />
-      <span>TELEGRAM</span>
-    </a>
-  `;
-  document.body.appendChild(stickyCTADock);
-
-  // Handle scroll behavior
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        handleScrollCTA();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-}
-
-function handleScrollCTA() {
-  const currentScrollY = window.scrollY;
-  
-  if (Math.abs(currentScrollY - lastScrollY) < SCROLL_THRESHOLD) {
-    return;
-  }
-
-  if (currentScrollY > lastScrollY && currentScrollY > 150) {
-    // Scrolling down - hide
-    stickyCTADock.classList.add('hidden');
-  } else {
-    // Scrolling up - show
-    stickyCTADock.classList.remove('hidden');
-  }
-  
-  lastScrollY = currentScrollY;
-}
 
 /* ========================================
    UTILITY FUNCTIONS
@@ -91,14 +38,7 @@ function setRandomColorScheme() {
     `linear-gradient(135deg, ${scheme.primary}, ${scheme.secondary})`);
 }
 
-/* ========================================
-   🚀 OPTIMIZED IMAGE OBSERVER - Eager Load First 3
-======================================== */
-function createIntersectionObserver(isEager = false) {
-  const options = isEager 
-    ? { rootMargin: '300px', threshold: 0.01 } // Eager load
-    : { rootMargin: '50px', threshold: 0.1 };  // Lazy load
-    
+function createIntersectionObserver() {
   return new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -114,9 +54,15 @@ function createIntersectionObserver(isEager = false) {
         }
       }
     });
-  }, options);
+  }, { 
+    rootMargin: '50px',
+    threshold: 0.1 
+  });
 }
 
+/* ========================================
+   🚀 NEW: DEBOUNCE FUNCTION FOR PERFORMANCE
+======================================== */
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -140,6 +86,7 @@ const orderFormMessage = document.getElementById('orderFormMessage');
 const catalog = document.getElementById('catalog');
 const loadingOverlay = document.getElementById('loadingOverlay');
 
+// Initialized after DOM ready
 let platformSelect;
 let gameIdInput;
 
@@ -166,30 +113,32 @@ function el(tag, className, attrs = {}) {
   return node;
 }
 
-function buildProductCard({ src, name, secret, isExtra, isFeatured, overlayUrl }, index, isFirstRow) {
+function buildProductCard({ src, name, secret, isExtra, isFeatured, overlayUrl }, index) {
   const cardClass = `product-card${isExtra ? ' extra-product' : ''}${isFeatured ? ' featured' : ''}`;
   const card = el('div', cardClass, { 'data-secret': secret });
   
-  // 🚀 OPTIMIZED: Stagger only first row (first 3 items)
-  if (isFirstRow && index < 3) {
-    card.style.animationDelay = `${index * 0.04}s`;
-  }
+  // Add animation delay
+  card.style.animationDelay = `${index * 0.05}s`;
   
+  // Featured badge
   if (isFeatured) {
     const badge = el('div', 'featured-badge', { text: '⭐' });
     card.appendChild(badge);
   }
   
+  // Create wrapper for image + overlay
   const imgWrapper = el('div', 'product-img-wrapper');
   
+  // Lazy loading image with placeholder
   const img = el('img', 'product-img', { 
     'data-src': src, 
     alt: name,
-    loading: index < 3 ? 'eager' : 'lazy', // 🚀 First 3 eager
+    loading: 'lazy',
     decoding: 'async',
     src: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"%3E%3Crect fill="%23f0f0f0" width="300" height="300"/%3E%3C/svg%3E'
   });
   
+  // Add overlay frame
   if (overlayUrl) {
     const overlay = el('img', 'product-overlay', {
       src: overlayUrl,
@@ -215,9 +164,9 @@ function buildProductCard({ src, name, secret, isExtra, isFeatured, overlayUrl }
 function buildTierSection(tier, baseUrl) {
   const section = el('section', 'reward-tier', { 'data-tier': tier.id });
   
-  // 🚀 OPTIMIZED: Reduced delay multiplier
+  // Animation delay for tiers
   const tierIndex = parseInt(tier.id.split('-')[1]) || 1;
-  section.style.animationDelay = `${tierIndex * 0.15}s`;
+  section.style.animationDelay = `${tierIndex * 0.2}s`;
   
   const header = el('div', 'tier-header', { text: tier.label || tier.id });
   section.appendChild(header);
@@ -228,8 +177,10 @@ function buildTierSection(tier, baseUrl) {
   const showFirst = Number.isInteger(tier.showFirst) ? tier.showFirst : 3;
   let items = Array.isArray(tier.items) ? tier.items : [];
 
+  // Randomize items
   items = shuffleArray(items);
 
+  // Select random featured products
   const featuredCount = Math.floor(Math.random() * 2) + 1;
   const featuredIndices = new Set();
   while (featuredIndices.size < Math.min(featuredCount, Math.min(showFirst, items.length))) {
@@ -241,18 +192,15 @@ function buildTierSection(tier, baseUrl) {
     const name = item.name || item.file || item.url || 'Produto';
     const isExtra = idx >= showFirst;
     const isFeatured = featuredIndices.has(idx) && !isExtra;
-    const overlayUrl = baseUrl + 'overlay.webp';
+    const overlayUrl = baseUrl + 'overlay.webp'; // Add overlay URL
     
-    const card = buildProductCard({ src, name, secret: tier.id, isExtra, isFeatured, overlayUrl }, idx, tierIndex === 1);
+    const card = buildProductCard({ src, name, secret: tier.id, isExtra, isFeatured, overlayUrl }, idx);
     grid.appendChild(card);
   });
   
-  // 🎯 SMART "SHOW MORE" WITH COUNTER
   if (items.length > showFirst) {
-    const extraCount = items.length - showFirst;
     const btn = el('button', 'veja-mais-btn', { 'data-tier': tier.id });
     btn.appendChild(el('span', 'btn-text', { text: 'VEJA MAIS' }));
-    btn.appendChild(el('span', 'btn-count', { text: `+${extraCount}` }));
     btn.appendChild(el('span', 'arrow-icon', { html: '&#9660;' }));
     section.appendChild(btn);
   }
@@ -271,10 +219,10 @@ async function loadCatalog() {
       loadingOverlay.style.display = 'flex';
     }
     
-    // 🚀 OPTIMIZED: Reduced to 600ms
+    // 🚀 OPTIMIZED: Reduced minimum loading time from 1.5s to 800ms
     const [response] = await Promise.all([
       fetch(MANIFEST_URL, { cache: 'no-cache' }),
-      new Promise(resolve => setTimeout(resolve, 600))
+      new Promise(resolve => setTimeout(resolve, 800))
     ]);
     
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -285,150 +233,42 @@ async function loadCatalog() {
     
     catalog.innerHTML = '';
     
-    // Create observers
-    const eagerObserver = createIntersectionObserver(true);
-    const lazyObserver = createIntersectionObserver(false);
+    // Create intersection observer for lazy loading
+    const imageObserver = createIntersectionObserver();
     
     tiers.forEach(tier => {
       const tierSection = buildTierSection(tier, baseUrl);
       catalog.appendChild(tierSection);
       
-      // 🚀 EAGER LOAD first 3 images, lazy load rest
+      // Setup lazy loading for images in this tier
       const images = tierSection.querySelectorAll('.product-img[data-src]');
-      images.forEach((img, idx) => {
-        if (idx < 3) {
-          eagerObserver.observe(img);
-        } else {
-          lazyObserver.observe(img);
-        }
-      });
+      images.forEach(img => imageObserver.observe(img));
     });
     
-    // 🚀 OPTIMIZED: Hide overlay immediately after minimal time
-    setTimeout(() => {
-      if (loadingOverlay) {
+    // Hide loading overlay
+    if (loadingOverlay) {
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none';
+        }, 500);
+      }, 300);
+    }
+    
+  } catch (err) {
+    console.error('Gagal memuat manifest:', err);
+    catalog.innerHTML = '<p style="color:red;text-align:center;padding:20px;">Falha ao carregar catálogo. Tente novamente.</p>';
+    
+    if (loadingOverlay) {
+      setTimeout(() => {
         loadingOverlay.classList.add('hidden');
         setTimeout(() => {
           loadingOverlay.style.display = 'none';
         }, 300);
-      }
-    }, 100);
-    
-  } catch (err) {
-    console.error('Load error:', err);
-    catalog.innerHTML = '<p style="text-align:center; padding:40px;">⚠️ Erro ao carregar catálogo. Tente novamente.</p>';
-    if (loadingOverlay) {
-      loadingOverlay.classList.add('hidden');
-      setTimeout(() => loadingOverlay.style.display = 'none', 300);
+      }, 100);
     }
   }
 }
-
-/* ========================================
-   EVENT DELEGATION: VEJA MAIS BUTTONS
-======================================== */
-catalog.addEventListener('click', (e) => {
-  const btn = e.target.closest('.veja-mais-btn');
-  if (btn) {
-    const tierId = btn.dataset.tier;
-    const tier = btn.closest('.reward-tier');
-    const extras = tier.querySelectorAll('.extra-product[hidden]');
-    
-    if (extras.length > 0) {
-      extras.forEach(card => {
-        card.hidden = false;
-        card.classList.add('fade-in');
-      });
-      btn.classList.add('expanded');
-      const btnText = btn.querySelector('.btn-text');
-      const btnCount = btn.querySelector('.btn-count');
-      if (btnText) btnText.textContent = 'VER MENOS';
-      if (btnCount) btnCount.textContent = '';
-    } else {
-      const allExtras = tier.querySelectorAll('.extra-product');
-      allExtras.forEach(card => {
-        card.hidden = true;
-        card.classList.remove('fade-in');
-      });
-      btn.classList.remove('expanded');
-      const btnText = btn.querySelector('.btn-text');
-      const btnCount = btn.querySelector('.btn-count');
-      if (btnText) btnText.textContent = 'VEJA MAIS';
-      if (btnCount) btnCount.textContent = `+${allExtras.length}`;
-    }
-  }
-  
-  const card = e.target.closest('.product-card');
-  if (card) {
-    const secret = card.dataset.secret;
-    const name = card.querySelector('.product-name')?.textContent || 'Produto';
-    const img = card.querySelector('.product-img')?.src || '';
-    updateOrderProductInfo(name, img, secret);
-    orderModal.classList.add('active');
-  }
-});
-
-/* ========================================
-   MODAL CONTROL
-======================================== */
-orderModalCloseBtn.addEventListener('click', () => {
-  orderModal.classList.remove('active');
-});
-
-orderModal.addEventListener('click', (e) => {
-  if (e.target === orderModal) {
-    orderModal.classList.remove('active');
-  }
-});
-
-/* ========================================
-   SECRET CODE VALIDATION
-======================================== */
-let isSecretCodeValid = false;
-const secretCodeInput = document.getElementById('secretCode');
-const secretCodeStatus = document.getElementById('secretCodeStatus');
-
-async function validateSecretCode(code) {
-  if (!code || code.length < 8) {
-    secretCodeStatus.innerHTML = '';
-    isSecretCodeValid = false;
-    updateOrderSubmitBtn();
-    return;
-  }
-  
-  secretCodeStatus.innerHTML = '<div style="width:16px;height:16px;border:2px solid #eb0b0a;border-top:2px solid transparent;border-radius:50%;animation:spin 0.6s linear infinite"></div>';
-  
-  try {
-    const res = await fetch(`${BACKEND_URL}/validate-secret-code?code=${encodeURIComponent(code)}`);
-    const data = await res.json();
-    
-    if (data.valid) {
-      secretCodeStatus.innerHTML = '✅';
-      isSecretCodeValid = true;
-    } else {
-      secretCodeStatus.innerHTML = '❌';
-      isSecretCodeValid = false;
-    }
-  } catch (err) {
-    console.error('Validation error:', err);
-    secretCodeStatus.innerHTML = '⚠️';
-    isSecretCodeValid = false;
-  }
-  
-  updateOrderSubmitBtn();
-}
-
-const debouncedValidateSecretCode = debounce((code) => {
-  validateSecretCode(code);
-}, 500);
-
-secretCodeInput.addEventListener('input', function() {
-  this.value = this.value.toUpperCase();
-  if (this.value.length > 8) {
-    this.value = this.value.slice(0, 8);
-  }
-  debouncedValidateSecretCode(this.value);
-});
 
 /* ========================================
    CPF VALIDATION
@@ -436,133 +276,442 @@ secretCodeInput.addEventListener('input', function() {
 let isCPFValid = false;
 
 function validateCPF(cpf) {
-  cpf = cpf.replace(/[^\d]/g, '');
-  if (cpf.length !== 11) return false;
-  if (/^(\d)\1{10}$/.test(cpf)) return false;
-  
-  let sum = 0;
-  for (let i = 0; i < 9; i++) {
-    sum += parseInt(cpf.charAt(i)) * (10 - i);
+  cpf = cpf.replace(/[^\d]+/g, '');
+  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+  let sum = 0, remainder;
+  for (let i = 1; i <= 9; i++) {
+    sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
   }
-  let remainder = 11 - (sum % 11);
-  let digit1 = remainder >= 10 ? 0 : remainder;
-  
+  remainder = (sum % 11) < 2 ? 0 : 11 - (sum % 11);
+  if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+
   sum = 0;
-  for (let i = 0; i < 10; i++) {
-    sum += parseInt(cpf.charAt(i)) * (11 - i);
+  for (let i = 1; i <= 10; i++) {
+    sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
   }
-  remainder = 11 - (sum % 11);
-  let digit2 = remainder >= 10 ? 0 : remainder;
-  
-  return parseInt(cpf.charAt(9)) === digit1 && parseInt(cpf.charAt(10)) === digit2;
+  remainder = (sum % 11) < 2 ? 0 : 11 - (sum % 11);
+  if (remainder !== parseInt(cpf.substring(10, 11))) return false;
+
+  return true;
+}
+
+/* ========================================
+   PRODUCT CARD CLICK HANDLER
+======================================== */
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.product-card');
+  if (!card) return;
+
+  // Visual feedback
+  card.style.transform = 'scale(0.95)';
+  setTimeout(() => { card.style.transform = ''; }, 150);
+
+  const nameEl = card.querySelector('.product-name');
+  const imgEl = card.querySelector('.product-img');
+  const name = nameEl ? nameEl.textContent.trim() : '';
+  const img = imgEl ? (imgEl.src || imgEl.dataset.src) : '';
+  const secret = card.getAttribute('data-secret') || '';
+
+  // Reset form and validation states
+  orderForm.reset();
+  isCPFValid = false;
+  isSecretCodeValid = false;
+  orderFormMessage.textContent = '';
+  orderSubmitBtn.disabled = true;
+
+  const statusEl = document.getElementById('secretCodeStatus');
+  if (statusEl) statusEl.innerHTML = '';
+
+  updateOrderProductInfo(name, img, secret);
+  orderModal.classList.add('active');
+
+  if (typeof applyGameIdRules === 'function') {
+    applyGameIdRules();
+  }
+});
+
+/* ========================================
+   "VEJA MAIS" TOGGLE
+======================================== */
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.veja-mais-btn');
+  if (!btn) return;
+
+  const tierId = btn.getAttribute('data-tier');
+  const section = document.querySelector(`section[data-tier="${tierId}"]`);
+  if (!section) return;
+
+  const extras = section.querySelectorAll('.extra-product');
+  const expanded = btn.classList.toggle('expanded');
+  const btnText = btn.querySelector('.btn-text');
+  const arrowIcon = btn.querySelector('.arrow-icon');
+
+  if (btnText && arrowIcon) {
+    btnText.textContent = expanded ? 'VER MENOS' : 'VEJA MAIS';
+    arrowIcon.innerHTML = expanded ? '&#9650;' : '&#9660;';
+  }
+
+  extras.forEach((card, i) => {
+    if (expanded) {
+      card.hidden = false;
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1) translateY(0)';
+      card.style.animationDelay = `${i * 0.1}s`;
+      card.classList.add('fade-in');
+    } else {
+      card.hidden = true;
+      card.classList.remove('fade-in');
+      card.style.opacity = '';
+      card.style.transform = '';
+    }
+  });
+});
+
+/* ========================================
+   MODAL CLOSE
+======================================== */
+if (orderModalCloseBtn) {
+  orderModalCloseBtn.addEventListener('click', () => {
+    orderModal.classList.remove('active');
+  });
 }
 
 /* ========================================
    GAME ID VALIDATION
 ======================================== */
-let isGameIdValid = false;
+const RULE_GROUP_A = new Set(['POPBRA', 'POP888', 'POP678', 'POPPG', 'POP555', 'POPLUA', 'POPBEM', 'POPCEU']);
+const RULE_GROUP_B = new Set(['POPDEZ', 'POPWB', 'POPBOA', 'POPFLU', 'POPBIS']);
+
+function getGameIdConfig() {
+  if (!platformSelect || !platformSelect.value) {
+    return {
+      regex: /^\d{4,12}$/,
+      min: 4,
+      max: 12,
+      msg: 'Selecione a plataforma para validar o ID de Jogo'
+    };
+  }
+
+  const platform = platformSelect.value;
+
+  if (RULE_GROUP_A.has(platform)) {
+    return {
+      regex: /^\d{4,8}$/,
+      min: 4,
+      max: 8,
+      msg: `ID de Jogo (${platform}) precisa 4-8 dígitos numéricos, sem espaço!`
+    };
+  } else if (RULE_GROUP_B.has(platform)) {
+    return {
+      regex: /^\d{9,12}$/,
+      min: 9,
+      max: 12,
+      msg: `ID de Jogo (${platform}) precisa 9-12 dígitos numéricos, sem espaço!`
+    };
+  }
+
+  return {
+    regex: /^\d{4,12}$/,
+    min: 4,
+    max: 12,
+    msg: 'Selecione a plataforma para validar o ID de Jogo'
+  };
+}
 
 function applyGameIdRules() {
-  const platform = platformSelect?.value;
-  
-  if (!platform || !gameIdInput) return;
-  
-  if (platform === 'POPBIS') {
-    gameIdInput.placeholder = 'Digite 11 dígitos (ex: 12345678901)';
-    gameIdInput.maxLength = 11;
-  } else if (platform === 'POPN1') {
-    gameIdInput.placeholder = 'Digite 8-9 dígitos (ex: 12345678)';
-    gameIdInput.maxLength = 9;
-  } else {
-    gameIdInput.placeholder = 'Selecione a plataforma primeiro';
-    gameIdInput.maxLength = 12;
-  }
-  
-  gameIdInput.value = '';
-  isGameIdValid = false;
+  if (!gameIdInput || !platformSelect) return;
+
+  const { min, max } = getGameIdConfig();
+  gameIdInput.setAttribute('minlength', String(min));
+  gameIdInput.setAttribute('maxlength', String(max));
+  gameIdInput.setAttribute('pattern', `\\d{${min},${max}}`);
+  gameIdInput.placeholder = `Digite ${min}-${max} dígitos numéricos`;
+  validateGameId();
 }
 
 function validateGameId() {
-  const platform = platformSelect?.value;
-  const gameId = gameIdInput?.value.replace(/[^\d]/g, '');
-  
-  if (!platform || !gameId) {
-    isGameIdValid = false;
+  if (!gameIdInput || !platformSelect) return;
+
+  const { regex, msg } = getGameIdConfig();
+  const gameId = gameIdInput.value.trim();
+
+  if (!gameId) {
+    gameIdInput.setCustomValidity('');
+    gameIdInput.style.borderColor = '';
+    if (orderFormMessage.textContent.startsWith('ID de Jogo')) {
+      orderFormMessage.textContent = '';
+      orderFormMessage.style.color = '';
+    }
     return;
   }
-  
-  if (platform === 'POPBIS') {
-    isGameIdValid = gameId.length === 11;
-  } else if (platform === 'POPN1') {
-    isGameIdValid = gameId.length >= 8 && gameId.length <= 9;
-  } else {
-    isGameIdValid = false;
-  }
-}
 
-/* ========================================
-   SUBMIT BUTTON STATE
-======================================== */
-function updateOrderSubmitBtn() {
-  const allValid = isSecretCodeValid && isCPFValid && isGameIdValid;
-  orderSubmitBtn.disabled = !allValid;
-}
-
-/* ========================================
-   FORM SUBMIT
-======================================== */
-orderForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  if (!isSecretCodeValid || !isCPFValid || !isGameIdValid) {
-    orderFormMessage.textContent = '⚠️ Verifique todos os campos!';
+  if (!/^\d+$/.test(gameId)) {
+    const errorMsg = 'ID de Jogo deve conter apenas números.';
+    gameIdInput.setCustomValidity(errorMsg);
+    gameIdInput.style.borderColor = '#FF4EB2';
+    orderFormMessage.textContent = errorMsg;
     orderFormMessage.style.color = 'red';
     return;
   }
+
+  if (!regex.test(gameId)) {
+    gameIdInput.setCustomValidity(msg);
+    gameIdInput.style.borderColor = '#FF4EB2';
+    orderFormMessage.textContent = msg;
+    orderFormMessage.style.color = 'red';
+    return;
+  }
+
+  gameIdInput.setCustomValidity('');
+  gameIdInput.style.borderColor = '';
+  if (orderFormMessage.textContent === msg || orderFormMessage.textContent.startsWith('ID de Jogo')) {
+    orderFormMessage.textContent = '';
+    orderFormMessage.style.color = '';
+  }
+}
+
+/* ========================================
+   🚀 OPTIMIZED: SECRET CODE VALIDATION WITH DEBOUNCING & CACHING
+======================================== */
+let isSecretCodeValid = false;
+const secretCodeInput = document.getElementById('secretCode');
+const secretCodeStatus = document.getElementById('secretCodeStatus');
+
+// 🚀 Cache for validation results
+const validationCache = new Map();
+let validationAbortController = null;
+
+function showSpinner() {
+  if (!secretCodeStatus) return;
+  secretCodeStatus.innerHTML = `
+    <svg aria-label="Validando..." width="22" height="22" viewBox="0 0 50 50" role="img">
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#FF4EB2" stroke-width="6" opacity="0.2"></circle>
+      <circle cx="25" cy="25" r="20" fill="none" stroke="#FF4EB2" stroke-width="6" stroke-linecap="round" stroke-dasharray="1,150" stroke-dashoffset="0">
+        <animate attributeName="stroke-dasharray" values="1,150;90,150;90,150" dur="1.4s" repeatCount="indefinite"></animate>
+        <animate attributeName="stroke-dashoffset" values="0;-35;-124" dur="1.4s" repeatCount="indefinite"></animate>
+        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.4s" repeatCount="indefinite"></animateTransform>
+      </circle>
+    </svg>
+  `;
+}
+
+function showCheck() {
+  if (!secretCodeStatus) return;
+  secretCodeStatus.innerHTML = '<ion-icon name="checkmark-circle" style="color:#28c650;font-size:1.6em"></ion-icon>';
+}
+
+function showWarning() {
+  if (!secretCodeStatus) return;
+  secretCodeStatus.innerHTML = '<ion-icon name="warning" style="color:#FF4EB2;font-size:1.6em"></ion-icon>';
+}
+
+function clearStatus() {
+  if (!secretCodeStatus) return;
+  secretCodeStatus.innerHTML = "";
+}
+
+// 🚀 OPTIMIZED: Actual validation function with caching and timeout
+async function performValidation(secretCode, productId) {
+  // Check cache first
+  const cacheKey = `${productId}-${secretCode}`;
+  if (validationCache.has(cacheKey)) {
+    console.log('✅ Using cached validation result');
+    return validationCache.get(cacheKey);
+  }
+
+  // Cancel previous request if still pending
+  if (validationAbortController) {
+    validationAbortController.abort();
+  }
   
-  orderSubmitBtn.disabled = true;
-  orderFormMessage.textContent = 'Enviando...';
-  orderFormMessage.style.color = '#007bff';
-  
-  const formData = new FormData(orderForm);
-  const data = Object.fromEntries(formData.entries());
-  
+  // Create new abort controller with timeout
+  validationAbortController = new AbortController();
+  const timeoutId = setTimeout(() => validationAbortController.abort(), 8000);
+
   try {
-    const res = await fetch(`${BACKEND_URL}/submit-order`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+    showSpinner();
+    orderFormMessage.textContent = 'Validando código...';
+    orderFormMessage.style.color = '#444';
+
+    const res = await fetch(
+      `${BACKEND_URL}/validate?product_id=${encodeURIComponent(productId)}&secret_code=${encodeURIComponent(secretCode)}`,
+      { 
+        signal: validationAbortController.signal,
+        headers: {
+          'Connection': 'keep-alive'
+        }
+      }
+    );
     
+    clearTimeout(timeoutId);
     const result = await res.json();
     
-    if (res.ok && result.success) {
-      orderFormMessage.textContent = '✅ Pedido enviado com sucesso!';
-      orderFormMessage.style.color = 'green';
-      orderForm.reset();
-      isSecretCodeValid = false;
-      isCPFValid = false;
-      isGameIdValid = false;
-      secretCodeStatus.innerHTML = '';
-      setTimeout(() => {
-        orderModal.classList.remove('active');
-        orderFormMessage.textContent = '';
-      }, 2000);
+    // Cache the result for 5 minutes
+    validationCache.set(cacheKey, result);
+    setTimeout(() => validationCache.delete(cacheKey), 5 * 60 * 1000);
+    
+    return result;
+    
+  } catch (err) {
+    clearTimeout(timeoutId);
+    
+    if (err.name === 'AbortError') {
+      console.log('⏱️ Request timeout or cancelled');
+      return { status: 'error', message: 'Timeout - tente novamente' };
+    }
+    
+    console.error('❌ Validation error:', err);
+    return { status: 'error', message: 'Erro de conexão' };
+  }
+}
+
+// 🚀 OPTIMIZED: Debounced validation handler
+const debouncedValidation = debounce(async function(secretCode, productId) {
+  const result = await performValidation(secretCode, productId);
+  
+  if (result.status === "valid") {
+    isSecretCodeValid = true;
+    orderFormMessage.textContent = 'Código válido! Você pode enviar.';
+    orderFormMessage.style.color = 'green';
+    showCheck();
+  } else if (result.status === "used") {
+    isSecretCodeValid = false;
+    orderFormMessage.textContent = 'Código já foi utilizado!';
+    orderFormMessage.style.color = 'red';
+    showWarning();
+  } else {
+    isSecretCodeValid = false;
+    orderFormMessage.textContent = result.message || 'Código inválido!';
+    orderFormMessage.style.color = 'red';
+    showWarning();
+  }
+  
+  updateOrderSubmitBtn();
+}, 600); // 🚀 Wait 600ms after user stops typing
+
+if (secretCodeInput) {
+  secretCodeInput.addEventListener('input', function () {
+    const secretCode = this.value.trim();
+    const productId = document.getElementById('orderProductId').value;
+
+    // Reset validation state
+    isSecretCodeValid = false;
+    updateOrderSubmitBtn();
+
+    // 🚀 OPTIMIZED: Only validate when code is exactly 8 characters
+    if (secretCode.length === 8 && productId) {
+      clearStatus();
+      orderFormMessage.textContent = 'Digite o código completo...';
+      orderFormMessage.style.color = '#444';
+      
+      // This will wait 600ms after last keystroke
+      debouncedValidation(secretCode, productId);
+    } else if (secretCode.length > 0) {
+      clearStatus();
+      orderFormMessage.textContent = 'Código deve ter 8 caracteres';
+      orderFormMessage.style.color = '#444';
     } else {
-      orderFormMessage.textContent = `❌ ${result.message || 'Erro ao enviar'}`;
+      clearStatus();
+      orderFormMessage.textContent = '';
+    }
+  });
+}
+
+/* ========================================
+   Submit Order
+======================================== */
+if (orderForm) {
+  orderForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    if (!orderForm.checkValidity() || !isCPFValid || !isSecretCodeValid) {
+      orderForm.reportValidity();
+      orderFormMessage.textContent = 'Verifique os campos e tente novamente.';
+      orderFormMessage.style.color = 'red';
+      orderSubmitBtn.disabled = false;
+      return;
+    }
+
+    orderSubmitBtn.disabled = true;
+    orderFormMessage.textContent = 'Enviando...';
+
+    const productName = document.getElementById('orderProductName').textContent.trim();
+    const productImg = document.getElementById('orderProductImg').src;
+    
+    if (!productName) {
+      orderFormMessage.textContent = "Erro: Produto não detectado.";
+      orderFormMessage.style.color = "red";
+      orderSubmitBtn.disabled = false;
+      return;
+    }
+
+    const data = {
+      productId: document.getElementById('orderProductId').value,
+      productName,
+      productImg,
+      fullName: document.getElementById('fullName').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      zip: document.getElementById('zip').value.trim(),
+      state: document.getElementById('state').value,
+      city: document.getElementById('city').value,
+      address: document.getElementById('address').value.trim(),
+      neighborhood: document.getElementById('neighborhood').value.trim(),
+      street: document.getElementById('street').value.trim(),
+      number: document.getElementById('number').value.trim(),
+      platform: document.getElementById('platform').value,
+      gameId: document.getElementById('gameId').value.trim(),
+      cpf: document.getElementById('cpf').value.trim(),
+      secretCode: document.getElementById('secretCode').value.trim()
+    };
+
+    try {
+      const response = await fetch(`${BACKEND_URL}/order`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      const result = await response.json();
+      
+      if (result.status === 'success') {
+        orderFormMessage.textContent = 'Pedido enviado com sucesso! Entraremos em contato em breve.';
+        orderFormMessage.style.color = 'green';
+        
+        // Clear cache for this code since it's now used
+        const cacheKey = `${data.productId}-${data.secretCode}`;
+        validationCache.delete(cacheKey);
+        
+        setTimeout(() => {
+          orderModal.classList.remove('active');
+          orderForm.reset();
+          orderSubmitBtn.disabled = true;
+          orderFormMessage.textContent = '';
+          isSecretCodeValid = false;
+          isCPFValid = false;
+        }, 2500);
+      } else {
+        orderFormMessage.textContent = result.message || 'Erro ao enviar pedido. Tente novamente.';
+        orderFormMessage.style.color = 'red';
+        orderSubmitBtn.disabled = false;
+      }
+    } catch (err) {
+      console.error('Erro ao enviar pedido:', err);
+      orderFormMessage.textContent = 'Erro ao enviar. Verifique sua conexão.';
       orderFormMessage.style.color = 'red';
       orderSubmitBtn.disabled = false;
     }
-  } catch (err) {
-    console.error('Submit error:', err);
-    orderFormMessage.textContent = '❌ Erro de conexão. Tente novamente.';
-    orderFormMessage.style.color = 'red';
-    orderSubmitBtn.disabled = false;
+  });
+}
+
+function updateOrderSubmitBtn() {
+  if (orderSubmitBtn && orderForm) {
+    orderSubmitBtn.disabled = !(orderForm.checkValidity() && isCPFValid && isSecretCodeValid);
   }
-});
+}
 
 /* ========================================
-   DOM READY INITIALIZATION
+   DOM READY SETUP
 ======================================== */
 document.addEventListener('DOMContentLoaded', () => {
   platformSelect = document.getElementById('platform');
@@ -571,6 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup CPF validation
   const cpfInput = document.getElementById('cpf');
   if (cpfInput) {
+    // Prevent non-numeric input
     cpfInput.addEventListener('input', function() {
       this.value = this.value.replace(/[^\d]/g, '');
       if (this.value.length > 11) {
@@ -597,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cpfInput.addEventListener('input', validateAndUpdateCPF);
   }
 
-  // Setup full name validation
+  // Setup full name validation (no numbers allowed)
   const fullNameInput = document.getElementById('fullName');
   if (fullNameInput) {
     fullNameInput.addEventListener('input', function() {
@@ -617,13 +767,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 📱 Setup inputmode for better mobile keyboards
-  const zipInput = document.getElementById('zip');
-  if (zipInput) zipInput.setAttribute('inputmode', 'numeric');
-  
-  const phoneInput = document.getElementById('phone');
-  if (phoneInput) phoneInput.setAttribute('inputmode', 'tel');
-
+  // Setup platform and game ID validation
   if (platformSelect) {
     platformSelect.addEventListener('change', () => {
       applyGameIdRules();
@@ -638,10 +782,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize game ID rules
   applyGameIdRules();
-  
-  // 🚀 Initialize sticky CTA dock
-  initStickyCTADock();
   
   // Load catalog
   loadCatalog();
@@ -650,6 +792,19 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ========================================
    PERFORMANCE OPTIMIZATIONS
 ======================================== */
+// Throttle scroll events
+let ticking = false;
+function updateOnScroll() {
+  ticking = false;
+}
+
+document.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(updateOnScroll);
+    ticking = true;
+  }
+});
+
 // Preload critical images
 const criticalImages = [
   'https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif',
@@ -666,20 +821,21 @@ criticalImages.forEach(src => {
    WITH SUPER STRICT ANTI-COLLISION SYSTEM
 ======================================== */
 (function() {
-  // Check if user prefers reduced motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return; // Skip flowers for accessibility
-  
   const flowers = ['🌸', '🌺', '🌷'];
-  const flowerCount = 8;
-  const flowerPositions = [];
+  const flowerCount = 8; // REDUCED to 8 for safety
+  const flowerPositions = []; // Track all flower positions
   
+  // EXCLUSION ZONES - in viewport percentages
   const exclusionZones = [
+    // Top header
     { x: 0, y: 0, width: 100, height: 20 },
+    // Center column - main content area
     { x: 15, y: 10, width: 70, height: 85 },
+    // Bottom footer
     { x: 0, y: 90, width: 100, height: 10 }
   ];
   
+  // Check if position overlaps with exclusion zone
   function isInExclusionZone(x, y, buffer = 5) {
     return exclusionZones.some(zone => {
       return x >= (zone.x - buffer) && x <= (zone.x + zone.width + buffer) &&
@@ -687,12 +843,14 @@ criticalImages.forEach(src => {
     });
   }
   
+  // Check if position is too close to existing flowers
+  // Using strict pixel-based distance
   function isTooClose(x, y) {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const xPx = (x / 100) * vw;
     const yPx = (y / 100) * vh;
-    const minDistancePx = 150;
+    const minDistancePx = 150; // INCREASED to 150px minimum
     
     return flowerPositions.some(pos => {
       const posXPx = (pos.x / 100) * vw;
@@ -702,24 +860,30 @@ criticalImages.forEach(src => {
     });
   }
   
+  // Generate safe position - ONLY in safe corners
   function getSafePosition() {
     let attempts = 0;
     const maxAttempts = 100;
     
+    // Define ONLY safe corner areas (far from center)
     const safeAreas = [
-      { x: 0, y: 25, width: 10, height: 15 },
-      { x: 90, y: 25, width: 10, height: 15 },
-      { x: 0, y: 45, width: 10, height: 15 },
-      { x: 90, y: 45, width: 10, height: 15 },
-      { x: 0, y: 70, width: 10, height: 15 },
-      { x: 90, y: 70, width: 10, height: 15 }
+      { x: 0, y: 25, width: 10, height: 15 },    // Left middle
+      { x: 90, y: 25, width: 10, height: 15 },   // Right middle
+      { x: 0, y: 45, width: 10, height: 15 },    // Left lower-middle
+      { x: 90, y: 45, width: 10, height: 15 },   // Right lower-middle
+      { x: 0, y: 70, width: 10, height: 15 },    // Left lower
+      { x: 90, y: 70, width: 10, height: 15 }    // Right lower
     ];
     
     while (attempts < maxAttempts) {
+      // Pick a random safe area
       const area = safeAreas[Math.floor(Math.random() * safeAreas.length)];
+      
+      // Generate position within that safe area
       const x = area.x + Math.random() * area.width;
       const y = area.y + Math.random() * area.height;
       
+      // Check if position is safe
       if (!isInExclusionZone(x, y, 10) && !isTooClose(x, y)) {
         return { x, y };
       }
@@ -727,6 +891,7 @@ criticalImages.forEach(src => {
       attempts++;
     }
     
+    // Fallback: return null if can't find safe position
     return null;
   }
   
@@ -744,8 +909,10 @@ criticalImages.forEach(src => {
     let successfulFlowers = 0;
     
     for (let i = 0; i < flowerCount && successfulFlowers < flowerCount; i++) {
+      // Get safe position with strict collision detection
       const pos = getSafePosition();
       
+      // Skip if can't find safe position
       if (!pos) {
         console.log('Could not find safe position for flower', i);
         continue;
@@ -760,13 +927,18 @@ criticalImages.forEach(src => {
       flower.style.left = pos.x + '%';
       flower.style.top = pos.y + '%';
       
-      const size = 2 + Math.random() * 0.5;
+      // Consistent size
+      const size = 2 + Math.random() * 0.5; // 2rem to 2.5rem
       flower.style.fontSize = size + 'rem';
+      
+      // Random animation delay
       flower.style.animationDelay = (Math.random() * -5) + 's';
       
-      const duration = 5 + Math.random() * 3;
+      // Random animation duration
+      const duration = 5 + Math.random() * 3; // 5-8 seconds
       flower.style.animationDuration = duration + 's';
       
+      // Triple safety
       flower.style.pointerEvents = 'none';
       flower.style.userSelect = 'none';
       flower.style.webkitUserSelect = 'none';
@@ -779,9 +951,10 @@ criticalImages.forEach(src => {
     document.body.appendChild(flowerContainer);
   }
   
+  // Create flowers after page is fully loaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(createFlowers, 100);
+      setTimeout(createFlowers, 100); // Small delay for viewport to stabilize
     });
   } else {
     setTimeout(createFlowers, 100);
