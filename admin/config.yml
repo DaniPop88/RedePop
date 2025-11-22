@@ -1,54 +1,57 @@
 backend:
   name: github
-  repo: DaniPop88/RedePops.github.io  # your GitHub repository
+  repo: DaniPop88/RedePop
   branch: main
   base_url: https://api.netlify.com
   auth_endpoint: auth
   site_domain: https://pop-love.vip/
 
-media_folder: "assets/uploads"          # where images are stored
-public_folder: "/assets/uploads"        # how they’re referenced in HTML
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
   - name: "products"
     label: "Products by Tier"
-    file: "manifest.json"
-    description: "Edit the product tiers and items"
-    fields:
-      - label: "Tiers"
-        name: "tiers"
-        widget: "list"
+    files:
+      - label: "Manifest"
+        name: "manifest"
+        file: "manifest.json"
+        description: "Edit the product tiers and items"
         fields:
-          - label: "Tier Name"
-            name: "name"
-            widget: "string"
-          - label: "Featured"
-            name: "featured"
-            widget: "boolean"
-            default: false
-          - label: "Products"
-            name: "products"
+          - label: "Tiers"
+            name: "tiers"
             widget: "list"
             fields:
-              - label: "Title"
-                name: "title"
+              - label: "Tier Name"
+                name: "name"
                 widget: "string"
-              - label: "Subtitle"
-                name: "subtitle"
-                widget: "string"
-                required: false
-              - label: "Price"
-                name: "price"
-                widget: "number"
-                required: false
-              - label: "Image"
-                name: "image"
-                widget: "image"
-              - label: "Description"
-                name: "description"
-                widget: "text"
-                required: false
-              - label: "Active"
-                name: "active"
+              - label: "Featured"
+                name: "featured"
                 widget: "boolean"
-                default: true
+                default: false
+              - label: "Products"
+                name: "products"
+                widget: "list"
+                fields:
+                  - label: "Title"
+                    name: "title"
+                    widget: "string"
+                  - label: "Subtitle"
+                    name: "subtitle"
+                    widget: "string"
+                    required: false
+                  - label: "Price"
+                    name: "price"
+                    widget: "number"
+                    required: false
+                  - label: "Image"
+                    name: "image"
+                    widget: "image"
+                  - label: "Description"
+                    name: "description"
+                    widget: "text"
+                    required: false
+                  - label: "Active"
+                    name: "active"
+                    widget: "boolean"
+                    default: true
