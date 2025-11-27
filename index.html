@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
   <title>REDE POP - CATÁLOGO DE PRÊMIOS</title>
 
-  <!-- Performance: Preconnect to external domains -->
+  <!-- Performance: Preconnect -->
   <link rel="preconnect" href="https://i.ibb.co">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://redepop-backend.onrender.com">
@@ -13,256 +13,357 @@
   <!-- Preload critical CSS -->
   <link rel="preload" href="style.css" as="style">
 
-  <!-- 🎯 ENHANCED STYLES -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="https://i.ibb.co/BKdsNcw0/Favicon.png" type="image/x-icon">
 
-  <!-- Defer non-critical scripts -->
+  <!-- Scripts -->
   <script src="cities.js" defer></script>
   <script src="city-selector.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 <body>
-  <!-- Loading Screen with Skeleton -->
+  <!-- 🎭 ENHANCED LOADING SCREEN -->
   <div class="loading-overlay" id="loadingOverlay">
-    <div>
-      <div class="loading-logo">POP</div>
-      <div class="loading-spinner"></div>
-      <div class="loading-text">🛒 Entrando na Pop Shop...</div>
+    <div class="loading-content">
+      <div class="loading-logo-wrapper">
+        <div class="loading-logo-glow"></div>
+        <div class="loading-logo">POP</div>
+      </div>
+      <div class="loading-spinner-wrapper">
+        <div class="loading-spinner"></div>
+        <div class="loading-spinner-ring"></div>
+      </div>
+      <div class="loading-text">✨ Preparando experiência premium...</div>
       <div class="loading-progress-container">
         <div class="loading-progress-bar">
           <div class="loading-progress-fill"></div>
+          <div class="loading-progress-shine"></div>
         </div>
         <div class="loading-percentage" id="loadingPercentage">0%</div>
       </div>
     </div>
   </div>
   
-  <!-- HEADER -->
+  <!-- 🌟 PREMIUM HEADER -->
   <header class="main-header">
-    <div class="header-decoration decoration-1"></div>
-    <div class="header-decoration decoration-2"></div>
+    <div class="header-bg-glow"></div>
+    <div class="header-particles">
+      <span></span><span></span><span></span>
+    </div>
     <div class="header-content">
-      <div class="logo-text">
-        <span class="logo-text-main">POP</span>
-        <span class="logo-text-subtitle">a plataforma com os maiores bônus do Brasil!</span>
-        <span class="logo-text-slogan">Porque onde há gratidão, há generosidade.</span>
+      <div class="logo-section">
+        <div class="logo-glow-wrapper">
+          <div class="logo-text-main">POP</div>
+          <div class="logo-glow"></div>
+        </div>
+        <div class="logo-subtitle-wrapper">
+          <span class="logo-text-subtitle">A plataforma com os maiores bônus do Brasil!</span>
+          <span class="logo-text-slogan">💎 Onde há gratidão, há generosidade</span>
+        </div>
       </div>
+    </div>
+    <div class="header-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z" fill="currentColor"></path>
+      </svg>
     </div>
   </header>
 
-  <!-- Mentor Contact Section -->
-  <div class="mentor-contact-section">
-    <div class="mentor-contact-title">CONTATE O MENTOR PARA OBTER PRÊMIO</div>
-    <div class="mentor-contact-btn-row">
-      <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
-        <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
-        <span>WHATSAPP</span>
-      </a>
-      <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
-        <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
-        <span>TELEGRAM</span>
-      </a>
-    </div>
-  </div>
+  <!-- 🎯 FLOATING ACTION BUTTON -->
+  <button class="fab-mentor" id="fabMentor">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span class="fab-label">Mentor</span>
+  </button>
 
-  <main>
+  <!-- 💬 MENTOR CONTACT BANNER -->
+  <section class="mentor-banner">
+    <div class="mentor-banner-content">
+      <div class="mentor-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span>Contate o Mentor</span>
+      </div>
+      <div class="mentor-buttons">
+        <a href="https://poppremio.com/wa" target="_blank" class="mentor-btn whatsapp">
+          <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" />
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://poppremio.com/tg" target="_blank" class="mentor-btn telegram">
+          <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" />
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎁 CATALOG SECTION -->
+  <main class="catalog-main">
     <div class="container">
-      <div id="catalog"></div>
-      <noscript>Ative o JavaScript para ver o catálogo.</noscript>
+      <div class="catalog-header">
+        <h2 class="catalog-title">
+          <span class="title-icon">🎁</span>
+          <span>Catálogo de Prêmios</span>
+        </h2>
+        <p class="catalog-subtitle">Escolha seu prêmio e reclame agora!</p>
+      </div>
+      <div id="catalog" class="catalog-grid"></div>
+      <noscript>
+        <div class="noscript-warning">
+          ⚠️ Ative o JavaScript para visualizar o catálogo
+        </div>
+      </noscript>
     </div>
   </main>
 
-  <!-- Mentor Contact Section -->
-  <div class="mentor-contact-section">
-    <div class="mentor-contact-title">CONTATE O MENTOR PARA OBTER PRÊMIO</div>
-    <div class="mentor-contact-btn-row">
-      <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
-        <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
-        <span>WHATSAPP</span>
-      </a>
-      <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
-        <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
-        <span>TELEGRAM</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="main-header">
-    <div class="header-decoration decoration-1"></div>
-    <div class="header-decoration decoration-2"></div>
-    <div class="header-content">
-      <div class="logo-text">
-        <span class="logo-text-subtitle">POP | a plataforma com os maiores bônus do Brasil!</span>
-        <span class="logo-text-slogan">Porque onde há gratidão, há generosidade.</span>
+  <!-- 💬 BOTTOM MENTOR SECTION -->
+  <section class="mentor-banner mentor-banner-bottom">
+    <div class="mentor-banner-content">
+      <div class="mentor-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span>Ainda precisa de ajuda?</span>
+      </div>
+      <div class="mentor-buttons">
+        <a href="https://poppremio.com/wa" target="_blank" class="mentor-btn whatsapp">
+          <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" />
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://poppremio.com/tg" target="_blank" class="mentor-btn telegram">
+          <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" />
+          <span>Telegram</span>
+        </a>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- MODAL PEDIDO -->
+  <!-- 🏆 FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-logo">POP</div>
+      <p class="footer-tagline">Porque onde há gratidão, há generosidade 💝</p>
+      <p class="footer-copyright">© 2024 REDE POP. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- 🎨 ORDER MODAL (ENHANCED) -->
   <div class="modal" id="orderModal">
-    <div class="modal-content order-modal-content">
-      <button class="modal-close-btn" id="orderModalCloseBtn">&times;</button>
-      <h3 class="modal-title">REIVINDIQUE SEU PRÊMIO!!</h3>
-      <div class="order-product-info-centered">
-        <img id="orderProductImg" src="..." alt="" class="modal-product-img" />
-        <div id="orderProductName" class="modal-product-title"></div>
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button class="modal-close" id="orderModalCloseBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <div class="modal-header">
+          <div class="modal-title-icon">🎁</div>
+          <h3 class="modal-title">Reivindique seu Prêmio!</h3>
+        </div>
+
+        <div class="modal-product-showcase">
+          <div class="product-image-wrapper">
+            <img id="orderProductImg" src="" alt="" class="modal-product-img" />
+            <div class="product-shine"></div>
+          </div>
+          <div id="orderProductName" class="modal-product-name"></div>
+        </div>
+
+        <form id="orderForm" class="premium-form">
+          <input type="hidden" name="productId" id="orderProductId">
+          
+          <div class="form-section">
+            <div class="section-title">📋 Informações Pessoais</div>
+            
+            <div class="form-field">
+              <input type="text" name="fullName" id="fullName" required placeholder=" ">
+              <label for="fullName">Nome Completo</label>
+              <span class="field-icon">👤</span>
+              <span class="success-check">✓</span>
+            </div>
+            
+            <div class="form-field">
+              <input type="tel" name="phone" id="phone" required placeholder=" ">
+              <label for="phone">Número de Telefone</label>
+              <span class="field-icon">📱</span>
+              <span class="success-check">✓</span>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-title">📍 Endereço de Entrega</div>
+            
+            <div class="form-field">
+              <input type="text" name="zip" id="zip" required placeholder=" ">
+              <label for="zip">CEP</label>
+              <span class="field-icon">📮</span>
+              <span class="success-check">✓</span>
+              <small class="field-hint">Formato: 00000-000</small>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-field">
+                <select name="state" id="state" required>
+                  <option value="" disabled selected></option>
+                  <option value="AC">Acre (AC)</option>
+                  <option value="AL">Alagoas (AL)</option>
+                  <option value="AP">Amapá (AP)</option>
+                  <option value="AM">Amazonas (AM)</option>
+                  <option value="BA">Bahia (BA)</option>
+                  <option value="CE">Ceará (CE)</option>
+                  <option value="DF">Distrito Federal (DF)</option>
+                  <option value="ES">Espírito Santo (ES)</option>
+                  <option value="GO">Goiás (GO)</option>
+                  <option value="MA">Maranhão (MA)</option>
+                  <option value="MT">Mato Grosso (MT)</option>
+                  <option value="MS">Mato Grosso do Sul (MS)</option>
+                  <option value="MG">Minas Gerais (MG)</option>
+                  <option value="PA">Pará (PA)</option>
+                  <option value="PB">Paraíba (PB)</option>
+                  <option value="PR">Paraná (PR)</option>
+                  <option value="PE">Pernambuco (PE)</option>
+                  <option value="PI">Piauí (PI)</option>
+                  <option value="RJ">Rio de Janeiro (RJ)</option>
+                  <option value="RN">Rio Grande do Norte (RN)</option>
+                  <option value="RS">Rio Grande do Sul (RS)</option>
+                  <option value="RO">Rondônia (RO)</option>
+                  <option value="RR">Roraima (RR)</option>
+                  <option value="SC">Santa Catarina (SC)</option>
+                  <option value="SP">São Paulo (SP)</option>
+                  <option value="SE">Sergipe (SE)</option>
+                  <option value="TO">Tocantins (TO)</option>
+                </select>
+                <label for="state">Estado</label>
+                <span class="field-icon">🗺️</span>
+                <span class="success-check">✓</span>
+              </div>
+              
+              <div class="form-field" id="cityContainer">
+                <input type="text" name="city" id="city" required placeholder=" ">
+                <label for="city">Cidade</label>
+                <span class="field-icon">🏙️</span>
+                <span class="success-check">✓</span>
+                <small class="field-hint">Escolha seu estado primeiro</small>
+              </div>
+            </div>
+            
+            <div class="form-field">
+              <input type="text" name="neighborhood" id="neighborhood" required placeholder=" ">
+              <label for="neighborhood">Bairro</label>
+              <span class="field-icon">🏘️</span>
+              <span class="success-check">✓</span>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-field form-field-wide">
+                <input type="text" name="street" id="street" required placeholder=" ">
+                <label for="street">Rua / Avenida</label>
+                <span class="field-icon">🛣️</span>
+                <span class="success-check">✓</span>
+              </div>
+              
+              <div class="form-field form-field-narrow">
+                <input type="text" name="number" id="number" required placeholder=" ">
+                <label for="number">Número</label>
+                <span class="success-check">✓</span>
+                <small class="field-hint">SN se sem número</small>
+              </div>
+            </div>
+            
+            <div class="form-field">
+              <input type="text" name="address" id="address" required placeholder=" ">
+              <label for="address">Complemento</label>
+              <span class="field-icon">🏢</span>
+              <span class="success-check">✓</span>
+              <small class="field-hint">Apto, bloco, conjunto, etc.</small>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-title">🎮 Dados da Plataforma</div>
+            
+            <div class="form-field">
+              <select name="platform" id="platform" required>
+                <option value="" disabled selected></option>
+                <option value="POPBIS">🌸 POPBIS 🌸</option>
+                <option value="POPN1">-</option>
+              </select>
+              <label for="platform">Plataforma</label>
+              <span class="field-icon">🎯</span>
+              <span class="success-check">✓</span>
+            </div>
+            
+            <div class="form-field">
+              <input type="text" name="gameId" id="gameId" required maxlength="12" placeholder=" ">
+              <label for="gameId">ID de Jogo</label>
+              <span class="field-icon">🎲</span>
+              <span class="success-check">✓</span>
+              <small class="field-hint">Selecione a plataforma primeiro</small>
+            </div>
+            
+            <div class="form-field">
+              <input type="text" name="cpf" id="cpf" required maxlength="11" placeholder=" ">
+              <label for="cpf">CPF</label>
+              <span class="field-icon">🆔</span>
+              <span class="success-check">✓</span>
+              <small class="field-hint">11 dígitos (sem pontos ou traços)</small>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="section-title">🔐 Código Secreto</div>
+            
+            <div class="form-field">
+              <div class="code-input-wrapper">
+                <input type="text" name="secretCode" id="secretCode" required maxlength="8" placeholder=" ">
+                <label for="secretCode">Código Secreto</label>
+                <span class="field-icon">🔑</span>
+                <span id="secretCodeStatus" class="code-status"></span>
+              </div>
+              <small class="field-hint">💡 Solicite o código ao seu mentor</small>
+            </div>
+
+            <div class="code-mentor-cta">
+              <div class="cta-text">Não tem código?</div>
+              <div class="cta-buttons">
+                <a href="https://poppremio.com/wa" target="_blank" class="cta-btn wa">
+                  <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" />
+                  <span>WhatsApp</span>
+                </a>
+                <a href="https://poppremio.com/tg" target="_blank" class="cta-btn tg">
+                  <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" />
+                  <span>Telegram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-alert">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+              <div class="alert-title">Atenção!</div>
+              <ol class="alert-list">
+                <li>Certifique-se de inserir seus dados corretamente</li>
+                <li>O Código Secreto só pode ser usado uma vez</li>
+                <li>Não nos responsabilizamos por dados incorretos</li>
+              </ol>
+            </div>
+          </div>
+
+          <div id="orderFormMessage" class="form-message"></div>
+
+          <button type="submit" id="orderSubmitBtn" class="submit-btn" disabled>
+            <span class="btn-text">Enviar Pedido</span>
+            <span class="btn-icon">🚀</span>
+          </button>
+        </form>
       </div>
-      <form id="orderForm">
-        <input type="hidden" name="productId" id="orderProductId">
-        
-        <div class="form-divider"></div>
-        
-        <div class="form-field">
-          <input type="text" name="fullName" id="fullName" required placeholder=" ">
-          <label for="fullName">NOME COMPLETO</label>
-          <span class="success-icon">✓</span>
-        </div>
-        
-        <div class="form-field">
-          <input type="tel" name="phone" id="phone" required placeholder=" ">
-          <label for="phone">NÚMERO DE TELEFONE</label>
-          <span class="success-icon">✓</span>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="zip" id="zip" required placeholder=" ">
-          <label for="zip">CEP</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Formato: 00000-000</small>
-        </div>
-        
-        <div class="form-field">
-          <select name="state" id="state" required>
-            <option value="" disabled selected></option>
-            <option value="AC">Acre (AC)</option>
-            <option value="AL">Alagoas (AL)</option>
-            <option value="AP">Amapá (AP)</option>
-            <option value="AM">Amazonas (AM)</option>
-            <option value="BA">Bahia (BA)</option>
-            <option value="CE">Ceará (CE)</option>
-            <option value="DF">Distrito Federal (DF)</option>
-            <option value="ES">Espírito Santo (ES)</option>
-            <option value="GO">Goiás (GO)</option>
-            <option value="MA">Maranhão (MA)</option>
-            <option value="MT">Mato Grosso (MT)</option>
-            <option value="MS">Mato Grosso do Sul (MS)</option>
-            <option value="MG">Minas Gerais (MG)</option>
-            <option value="PA">Pará (PA)</option>
-            <option value="PB">Paraíba (PB)</option>
-            <option value="PR">Paraná (PR)</option>
-            <option value="PE">Pernambuco (PE)</option>
-            <option value="PI">Piauí (PI)</option>
-            <option value="RJ">Rio de Janeiro (RJ)</option>
-            <option value="RN">Rio Grande do Norte (RN)</option>
-            <option value="RS">Rio Grande do Sul (RS)</option>
-            <option value="RO">Rondônia (RO)</option>
-            <option value="RR">Roraima (RR)</option>
-            <option value="SC">Santa Catarina (SC)</option>
-            <option value="SP">São Paulo (SP)</option>
-            <option value="SE">Sergipe (SE)</option>
-            <option value="TO">Tocantins (TO)</option>
-          </select>
-          <label for="state">ESTADO</label>
-          <span class="success-icon">✓</span>
-        </div>
-        
-        <div class="form-field" id="cityContainer">
-          <input type="text" name="city" id="city" required placeholder=" ">
-          <label for="city">CIDADE</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Escolha seu estado primeiro</small>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="neighborhood" id="neighborhood" required placeholder=" ">
-          <label for="neighborhood">BAIRRO</label>
-          <span class="success-icon">✓</span>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="street" id="street" required placeholder=" ">
-          <label for="street">RUA / AVENIDA</label>
-          <span class="success-icon">✓</span>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="number" id="number" required placeholder=" ">
-          <label for="number">NÚMERO</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Digite SN se não houver número</small>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="address" id="address" required placeholder=" ">
-          <label for="address">COMPLEMENTO / DESCRIÇÃO</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Apartamento, bloco, conjunto, etc.</small>
-        </div>
-        
-        <div class="form-divider"></div>
-
-        <div class="form-field">
-          <select name="platform" id="platform" required>
-            <option value="" disabled selected></option>
-            <option value="POPBIS">🌸 POPBIS 🌸</option>
-            <option value="POPN1">-</option>
-          </select>
-          <label for="platform">PLATAFORMA</label>
-          <span class="success-icon">✓</span>
-        </div>
-          
-        <div class="form-field">
-          <input type="text" name="gameId" id="gameId" required maxlength="12" placeholder=" ">
-          <label for="gameId">ID DE JOGO</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Selecione a plataforma primeiro</small>
-        </div>
-        
-        <div class="form-field">
-          <input type="text" name="cpf" id="cpf" required maxlength="11" placeholder=" ">
-          <label for="cpf">CPF</label>
-          <span class="success-icon">✓</span>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;">Digite 11 dígitos (sem pontos ou traços)</small>
-        </div>
-          
-        <div class="form-field">
-          <div style="position:relative">
-            <input type="text" name="secretCode" id="secretCode" required maxlength="8" placeholder=" " style="padding-right:40px;">
-            <label for="secretCode">CÓDIGO SECRETO</label>
-            <span id="secretCodeStatus" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);height:35px;width:35px;display:flex;align-items:center;z-index:10;"></span>
-          </div>
-          <small style="display:block; margin-top:4px; color:#999; font-size:.8rem;"><em>Psiu!</em> Solicite o código ao seu mentor</small>
-        </div>
-        <button type="submit" id="orderSubmitBtn" disabled>ENVIAR PEDIDO</button>
-        <div id="orderFormMessage"></div>
-
-        <div id="orderFormTC">
-          <div style="text-align:center; font-weight:bold; color:#F87171; font-size:1rem; margin-bottom:10px;">
-            ⚠️ ATENÇÃO ⚠️
-          </div>
-          <ol>
-            <li>Certifique-se de inserir seus dados corretamente; caso contrário, o pedido será cancelado e o prêmio não será entregue.</li>
-            <li>O Código Secreto é único e só pode ser usado uma vez, preencha todas as informações corretamente.</li>
-            <li>Não nos responsabilizamos por atrasos causados por dados incorretos ou fatores externos.</li>
-          </ol>
-        </div>
-          
-        <div class="mentor-contact-section" style="margin-top:18px;">
-          <div class="mentor-contact-title">Não tem Código Secreto? Encontre um mentor</div>
-          <div class="mentor-contact-btn-row">
-            <a href="https://poppremio.com/wa" target="_blank" class="mentor-contact-btn whatsapp-btn">
-              <img src="https://i.ibb.co/BHYkmXfs/Whatsapp-Transparent.gif" alt="WhatsApp" class="mentor-contact-icon" />
-              <span>WHATSAPP</span>
-            </a>
-            <a href="https://poppremio.com/tg" target="_blank" class="mentor-contact-btn telegram-btn">
-              <img src="https://i.ibb.co/s9x87GHJ/Telegram-logo.gif" alt="Telegram" class="mentor-contact-icon" />
-              <span>TELEGRAM</span>
-            </a>
-          </div>
-        </div>
-      </form>
     </div>
   </div>
 
